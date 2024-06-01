@@ -1,0 +1,393 @@
+USE [master]
+
+GO
+CREATE DATABASE  [Monimbo_Bautista_Renacer]
+GO
+USE [Monimbo_Bautista_Renacer]
+GO
+/****** Object:  Table [dbo].[Categoria_ofrendas]    Script Date: 4/4/2024 22:46:12 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Categoria_ofrendas](
+	[idCategoria] [int] IDENTITY(1,1) NOT NULL,
+	[nombre_categoria] [varchar](50) NULL,
+	[descripcion] [varchar](100) NULL,
+	[esActivo] [bit] NULL,
+	[fechaRegistro] [date] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[idCategoria] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Categoria_pagos]    Script Date: 4/4/2024 22:46:12 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Categoria_pagos](
+	[idCategoria] [int] IDENTITY(1,1) NOT NULL,
+	[nombre_categoria] [varchar](20) NULL,
+	[descripcion] [varchar](50) NULL,
+	[esActivo] [bit] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[idCategoria] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Det_ofrendaCategoria]    Script Date: 4/4/2024 22:46:12 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Det_ofrendaCategoria](
+	[Id_Ofrendas] [int] NULL,
+	[Id_Categoria] [int] NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Det_pagocategoria]    Script Date: 4/4/2024 22:46:12 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Det_pagocategoria](
+	[Id_pago] [int] NULL,
+	[Id_categoria] [int] NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Det_usuarioPermiso]    Script Date: 4/4/2024 22:46:12 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Det_usuarioPermiso](
+	[ID_Usuario] [int] NOT NULL,
+	[ID_Permiso] [int] NOT NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Diezmos]    Script Date: 4/4/2024 22:46:12 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Diezmos](
+	[Id_diezmo] [int] IDENTITY(1,1) NOT NULL,
+	[Nombre_Persona_diezmo] [varchar](50) NULL,
+	[Cantidad] [int] NULL,
+	[Fecha_diezmo] [date] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id_diezmo] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[egresos_varios]    Script Date: 4/4/2024 22:46:12 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[egresos_varios](
+	[Id_egresosvarios] [int] IDENTITY(1,1) NOT NULL,
+	[Cantidad] [int] NULL,
+	[Descripcion] [varchar](50) NULL,
+	[Fecha_egreso] [date] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id_egresosvarios] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[ingresos_Varios]    Script Date: 4/4/2024 22:46:12 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ingresos_Varios](
+	[Id_varios] [int] IDENTITY(1,1) NOT NULL,
+	[Cantidad] [int] NULL,
+	[Descripcion] [varchar](100) NULL,
+	[Fecha_varios] [date] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id_varios] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[ofrenda_pastoral]    Script Date: 4/4/2024 22:46:12 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ofrenda_pastoral](
+	[id_ofrenda_pastoral] [int] IDENTITY(1,1) NOT NULL,
+	[cantidad] [int] NULL,
+	[Nombre] [varchar](50) NULL,
+	[fecha_ofrenda_pastoral] [date] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id_ofrenda_pastoral] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[ofrendas]    Script Date: 4/4/2024 22:46:12 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ofrendas](
+	[Id_ofrendas] [int] IDENTITY(1,1) NOT NULL,
+	[Cantidad] [int] NULL,
+	[Fecha_ofrenda] [date] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id_ofrendas] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[pagos_basicos]    Script Date: 4/4/2024 22:46:12 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[pagos_basicos](
+	[Id_pagos] [int] IDENTITY(1,1) NOT NULL,
+	[Descripcion] [varchar] NOT NULL,
+	[Cantidad] [int] NULL,
+	[fecha_pago] [date] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id_pagos] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Permisos]    Script Date: 4/4/2024 22:46:12 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Permisos](
+	[Id_permiso] [int] IDENTITY(1,1) NOT NULL,
+	[Nombre_permiso] [varchar](30) NULL,
+	[esActivo] [bit] NULL,
+	[fechaRegistro] [date] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id_permiso] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Total]    Script Date: 4/4/2024 22:46:12 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Total](
+	[Id_Total] [int] IDENTITY(1,1) NOT NULL,
+	[Total] [float] NULL,
+	[mes_total] [varchar](20) NULL,
+	[IdTotal_ingresos] [int] NULL,
+	[IdTotal_egresos] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id_Total] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Total_Egresos]    Script Date: 4/4/2024 22:46:12 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Total_Egresos](
+	[IdTotal_egresos] [int] IDENTITY(1,1) NOT NULL,
+	[total_egreso] [float] NULL,
+	[mes_egreso] [varchar](10) NULL,
+	[Id_ofrenda_pastoral] [int] NULL,
+	[Id_egresosvarios] [int] NULL,
+	[Id_pagos] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[IdTotal_egresos] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Total_ingresos]    Script Date: 4/4/2024 22:46:12 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Total_ingresos](
+	[Id_Total_ingresos] [int] IDENTITY(1,1) NOT NULL,
+	[total_ingreso] [float] NULL,
+	[mes_ingresos] [varchar](10) NULL,
+	[Id_ofrendas] [int] NULL,
+	[Id_diezmo] [int] NULL,
+	[Id_varios] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id_Total_ingresos] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Usuario]    Script Date: 4/4/2024 22:46:12 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Usuario](
+	[Id_Usuario] [int] IDENTITY(1,1) NOT NULL,
+	[nombre] [varchar](20) NULL,
+	[apellido] [varchar](20) NULL,
+	[telefono] [varchar](15) NULL,
+	[Direccion] [varchar](100) NULL,
+	[clave] [varchar](20) NULL,
+	[esActivo] [bit] NULL,
+	[fechaRegistro] [date] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id_Usuario] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Categoria_ofrendas] ADD  DEFAULT (getdate()) FOR [fechaRegistro]
+GO
+ALTER TABLE [dbo].[Diezmos] ADD  DEFAULT (getdate()) FOR [Fecha_diezmo]
+GO
+ALTER TABLE [dbo].[egresos_varios] ADD  DEFAULT (getdate()) FOR [Fecha_egreso]
+GO
+ALTER TABLE [dbo].[ingresos_Varios] ADD  DEFAULT (getdate()) FOR [Fecha_varios]
+GO
+ALTER TABLE [dbo].[ofrenda_pastoral] ADD  DEFAULT (getdate()) FOR [fecha_ofrenda_pastoral]
+GO
+ALTER TABLE [dbo].[ofrendas] ADD  DEFAULT (getdate()) FOR [Fecha_ofrenda]
+GO
+ALTER TABLE [dbo].[pagos_basicos] ADD  DEFAULT (getdate()) FOR [fecha_pago]
+GO
+ALTER TABLE [dbo].[Permisos] ADD  DEFAULT (getdate()) FOR [fechaRegistro]
+GO
+ALTER TABLE [dbo].[Usuario] ADD  DEFAULT (getdate()) FOR [fechaRegistro]
+GO
+ALTER TABLE [dbo].[Det_ofrendaCategoria]  WITH CHECK ADD FOREIGN KEY([Id_Categoria])
+REFERENCES [dbo].[Categoria_ofrendas] ([idCategoria])
+GO
+ALTER TABLE [dbo].[Det_ofrendaCategoria]  WITH CHECK ADD FOREIGN KEY([Id_Ofrendas])
+REFERENCES [dbo].[ofrendas] ([Id_ofrendas])
+GO
+ALTER TABLE [dbo].[Det_pagocategoria]  WITH CHECK ADD FOREIGN KEY([Id_categoria])
+REFERENCES [dbo].[Categoria_pagos] ([idCategoria])
+GO
+ALTER TABLE [dbo].[Det_pagocategoria]  WITH CHECK ADD FOREIGN KEY([Id_pago])
+REFERENCES [dbo].[pagos_basicos] ([Id_pagos])
+GO
+ALTER TABLE [dbo].[Det_usuarioPermiso]  WITH CHECK ADD FOREIGN KEY([ID_Permiso])
+REFERENCES [dbo].[Permisos] ([Id_permiso])
+GO
+ALTER TABLE [dbo].[Det_usuarioPermiso]  WITH CHECK ADD FOREIGN KEY([ID_Usuario])
+REFERENCES [dbo].[Usuario] ([Id_Usuario])
+GO
+ALTER TABLE [dbo].[Total]  WITH CHECK ADD FOREIGN KEY([IdTotal_egresos])
+REFERENCES [dbo].[Total_Egresos] ([IdTotal_egresos])
+GO
+ALTER TABLE [dbo].[Total]  WITH CHECK ADD FOREIGN KEY([IdTotal_ingresos])
+REFERENCES [dbo].[Total_ingresos] ([Id_Total_ingresos])
+GO
+ALTER TABLE [dbo].[Total_Egresos]  WITH CHECK ADD FOREIGN KEY([Id_egresosvarios])
+REFERENCES [dbo].[egresos_varios] ([Id_egresosvarios])
+GO
+ALTER TABLE [dbo].[Total_Egresos]  WITH CHECK ADD FOREIGN KEY([Id_ofrenda_pastoral])
+REFERENCES [dbo].[ofrenda_pastoral] ([id_ofrenda_pastoral])
+GO
+ALTER TABLE [dbo].[Total_Egresos]  WITH CHECK ADD FOREIGN KEY([Id_pagos])
+REFERENCES [dbo].[pagos_basicos] ([Id_pagos])
+GO
+ALTER TABLE [dbo].[Total_ingresos]  WITH CHECK ADD FOREIGN KEY([Id_diezmo])
+REFERENCES [dbo].[Diezmos] ([Id_diezmo])
+GO
+ALTER TABLE [dbo].[Total_ingresos]  WITH CHECK ADD FOREIGN KEY([Id_ofrendas])
+REFERENCES [dbo].[ofrendas] ([Id_ofrendas])
+GO
+ALTER TABLE [dbo].[Total_ingresos]  WITH CHECK ADD FOREIGN KEY([Id_varios])
+REFERENCES [dbo].[ingresos_Varios] ([Id_varios])
+GO
+
+	insert into Categoria_ofrendas (nombre_categoria, descripcion, esActivo) values ('Culto general', 'ya sea de oracion, escuela biblica o de predicacion', '1')
+	insert into Categoria_ofrendas (nombre_categoria, descripcion, esActivo) values ('Ministerio Femenil', 'Reunion solo de mujeres', '1')
+	insert into Categoria_ofrendas (nombre_categoria, descripcion, esActivo) values ('Ministerio de jovenes', 'Reunion de jovenes adolecentes entre 15 a 25 años', '1')
+	insert into Categoria_ofrendas (nombre_categoria, descripcion, esActivo) values ('Ministerio de hombres', 'Reunion solo de hombres', '1')
+
+	insert into ofrendas (Cantidad) values (500)
+	insert into ofrendas (Cantidad) values (20)
+	insert into ofrendas (Cantidad) values (60)
+	insert into ofrendas (Cantidad) values (2500)
+	insert into ofrendas (Cantidad) values (100)
+
+	insert into Det_ofrendaCategoria (Id_Ofrendas, Id_Categoria) values (1, 1)
+	insert into Det_ofrendaCategoria (Id_Ofrendas, Id_Categoria) values (2, 3)
+	insert into Det_ofrendaCategoria (Id_Ofrendas, Id_Categoria) values (3, 2)
+	insert into Det_ofrendaCategoria (Id_Ofrendas, Id_Categoria) values (4, 1)
+	insert into Det_ofrendaCategoria (Id_Ofrendas, Id_Categoria) values (5, 4)
+
+	insert into Diezmos (Cantidad, Nombre_Persona_diezmo) values (500, 'Hmo Pedro Gutierrez')
+	insert into Diezmos (Cantidad, Nombre_Persona_diezmo) values (2500, 'Familia Lopez Hernandez')
+	insert into Diezmos (Cantidad, Nombre_Persona_diezmo) values (100, 'Hma Consuelo Sanchez') 
+	insert into Diezmos (Cantidad, Nombre_Persona_diezmo) values (700, 'Familia Martinez Lopez') 
+
+	insert into ingresos_Varios (Cantidad, Descripcion) values (5000, 'Venta de comida')
+	insert into ingresos_Varios (Cantidad, Descripcion) values (60000, 'Donacion')
+	insert into ingresos_Varios (Cantidad, Descripcion) values (480, 'Venta de frescos')
+	insert into ingresos_Varios (Cantidad, Descripcion) values (2500, 'Recolecta para comida comunitaria')
+
+	insert into Total_ingresos (total_ingreso, mes_ingresos, Id_varios) values (100, 'Noviembre', 4)
+	insert into Total_ingresos (total_ingreso, mes_ingresos, Id_diezmo) values (500, 'Septimebre', 1)
+	insert into Total_ingresos (total_ingreso, mes_ingresos, Id_ofrendas) values (100, 'Octubre',5)
+
+	insert into Categoria_pagos (nombre_categoria, descripcion, esActivo) values ('Luz', 'Servicio basico de energia electica', 1)
+	insert into Categoria_pagos (nombre_categoria, descripcion, esActivo) values ('Agua', 'Servicio basico de agua potable', 1)
+	insert into Categoria_pagos (nombre_categoria, descripcion, esActivo) values ('Internet', 'Servicio basico de internet y telefonia fija', 1)
+
+	insert into pagos_basicos (Cantidad) values (300)
+	insert into pagos_basicos (Cantidad) values (600)
+	insert into pagos_basicos (Cantidad) values (2500)
+
+	insert into Det_pagocategoria (Id_pago, Id_categoria) values (1, 2)
+	insert into Det_pagocategoria (Id_pago, Id_categoria) values (2, 1)
+	insert into Det_pagocategoria (Id_pago, Id_categoria) values (3, 3)
+
+	insert into ofrenda_pastoral (cantidad, Nombre) values (4000, 'Rosa Urtecho')
+	insert into ofrenda_pastoral (cantidad, Nombre) values (500, 'Juan Lopez')
+	insert into ofrenda_pastoral (cantidad, Nombre) values (4000, 'Rafael Martinez')
+
+	insert into egresos_varios (Cantidad, Descripcion) values ( 1500, 'Compra de microfono')
+	insert into egresos_varios (Cantidad, Descripcion) values ( 6000, 'Donacion al acilo de ancianos ')
+	insert into egresos_varios (Cantidad, Descripcion) values ( 500, 'Donacion a Hmo Juan Lopez para un examen medico')
+
+	insert into Total_Egresos (total_egreso, mes_egreso, Id_egresosvarios) values (6000, 'Abril', 2)
+	insert into Total_Egresos (total_egreso, mes_egreso, Id_ofrenda_pastoral) values (4000, 'Febrero', 3)
+	insert into Total_Egresos (total_egreso, mes_egreso, Id_pagos) values (2500, 'Octubre', 3)
+
+	insert into Total_ingresos (total_ingreso, mes_ingresos, Id_varios) values (100, 'Noviembre', 4)
+	insert into Total_ingresos (total_ingreso, mes_ingresos, Id_diezmo) values (500, 'Septimebre', 1)
+	insert into Total_ingresos (total_ingreso, mes_ingresos, Id_diezmo) values (2500, 'Abril', 2)
+	insert into Total_ingresos (total_ingreso, mes_ingresos, Id_ofrendas) values (100, 'Octubre',5)
+
+	insert into Total (Total, mes_total, IdTotal_ingresos) values (500.0, 'Septimebre', 1)
+	insert into Total (Total, mes_total, IdTotal_ingresos) values (100.0, 'Noviembre', 4)
+	insert into Total (Total, mes_total, IdTotal_ingresos) values (100.0, 'Octubre', 5)
+	insert into Total (Total, mes_total, IdTotal_egresos) values (6000.0, 'Abril', 2)
+	insert into Total (Total, mes_total, IdTotal_egresos) values (4000.0, 'Febrero', 3)
+	insert into Total (Total, mes_total, IdTotal_egresos) values (2500.0, 'Octubre', 3)
+
+
+
+//////1#instalar sobre el proyecto paquetes de nugets:
+1)microsoft.EntityFrameworkCore.SqlServer
+2)mircrosoft.EntityFrameworkCore.Tools
+
+
+
+////////2#correr en comandline paquete de nugets para la conexion a base de datos, hacerlo sobre Myjourbal.entity
+
+Scaffold-DBContext "server=localhost;database=Monimbo_Bautista_Renacer;Trusted_Connection=true;MultipleActiveResultSets=true;TrustServerCertificate=true"; Microsoft.EntityFrameworkCore.SqlServer
