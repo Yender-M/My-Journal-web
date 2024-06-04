@@ -8,17 +8,20 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css">
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-    <style>
-        .box-shadow--4dp {
-            box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .2);
-            background: #a892bd;
-            float: right;
-        }
+<style>
+    .box-shadow--4dp {
+        box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .2);
+        background: #2a8358;
+        float: right;
+        color: white;
+    }
 
-        .container {
-            margin-bottom: 20px;
-        }
-    </style>
+    .container {
+        margin-bottom: 20px;
+    }
+</style>
+<a asp-controller="EgresosVarios" asp-action="Create" title="" class="btn btn btn-lg box-shadow--4dp">Crear</a>
+
 
 
 
@@ -114,7 +117,6 @@
   
             </table>
         </div>
-        <a asp-controller="EgresosVarios" asp-action="Create" title="" class="btn btn btn-lg box-shadow--4dp">Create new</a>
         <br />
 
         <!-- jQuery -->
