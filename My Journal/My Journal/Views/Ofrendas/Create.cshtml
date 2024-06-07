@@ -57,14 +57,14 @@
         </div>
         <div class="form-group col-lg-4">
             @Html.LabelFor(model => model.Ofrenda.Fecha, htmlAttributes: new { @class = "control-label" })
-            @Html.EditorFor(model => model.Ofrenda.Fecha, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off", @Value = DateTime.Now.ToString("yyyy-MM-dd"), @id = "fecha" } })
+            @Html.EditorFor(model => model.Ofrenda.Fecha, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off", @type = "date", @Value = DateTime.Now.ToString("yyyy-MM-dd"), @id = "fecha" } })
         </div>
         <div class="col-lg-3">
             <button id="agregarbtn" type="button" class="btn btn-success mr-2" onclick="agregarRegistro()">Agregar</button>
         </div>
     </div>
     <br />
-    <form class="form" asp-action="Create">
+    <form class="form" asp-action="Create" method="post">
         <div class="form-group row">
             <h5 class="card-title"><span class="circle_bg_text">2</span> Listado de Ofrendas</h5>
 
@@ -77,7 +77,7 @@
                         <th>Divisa</th>
                         <th>Tasa de Cambio</th>
                         <th>Fecha</th>
-                        <th></th>
+                        <th>Acción</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -135,6 +135,15 @@
                 fecha,
                 '<button class="btn btn-danger btn-sm" onclick="eliminarRegistro(this)"><i class="fa fa-trash" aria-hidden="true"></i></button>'
             ]).draw(false);
+
+            // Añadir campos ocultos para enviar al controlador
+            var form = $('form');
+            form.append('<input type="hidden" name="OfrendaCategoria" value="' + categoria + '">');
+            form.append('<input type="hidden" name="Descripcion" value="' + descripcion + '">');
+            form.append('<input type="hidden" name="Cantidad" value="' + cantidad + '">');
+            form.append('<input type="hidden" name="Divisa" value="' + divisa + '">');
+            form.append('<input type="hidden" name="TasaCambio" value="' + tasaCambio + '">');
+            form.append('<input type="hidden" name="Fecha" value="' + fecha + '">');
 
             // Limpiar los campos de entrada
             document.getElementById("categoria").selectedIndex = 0;
