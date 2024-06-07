@@ -86,7 +86,27 @@ namespace My_Journal.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(OfrendaViewModel ofrendaViewModel)
+        //public ActionResult Create(OfrendaViewModel ofrendaViewModel)
+        //{
+        //    try
+        //    {
+        //        MantOfrendaCategoria mant = new MantOfrendaCategoria();
+        //        var categorias = mant.Getlistado();
+        //        var categoriasSelectList = new SelectList(categorias, "IdCatOfrenda", "Nombre");
+        //        ViewBag.ListadoOfrendasCategorias = categoriasSelectList;
+
+        //        new MantOfrenda().Insertar(ofrendaViewModel);
+
+        //        return RedirectToAction("Index");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Manejar la excepción según sea necesario
+        //        return View(ofrendaViewModel);
+        //    }
+        //}
+
+        public ActionResult Create(OfrendaListViewModel ofrendaListViewModel)
         {
             try
             {
@@ -95,14 +115,17 @@ namespace My_Journal.Controllers
                 var categoriasSelectList = new SelectList(categorias, "IdCatOfrenda", "Nombre");
                 ViewBag.ListadoOfrendasCategorias = categoriasSelectList;
 
-                new MantOfrenda().Insertar(ofrendaViewModel);
+                foreach (var ofrendaViewModel in ofrendaListViewModel.Ofrendas)
+                {
+                    new MantOfrenda().Insertar(ofrendaViewModel);
+                }
 
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
                 // Manejar la excepción según sea necesario
-                return View(ofrendaViewModel);
+                return View(ofrendaListViewModel);
             }
         }
 
