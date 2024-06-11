@@ -6,7 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>My_Journal</RootNamespace>
     <ApplicationIcon>wwwroot\theme-assets\images\logo\logoicon.ico</ApplicationIcon>
-    <BaseOutputPath>C:\Users\MYender\Desktop\My Journal web\My Journal\My Journal\bin</BaseOutputPath>
+    <BaseOutputPath>C:\My-Journal\My Journal\My Journal\bin</BaseOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.4">
       <PrivateAssets>all</PrivateAssets>
