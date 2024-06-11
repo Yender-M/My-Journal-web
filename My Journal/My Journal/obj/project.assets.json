@@ -7845,11 +7845,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\My-Journal\\My Journal\\My Journal\\My Journal.csproj",
+      "projectUniqueName": "C:\\Users\\cinth\\Source\\Repos\\My-Journal-web\\My Journal\\My Journal\\My Journal.csproj",
       "projectName": "My Journal",
-      "projectPath": "C:\\My-Journal\\My Journal\\My Journal\\My Journal.csproj",
+      "projectPath": "C:\\Users\\cinth\\Source\\Repos\\My-Journal-web\\My Journal\\My Journal\\My Journal.csproj",
       "packagesPath": "C:\\Users\\cinth\\.nuget\\packages\\",
-      "outputPath": "C:\\My-Journal\\My Journal\\My Journal\\obj\\",
+      "outputPath": "C:\\Users\\cinth\\Source\\Repos\\My-Journal-web\\My Journal\\My Journal\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
