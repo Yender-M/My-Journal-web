@@ -34,10 +34,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGllem1vZXNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MYender/Desktop/My Journal web 3/My Journal/My Journal/Views/Diezmoes/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGllem1vZXNcRGV0YWlscy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [c:/Users/MYender/Desktop/My Journal web 3/My Journal/My Journal/Views/Diezmoes/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGllem1vZXNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -52,10 +48,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [c:/Users/MYender/Desktop/My Journal web 3/My Journal/My Journal/Views/EgresosVarios/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWdyZXNvc1Zhcmlvc1xEZWxldGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[c:/Users/MYender/Desktop/My Journal web 3/My Journal/My Journal/Views/EgresosVarios/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWdyZXNvc1Zhcmlvc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [c:/Users/MYender/Desktop/My Journal web 3/My Journal/My Journal/Views/EgresosVarios/Edit.cshtml]
@@ -82,10 +74,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5ncmVzb3NWYXJpb3NcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MYender/Desktop/My Journal web 3/My Journal/My Journal/Views/IngresosVarios/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5ncmVzb3NWYXJpb3NcRGV0YWlscy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [c:/Users/MYender/Desktop/My Journal web 3/My Journal/My Journal/Views/IngresosVarios/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5ncmVzb3NWYXJpb3NcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -106,10 +94,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWllbWJyb2VzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MYender/Desktop/My Journal web 3/My Journal/My Journal/Views/Miembroes/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWllbWJyb2VzXERldGFpbHMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [c:/Users/MYender/Desktop/My Journal web 3/My Journal/My Journal/Views/Miembroes/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWllbWJyb2VzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -124,10 +108,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [c:/Users/MYender/Desktop/My Journal web 3/My Journal/My Journal/Views/OfrendasCategorias/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZyZW5kYXNDYXRlZ29yaWFzXERlbGV0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[c:/Users/MYender/Desktop/My Journal web 3/My Journal/My Journal/Views/OfrendasCategorias/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZyZW5kYXNDYXRlZ29yaWFzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [c:/Users/MYender/Desktop/My Journal web 3/My Journal/My Journal/Views/OfrendasCategorias/Edit.cshtml]
@@ -146,10 +126,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZyZW5kYXNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MYender/Desktop/My Journal web 3/My Journal/My Journal/Views/Ofrendas/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZyZW5kYXNcRGV0YWlscy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [c:/Users/MYender/Desktop/My Journal web 3/My Journal/My Journal/Views/Ofrendas/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZyZW5kYXNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -164,10 +140,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [c:/Users/MYender/Desktop/My Journal web 3/My Journal/My Journal/Views/Pagoes/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnb2VzXERlbGV0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[c:/Users/MYender/Desktop/My Journal web 3/My Journal/My Journal/Views/Pagoes/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnb2VzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [c:/Users/MYender/Desktop/My Journal web 3/My Journal/My Journal/Views/Pagoes/Edit.cshtml]
@@ -192,10 +164,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [c:/Users/MYender/Desktop/My Journal web 3/My Journal/My Journal/Views/Usuarios/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcRGVsZXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[c:/Users/MYender/Desktop/My Journal web 3/My Journal/My Journal/Views/Usuarios/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [c:/Users/MYender/Desktop/My Journal web 3/My Journal/My Journal/Views/Usuarios/Edit.cshtml]
