@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using My_Journal.Models.Divisa;
+using My_Journal.Models.Miembros;
 using My_Journal.Models.Ofrenda;
 using My_Journal.Models.OfrendaCategoria;
 using My_Journal.Models.Pagos;
@@ -23,8 +24,6 @@ public partial class CbnIglesiaContext : DbContext
 
     public virtual DbSet<OfrendasCategoria> OfrendasCategorias { get; set; }
     public virtual DbSet<Diezmo> Diezmos { get; set; }
-
-    public virtual DbSet<DiezmoDetalle> DiezmoDetalles { get; set; }
 
     public virtual DbSet<Divisa> Divisas { get; set; }
 
@@ -93,35 +92,7 @@ public partial class CbnIglesiaContext : DbContext
                 .HasConstraintName("FK__Diezmo__UsuarioC__4222D4EF");
         });
 
-        modelBuilder.Entity<DiezmoDetalle>(entity =>
-        {
-            entity.HasKey(e => e.IdDetDiezmo).HasName("PK__DiezmoDe__0E33FD862A2D99B2");
-
-            entity.ToTable("DiezmoDetalle", "IGLESIA");
-
-            entity.Property(e => e.Alias).HasMaxLength(50);
-            entity.Property(e => e.FechaCreacion).HasColumnType("datetime");
-            entity.Property(e => e.FechaModifica).HasColumnType("datetime");
-            entity.Property(e => e.Nombre).HasMaxLength(50);
-
-            entity.HasOne(d => d.DivisaNavigation).WithMany(p => p.DiezmoDetalles)
-                .HasForeignKey(d => d.Divisa)
-                .HasConstraintName("FK__DiezmoDet__Divis__45F365D3");
-
-            entity.HasOne(d => d.IdDiezmoNavigation).WithMany(p => p.DiezmoDetalles)
-                .HasForeignKey(d => d.IdDiezmo)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__DiezmoDet__IdDie__46E78A0C");
-
-            entity.HasOne(d => d.IdMiembroNavigation).WithMany(p => p.DiezmoDetalles)
-                .HasForeignKey(d => d.IdMiembro)
-                .HasConstraintName("FK__DiezmoDet__IdMie__47DBAE45");
-
-            entity.HasOne(d => d.UsuarioCreacionNavigation).WithMany(p => p.DiezmoDetalles)
-                .HasForeignKey(d => d.UsuarioCreacion)
-                .HasConstraintName("FK__DiezmoDet__Usuar__44FF419A");
-        });
-
+        
         modelBuilder.Entity<Divisa>(entity =>
         {
             entity.HasKey(e => e.IdDivisa).HasName("PK__Divisas__DA960DCB2A730F13");
