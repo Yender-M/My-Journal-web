@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using My_Journal.Models.Miembros;
 using My_Journal.Models.Ofrenda;
 using My_Journal.Models.OfrendaCategoria;
 using My_Journal.Models.Pagos;
@@ -33,8 +34,6 @@ public partial class Usuario
     public int? UsuarioModifica { get; set; }
 
     public DateTime? FechaModifica { get; set; }
-
-    public virtual ICollection<DiezmoDetalle> DiezmoDetalles { get; set; } = new List<DiezmoDetalle>();
 
     public virtual ICollection<Diezmo> Diezmos { get; set; } = new List<Diezmo>();
 

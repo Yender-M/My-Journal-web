@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace My_Journal;
+﻿namespace My_Journal.Models.Miembros;
 
 public partial class Miembro
 {
@@ -17,7 +14,7 @@ public partial class Miembro
 
     public DateTime FechaNacimiento { get; set; }
 
-    public DateTime? FechaBautismo { get; set; }
+    public DateTime FechaBautismo { get; set; }
 
     public int Estado { get; set; }
 
@@ -29,11 +26,11 @@ public partial class Miembro
 
     public DateTime? FechaModifica { get; set; }
 
-    public virtual ICollection<DiezmoDetalle> DiezmoDetalles { get; set; } = new List<DiezmoDetalle>();
-
     public virtual ICollection<EgresosVariosDetalle> EgresosVariosDetalles { get; set; } = new List<EgresosVariosDetalle>();
 
     public virtual ICollection<IngresosVariosDetalle> IngresosVariosDetalles { get; set; } = new List<IngresosVariosDetalle>();
+
+    public virtual ICollection<Diezmo> Diezmos { get; set; } = new List<Diezmo>();
 
     public virtual Usuario? UsuarioCreacionNavigation { get; set; }
 }

@@ -9,11 +9,11 @@ using My_Journal;
 
 namespace My_Journal.Controllers
 {
-    public class DiezmoesController : Controller
+    public class DiezmosController : Controller
     {
         private readonly CbnIglesiaContext _context;
 
-        public DiezmoesController(CbnIglesiaContext context)
+        public DiezmosController(CbnIglesiaContext context)
         {
             _context = context;
         }

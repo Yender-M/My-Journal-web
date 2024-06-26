@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -42,4 +43,6 @@ public class OfrendaViewModel
     public Divisa.Divisa Divisa { get; set; }
 
     public OfrendaCategoria.OfrendasCategoria OfrendaCategoria { get; set; }
+
 }
+
