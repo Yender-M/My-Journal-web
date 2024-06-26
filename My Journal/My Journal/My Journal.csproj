@@ -10,7 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\theme-assets\createdatablemiembro.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\src\scss\bootstrap-extended\.sass-cache\b161be96449978188ab92f1e37bbeda94f2952ce\buttons.scssc" />
+    <None Include="wwwroot\theme-assets\createdatablemiembro.js" />
   </ItemGroup>
 
   <ItemGroup>
