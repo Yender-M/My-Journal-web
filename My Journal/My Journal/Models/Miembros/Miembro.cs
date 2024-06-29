@@ -30,8 +30,6 @@ public partial class Miembro
 
     public virtual ICollection<IngresosVariosDetalle> IngresosVariosDetalles { get; set; } = new List<IngresosVariosDetalle>();
 
-    public virtual ICollection<Diezmo> Diezmos { get; set; } = new List<Diezmo>();
-
     public virtual Usuario? UsuarioCreacionNavigation { get; set; }
     public Miembro Miembros { get; internal set; }
 

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "pyhl1Tqaf7C37PbZxb6mPiZ7XLUINi3JJkE+hSf7K6c=",
+  "Hash": "UC/5AjcaAgbeeBl+X2BTlu9JYWvEDGFT3KIIQ25XyW8=",
   "Source": "My Journal",
   "BasePath": "_content/My Journal",
   "Mode": "Default",
@@ -6057,6 +6057,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\theme-assets\\createdatable.js"
+    },
+    {
+      "Identity": "C:\\Users\\MYender\\Desktop\\My Journal web 3\\My Journal\\My Journal\\wwwroot\\theme-assets\\createdatablediezmo.js",
+      "SourceId": "My Journal",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MYender\\Desktop\\My Journal web 3\\My Journal\\My Journal\\wwwroot\\",
+      "BasePath": "_content/My Journal",
+      "RelativePath": "theme-assets/createdatablediezmo.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\theme-assets\\createdatablediezmo.js"
     },
     {
       "Identity": "C:\\Users\\MYender\\Desktop\\My Journal web 3\\My Journal\\My Journal\\wwwroot\\theme-assets\\css\\app-lite.css",

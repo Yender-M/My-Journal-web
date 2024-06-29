@@ -1,9 +1,4 @@
-﻿using My_Journal.Models.Divisa;
-using My_Journal.Models.Miembros;
-using System;
-using System.Collections.Generic;
-
-namespace My_Journal;
+﻿namespace My_Journal.Models.Diezmos;
 
 public partial class Diezmo
 {
@@ -37,9 +32,14 @@ public partial class Diezmo
 
     public DateTime? FechaAnulacion { get; set; }
 
-    public virtual Divisa? DivisaNavigation { get; set; }
-
-    public virtual Miembro? IdMiembroNavigation { get; set; }
-
     public virtual Usuario? UsuarioCreacionNavigation { get; set; }
+}
+
+public class DiezmoViewModel
+{
+    public Diezmo Diezmo { get; set; }
+
+    public Divisa.Divisa Divisa { get; set; }
+
+    public Miembros.Miembro Miembro { get; set; }
 }
