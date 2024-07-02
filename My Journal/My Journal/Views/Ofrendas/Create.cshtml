@@ -57,7 +57,7 @@
         </div>
         <div class="form-group col-lg-4">
             @Html.LabelFor(model => model.Ofrenda.Fecha, htmlAttributes: new { @class = "control-label" })
-            @Html.EditorFor(model => model.Ofrenda.Fecha, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off", @type = "date", @Value = DateTime.Now.ToString("yyyy-MM-dd"), @id = "fecha" } })
+            @Html.EditorFor(model => model.Ofrenda.Fecha, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off", @type = "date", @Value = DateTime.Now.ToString("dd/MM/yyyy"), @id = "fecha" } })
         </div>
         <div class="col-lg-3">
             <button id="agregarbtn" type="button" class="btn btn-success mr-2" onclick="agregarRegistro()">Agregar</button>
