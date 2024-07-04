@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RDLCDesign")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+771fa461760c0ce90ef9b6b4b5278bc455c0a4ac")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cb8f84be38e8a2bc3f9f7ff74079336d1f66cfc6")]
 [assembly: System.Reflection.AssemblyProductAttribute("RDLCDesign")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RDLCDesign")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

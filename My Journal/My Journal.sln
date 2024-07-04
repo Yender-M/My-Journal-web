@@ -5,7 +5,7 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "My Journal", "My Journal\My Journal.csproj", "{FC7A822D-71D0-4905-A4F2-D15B27AE0475}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RDLCDesign", "RDLCDesign\RDLCDesign.csproj", "{8E31C9A1-17C8-4118-85AC-727EA2048CF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RDLCDesign", "RDLCDesign\RDLCDesign.csproj", "{8E31C9A1-17C8-4118-85AC-727EA2048CF9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

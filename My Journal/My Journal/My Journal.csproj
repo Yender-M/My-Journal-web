@@ -10,10 +10,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\Reports\rptOfrenda.rdlc" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Reports\rptOfrenda.rdlc" />
     <None Include="wwwroot\src\scss\bootstrap-extended\.sass-cache\b161be96449978188ab92f1e37bbeda94f2952ce\buttons.scssc" />
   </ItemGroup>
 
   <ItemGroup>
+  <PackageReference Include="AspNetCore.Reporting" Version="2.1.0" />
   <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.6">
@@ -30,6 +36,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Update="ReportDataSet\dsOfrenda.Designer.cs">
+      <DependentUpon>dsOfrenda.xsd</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -41,6 +52,14 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\js\vendor\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ReportDataSet\dsOfrenda.xsd">
+      <SubType>Designer</SubType>
+      <LastGenOutput>dsOfrenda.Designer.cs</LastGenOutput>
+      <Generator>MSDataSetGenerator</Generator>
+    </None>
   </ItemGroup>
 
 </Project>
