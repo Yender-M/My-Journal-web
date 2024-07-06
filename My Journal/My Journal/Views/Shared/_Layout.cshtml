@@ -127,10 +127,10 @@
                         </li>
 
                         <li class="is-shown">
-                            <a class="menu-item" asp-controller="EgresosVarios" asp-action="index">Egresos Varios</a>
+                            <a class="menu-item" asp-controller="EgresoCategorias" asp-action="index">Egresos Varios</a>
                         </li>
                         <li class="is-shown">
-                            <a class="menu-item" asp-controller="IngresosVarios" asp-action="index">Ingresos Varios</a>
+                            <a class="menu-item" asp-controller="IngresosCategorias" asp-action="index">Ingresos Varios</a>
                         </li>
                     </ul>
                 </li>
@@ -170,6 +170,16 @@
                 </li>
                 <li class=" nav-item">
                     <a asp-controller="Miembros" asp-action="index"><i class="fa-solid fa-users"></i><span class="menu-title" data-i18n="">Miembros</span></a>
+                </li>
+                <li class="nav-item has-sub open">
+                    <a href="#"><i class="fa-solid fa-money-bills"></i><span class="menu-title" data-i18n="">Reportes</span></a>
+                    <ul class="menu-content" style="">
+
+                        <li class="is-shown">
+                            <a class="menu-item" asp-controller="Report" asp-action="Index" asp-route-report="rptOfrendas">Rpt Ofrendas</a>
+                        </li>
+
+                    </ul>
                 </li>
             </ul>
         </div><a href="https://themeselection.com/products/chameleon-admin-modern-bootstrap-webapp-dashboard-html-template-ui-kit/" target="_blank"></a>

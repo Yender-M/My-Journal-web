@@ -1,24 +1,24 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using My_Journal.Models.OfrendaCategoria;
+using My_Journal.Models.IngresosCategoria;
 
 namespace My_Journal.Controllers
 {
-    public class OfrendasCategoriasController : Controller
+    public class IngresosCategoriasController : Controller
     {
         public IActionResult Index()
         {
             try
             {
-                MantOfrendaCategoria mantOfrendaCat = new MantOfrendaCategoria();
-                var ofrendacat = mantOfrendaCat.Getlistado();
+                MantIngresoCategoria mantIngresodaCat = new MantIngresoCategoria();
+                var ingresocat = mantIngresodaCat.Getlistado();
 
-                return View(ofrendacat);
+                return View(ingresocat);
             }
             catch (Exception ex)
             {
                 // Manejar la excepción según sea necesario
-                ViewBag.ErrorMessage = $"Error al cargar el listado de ofrendas categorias: {ex.Message}";
-                return View(new List<OfrendasCategoria>());
+                ViewBag.ErrorMessage = $"Error al cargar el listado de ingresos categorias: {ex.Message}";
+                return View(new List<IngresoCategoria>());
             }
         }
 
@@ -27,9 +27,9 @@ namespace My_Journal.Controllers
         {
             try
             {
-                var model = new OfrendasCategoria
+                var model = new IngresoCategoria
                 {
-                    ofrendaCategoria = new OfrendasCategoria()
+                    ingresoCategoria = new IngresoCategoria()
                 };
 
                 return View(model);
@@ -37,7 +37,7 @@ namespace My_Journal.Controllers
             catch (Exception ex)
             {
                 // Manejar la excepción según sea necesario
-                return View(new OfrendasCategoria());
+                return View(new IngresoCategoria());
             }
         }
 
@@ -50,24 +50,24 @@ namespace My_Journal.Controllers
                 if (Nombre.Count == Descripcion.Count)
                 {
                     // Crear una lista para almacenar las Ofrendas Categorias
-                    var OfrendaCat = new List<OfrendasCategoria>();
+                    var IngresoCat = new List<IngresoCategoria>();
 
                     // Iterar sobre las listas y crear objetos Ofrendas Categorias
                     for (int i = 0; i < Nombre.Count; i++)
                     {
-                        var ofrendacat = new OfrendasCategoria
+                        var ingresocat = new IngresoCategoria
                         {
                             Nombre = Nombre[i],
                             Descripcion = Descripcion[i],
                         };
-                        OfrendaCat.Add(ofrendacat);
+                        IngresoCat.Add(ingresocat);
                     }
 
                     // Insertar las Ofrendas Cat en la base de datos
-                    MantOfrendaCategoria mantOfreCat = new MantOfrendaCategoria();
-                    foreach (var ofrendacat in OfrendaCat)
+                    MantIngresoCategoria mantIngreCat = new MantIngresoCategoria();
+                    foreach (var ingresocat in IngresoCat)
                     {
-                        mantOfreCat.Insertar(ofrendacat);
+                        mantIngreCat.Insertar(ingresocat);
                     }
 
                     // Redirigir a la acción Index después de la inserción
@@ -95,7 +95,7 @@ namespace My_Journal.Controllers
                 return NotFound();
             }
 
-            var viewModel = new MantOfrendaCategoria().GetOfrendaCategoria(id.Value);
+            var viewModel = new MantIngresoCategoria().GetOIngresoCategoria(id.Value);
 
 
             if (viewModel == null)
@@ -107,19 +107,19 @@ namespace My_Journal.Controllers
         }
 
         // POST: Ofrenda Cat/Edit que lo guarda
-        public ActionResult Editar(OfrendasCategoria OfrenfaCat)
+        public ActionResult Editar(IngresoCategoria IngresoCat)
         {
             try
             {
-                MantOfrendaCategoria mant = new MantOfrendaCategoria();
-                var ofrendaCat = mant.Editar(OfrenfaCat);
+                MantIngresoCategoria mant = new MantIngresoCategoria();
+                var ingresoCat = mant.Editar(IngresoCat);
 
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
                 // Manejar la excepción según sea necesario
-                return View(OfrenfaCat);
+                return View(IngresoCat);
             }
         }
     }

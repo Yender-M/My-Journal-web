@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "1yyAAJZkmKm42B0yCELyMz6qPS9KxcnseCo3vEULbzTWgt8T6pLar95HFsH4Jf4N4jzffO7aCjXA8HN9r+y1xw==",
+  "dgSpecHash": "P+65UjXq6ODg0bV/9h638rjJK/v4t6MLegpNaPmIwqa6HqMxau30XGgT0wQigOJ5DzBRvhgWKJoGEMDE/+7W4w==",
   "success": true,
   "projectFilePath": "C:\\Users\\MYender\\Desktop\\My Journal web 3\\My Journal\\My Journal\\My Journal.csproj",
   "expectedPackageFiles": [
@@ -56,6 +56,8 @@
     "C:\\Users\\MYender\\.nuget\\packages\\humanizer.core.zh-cn\\2.14.1\\humanizer.core.zh-cn.2.14.1.nupkg.sha512",
     "C:\\Users\\MYender\\.nuget\\packages\\humanizer.core.zh-hans\\2.14.1\\humanizer.core.zh-hans.2.14.1.nupkg.sha512",
     "C:\\Users\\MYender\\.nuget\\packages\\humanizer.core.zh-hant\\2.14.1\\humanizer.core.zh-hant.2.14.1.nupkg.sha512",
+    "C:\\Users\\MYender\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.extensions\\6.0.0\\microsoft.aspnetcore.mvc.razor.extensions.6.0.0.nupkg.sha512",
+    "C:\\Users\\MYender\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.runtimecompilation\\8.0.0\\microsoft.aspnetcore.mvc.razor.runtimecompilation.8.0.0.nupkg.sha512",
     "C:\\Users\\MYender\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\6.0.24\\microsoft.aspnetcore.razor.language.6.0.24.nupkg.sha512",
     "C:\\Users\\MYender\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\7.0.0\\microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",
     "C:\\Users\\MYender\\.nuget\\packages\\microsoft.build\\17.8.3\\microsoft.build.17.8.3.nupkg.sha512",

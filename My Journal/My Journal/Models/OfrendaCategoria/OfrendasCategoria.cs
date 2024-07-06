@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using My_Journal.Models.EgresosCategoria;
 
 namespace My_Journal.Models.OfrendaCategoria;
 
@@ -22,4 +21,6 @@ public class OfrendasCategoria
     public DateTime? FechaModifica { get; set; }
 
     public virtual Usuario? UsuarioCreacionNavigation { get; set; }
+
+    public OfrendasCategoria ofrendaCategoria { get; internal set; }
 }

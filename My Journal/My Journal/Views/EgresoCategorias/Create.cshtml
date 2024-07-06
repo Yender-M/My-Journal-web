@@ -1,6 +1,6 @@
-﻿@model My_Journal.Models.OfrendaCategoria.OfrendasCategoria
+﻿@model My_Journal.Models.EgresosCategoria.EgresoCategoria
 @{
-    ViewData["Title"] = "Crear Ofrendas Categorias";
+    ViewData["Title"] = "Crear Egresos Categorias";
 }
 
 <link href="/theme-assets/css/app-lite.css" rel="stylesheet" />
@@ -42,7 +42,7 @@
             <span class="form-text text-muted"></span>
             <span asp-validation-for="Descripcion" class="text-danger"></span>
         </div>
-        
+
         <div class="col-lg-3">
             <button id="agregarbtn" type="button" class="btn btn-success mr-2" onclick="agregarRegistro()">Agregar</button>
         </div>
@@ -80,5 +80,5 @@
         }
     }
 
-    <script src="/theme-assets/createdatableofrendacat.js"></script>
+    <script src="/theme-assets/createdatableegresocat.js"></script>
 </div>

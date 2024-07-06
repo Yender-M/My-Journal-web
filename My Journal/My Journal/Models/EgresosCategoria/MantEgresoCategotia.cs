@@ -1,33 +1,33 @@
 ﻿using Microsoft.Data.SqlClient;
-using My_Journal.Models.Miembros;
+using My_Journal.Models.IngresosCategoria;
 using My_Journal.Properties;
 using System.Data;
 
-namespace My_Journal.Models.OfrendaCategoria
+namespace My_Journal.Models.EgresosCategoria
 {
-    public class MantOfrendaCategoria
+    public class MantEgresoCategotia
     {
-        public MantOfrendaCategoria()
+        public MantEgresoCategotia()
         {
         }
-        public List<OfrendasCategoria> Getlistado()
+        public List<EgresoCategoria> Getlistado()
         {
-            List<OfrendasCategoria> resultado = new List<OfrendasCategoria>();
+            List<EgresoCategoria> resultado = new List<EgresoCategoria>();
             var cnn = Utilidad.getConexString();
             try
             {
                 using (SqlConnection connection = new SqlConnection(cnn))
                 {
-                    using (SqlCommand sqlCommand = new SqlCommand("[IGLESIA].pcdGetCategoriaOfrenda", connection))
+                    using (SqlCommand sqlCommand = new SqlCommand("[IGLESIA].pcdGetCategoriaEgreso", connection))
                     {
                         sqlCommand.CommandType = CommandType.StoredProcedure;
                         connection.Open();
                         var dt = new DataTable();
                         dt.Load(sqlCommand.ExecuteReader());
                         resultado = (from DataRow dr in dt.Rows
-                                     select new OfrendasCategoria()
+                                     select new EgresoCategoria()
                                      {
-                                         IdCatOfrenda = int.Parse(dr["IdCatOfrenda"].ToString()),
+                                         IdCatEgreso = int.Parse(dr["IdCatEgreso"].ToString()),
                                          Nombre = dr["Nombre"].ToString(),
                                          Descripcion = dr["Descripcion"].ToString(),
                                          Estado = int.Parse(dr["Estado"].ToString())
@@ -44,25 +44,25 @@ namespace My_Journal.Models.OfrendaCategoria
             return resultado;
         }
 
-        public OfrendasCategoria GetOfrendaCategoria(int id)
+        public EgresoCategoria GetEgresoCategoria(int id)
         {
-            OfrendasCategoria resultado = new OfrendasCategoria();
+            EgresoCategoria resultado = new EgresoCategoria();
             var cnn = Utilidad.getConexString();
             try
             {
                 using (SqlConnection connection = new SqlConnection(cnn))
                 {
-                    using (SqlCommand sqlCommand = new SqlCommand("[IGLESIA].pcdGetOfrendaCat", connection))
+                    using (SqlCommand sqlCommand = new SqlCommand("[IGLESIA].pcdGetEgresoCat", connection))
                     {
                         sqlCommand.CommandType = CommandType.StoredProcedure;
-                        sqlCommand.Parameters.AddWithValue("@IdOfrendaCat", id);
+                        sqlCommand.Parameters.AddWithValue("@IdEgresoCat", id);
                         connection.Open();
                         var dt = new DataTable();
                         dt.Load(sqlCommand.ExecuteReader());
                         resultado = (from DataRow dr in dt.Rows
-                                     select new OfrendasCategoria()
+                                     select new EgresoCategoria()
                                      {
-                                         IdCatOfrenda = int.Parse(dr["IdCatOfrenda"].ToString()),
+                                         IdCatEgreso = int.Parse(dr["IdCatEgreso"].ToString()),
                                          Nombre = dr["Nombre"].ToString(),
                                          Descripcion = dr["Descripcion"].ToString(),
                                          Estado = int.Parse(dr["Estado"].ToString())
@@ -79,7 +79,7 @@ namespace My_Journal.Models.OfrendaCategoria
             return resultado;
         }
 
-        public string Insertar(OfrendasCategoria OfrendaCat)
+        public string Insertar(EgresoCategoria egresocat)
         {
             string valstring = string.Empty;
             string cnn = Utilidad.getConexString();
@@ -87,11 +87,11 @@ namespace My_Journal.Models.OfrendaCategoria
             {
                 using (SqlConnection connection = new SqlConnection(cnn))
                 {
-                    using (SqlCommand sqlCommand = new SqlCommand("[IGLESIA].pcdSetOfrendaCat", connection))
+                    using (SqlCommand sqlCommand = new SqlCommand("[IGLESIA].pcdSetEgresoCat", connection))
                     {
                         sqlCommand.CommandType = CommandType.StoredProcedure;
-                        sqlCommand.Parameters.AddWithValue("@Nombre", OfrendaCat.Nombre);
-                        sqlCommand.Parameters.AddWithValue("@Descripcion", OfrendaCat.Descripcion);
+                        sqlCommand.Parameters.AddWithValue("@Nombre", egresocat.Nombre);
+                        sqlCommand.Parameters.AddWithValue("@Descripcion", egresocat.Descripcion);
                         sqlCommand.Parameters.AddWithValue("@IdUsuario", 1);
 
                         connection.Open();
@@ -115,7 +115,7 @@ namespace My_Journal.Models.OfrendaCategoria
             return valstring;
         }
 
-        public string Editar(OfrendasCategoria OfrenfaCat)
+        public string Editar(EgresoCategoria EgresoCat)
         {
             string valstring = string.Empty;
             string cnn = Utilidad.getConexString();
@@ -123,13 +123,13 @@ namespace My_Journal.Models.OfrendaCategoria
             {
                 using (SqlConnection connection = new SqlConnection(cnn))
                 {
-                    using (SqlCommand sqlCommand = new SqlCommand("[IGLESIA].pcdSetOfrendaCatEdit", connection))
+                    using (SqlCommand sqlCommand = new SqlCommand("[IGLESIA].pcdSetEgresoCatEdit", connection))
                     {
                         sqlCommand.CommandType = CommandType.StoredProcedure;
-                        sqlCommand.Parameters.AddWithValue("@IdCatOfrenda", OfrenfaCat.IdCatOfrenda);
-                        sqlCommand.Parameters.AddWithValue("@Nombre", OfrenfaCat.Nombre);
-                        sqlCommand.Parameters.AddWithValue("@Descripcion", OfrenfaCat.Descripcion);
-                        sqlCommand.Parameters.AddWithValue("@Estado", OfrenfaCat.Estado);
+                        sqlCommand.Parameters.AddWithValue("@IdCatEgreso", EgresoCat.IdCatEgreso);
+                        sqlCommand.Parameters.AddWithValue("@Nombre", EgresoCat.Nombre);
+                        sqlCommand.Parameters.AddWithValue("@Descripcion", EgresoCat.Descripcion);
+                        sqlCommand.Parameters.AddWithValue("@Estado", EgresoCat.Estado);
                         sqlCommand.Parameters.AddWithValue("@IdUsuario", 1);
 
                         connection.Open();

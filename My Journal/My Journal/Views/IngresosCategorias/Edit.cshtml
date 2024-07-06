@@ -1,7 +1,7 @@
-﻿@model My_Journal.Models.OfrendaCategoria.OfrendasCategoria
+﻿@model My_Journal.Models.IngresosCategoria.IngresoCategoria
 
 @{
-    ViewData["Title"] = "Editar Ofrenda Categoria";
+    ViewData["Title"] = "Editar Ingresos Categoria";
 }
 
 <!-- Enlaces CSS -->
@@ -29,7 +29,7 @@
         <div class="col-12">
             <form class="form" asp-action="Editar" method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input type="hidden" asp-for="IdCatOfrenda" />
+                <input type="hidden" asp-for="IdCatIngreso" />
 
                 <div class="form-group row">
                     <div class="col-lg-5">
