@@ -10,18 +10,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-<<<<<<< HEAD
     <Content Remove="wwwroot\theme-assets\createdatablemiembro.js" />
   </ItemGroup>
 
   <ItemGroup>
-=======
     <Content Remove="wwwroot\Reports\rptOfrenda.rdlc" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="wwwroot\Reports\rptOfrenda.rdlc" />
->>>>>>> ac70cc454c392c0a9fe5da34e0b2e2dcd89d2f49
     <None Include="wwwroot\src\scss\bootstrap-extended\.sass-cache\b161be96449978188ab92f1e37bbeda94f2952ce\buttons.scssc" />
     <None Include="wwwroot\theme-assets\createdatablemiembro.js" />
   </ItemGroup>
