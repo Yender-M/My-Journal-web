@@ -1269,7 +1269,27 @@
       "PackagePath": "staticwebassets\\theme-assets\\createdatable.js"
     },
     {
+<<<<<<< HEAD
+      "Id": "C:\\Users\\MYender\\Desktop\\My Journal web 3\\My Journal\\My Journal\\wwwroot\\theme-assets\\createdatablediezmo.js",
+      "PackagePath": "staticwebassets\\theme-assets\\createdatablediezmo.js"
+    },
+    {
+      "Id": "C:\\Users\\MYender\\Desktop\\My Journal web 3\\My Journal\\My Journal\\wwwroot\\theme-assets\\createdatableegresocat.js",
+      "PackagePath": "staticwebassets\\theme-assets\\createdatableegresocat.js"
+    },
+    {
+      "Id": "C:\\Users\\MYender\\Desktop\\My Journal web 3\\My Journal\\My Journal\\wwwroot\\theme-assets\\createdatableingresocat.js",
+      "PackagePath": "staticwebassets\\theme-assets\\createdatableingresocat.js"
+    },
+    {
+      "Id": "C:\\Users\\MYender\\Desktop\\My Journal web 3\\My Journal\\My Journal\\wwwroot\\theme-assets\\createdatableofrendacat.js",
+      "PackagePath": "staticwebassets\\theme-assets\\createdatableofrendacat.js"
+    },
+    {
+      "Id": "C:\\Users\\MYender\\Desktop\\My Journal web 3\\My Journal\\My Journal\\wwwroot\\theme-assets\\css\\app-lite.css",
+=======
       "Id": "C:\\Users\\Usuario\\Desktop\\My-Journal-web\\My Journal\\My Journal\\wwwroot\\theme-assets\\css\\app-lite.css",
+>>>>>>> ac70cc454c392c0a9fe5da34e0b2e2dcd89d2f49
       "PackagePath": "staticwebassets\\theme-assets\\css\\app-lite.css"
     },
     {

@@ -1,6 +1,10 @@
 {
   "Version": 1,
+<<<<<<< HEAD
+  "Hash": "QNm1lAjmG6f2oIgBWgRkNLymo2V7KHsACflR7y/SZ/A=",
+=======
   "Hash": "C4IOas67an+tHNgbVNbIVcb1WFjRT8UplDY45XoGqYs=",
+>>>>>>> ac70cc454c392c0a9fe5da34e0b2e2dcd89d2f49
   "Source": "My Journal",
   "BasePath": "_content/My Journal",
   "Mode": "Default",
@@ -6059,7 +6063,87 @@
       "OriginalItemSpec": "wwwroot\\theme-assets\\createdatable.js"
     },
     {
+<<<<<<< HEAD
+      "Identity": "C:\\Users\\MYender\\Desktop\\My Journal web 3\\My Journal\\My Journal\\wwwroot\\theme-assets\\createdatablediezmo.js",
+      "SourceId": "My Journal",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MYender\\Desktop\\My Journal web 3\\My Journal\\My Journal\\wwwroot\\",
+      "BasePath": "_content/My Journal",
+      "RelativePath": "theme-assets/createdatablediezmo.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\theme-assets\\createdatablediezmo.js"
+    },
+    {
+      "Identity": "C:\\Users\\MYender\\Desktop\\My Journal web 3\\My Journal\\My Journal\\wwwroot\\theme-assets\\createdatableegresocat.js",
+      "SourceId": "My Journal",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MYender\\Desktop\\My Journal web 3\\My Journal\\My Journal\\wwwroot\\",
+      "BasePath": "_content/My Journal",
+      "RelativePath": "theme-assets/createdatableegresocat.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\theme-assets\\createdatableegresocat.js"
+    },
+    {
+      "Identity": "C:\\Users\\MYender\\Desktop\\My Journal web 3\\My Journal\\My Journal\\wwwroot\\theme-assets\\createdatableingresocat.js",
+      "SourceId": "My Journal",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MYender\\Desktop\\My Journal web 3\\My Journal\\My Journal\\wwwroot\\",
+      "BasePath": "_content/My Journal",
+      "RelativePath": "theme-assets/createdatableingresocat.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\theme-assets\\createdatableingresocat.js"
+    },
+    {
+      "Identity": "C:\\Users\\MYender\\Desktop\\My Journal web 3\\My Journal\\My Journal\\wwwroot\\theme-assets\\createdatableofrendacat.js",
+      "SourceId": "My Journal",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MYender\\Desktop\\My Journal web 3\\My Journal\\My Journal\\wwwroot\\",
+      "BasePath": "_content/My Journal",
+      "RelativePath": "theme-assets/createdatableofrendacat.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\theme-assets\\createdatableofrendacat.js"
+    },
+    {
+      "Identity": "C:\\Users\\MYender\\Desktop\\My Journal web 3\\My Journal\\My Journal\\wwwroot\\theme-assets\\css\\app-lite.css",
+=======
       "Identity": "C:\\Users\\Usuario\\Desktop\\My-Journal-web\\My Journal\\My Journal\\wwwroot\\theme-assets\\css\\app-lite.css",
+>>>>>>> ac70cc454c392c0a9fe5da34e0b2e2dcd89d2f49
       "SourceId": "My Journal",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Usuario\\Desktop\\My-Journal-web\\My Journal\\My Journal\\wwwroot\\",

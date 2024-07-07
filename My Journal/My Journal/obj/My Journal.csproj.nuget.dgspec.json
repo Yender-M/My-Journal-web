@@ -46,9 +46,15 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+<<<<<<< HEAD
+            "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+=======
             "AspNetCore.Reporting": {
               "target": "Package",
               "version": "[2.1.0, )"
+>>>>>>> ac70cc454c392c0a9fe5da34e0b2e2dcd89d2f49
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",

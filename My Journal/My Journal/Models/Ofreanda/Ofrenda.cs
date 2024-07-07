@@ -1,9 +1,4 @@
-﻿using Microsoft.VisualBasic;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-
-namespace My_Journal.Models.Ofrenda;
+﻿namespace My_Journal.Models.Ofrenda;
 
 public class Ofrenda
 {
@@ -11,7 +6,6 @@ public class Ofrenda
 
     public int IdCatOfrenda { get; set; }
 
-    /*[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(strings))]*/
     public double Cantidad { get; set; }
 
     public string? Descripcion { get; set; }
