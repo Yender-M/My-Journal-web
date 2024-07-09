@@ -9,18 +9,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <link href="/theme-assets/css/index_style.css" rel="stylesheet" />
 
-<style>
-    .anulado td {
-        background-color: #800080 !important; /* Morado */
-        color: white !important;
-    }
-</style>
-<style>
-    .white-text-button {
-        color: white !important;
-    }
-</style>
-
 <a asp-controller="Miembros" asp-action="Create" title="" class="btn btn-lg btn-primary box-shadow--4dp">Crear registro</a>
 
 <div class="container" style="margin-top: 30px;">
@@ -86,10 +74,7 @@
                 <td>                 
                     <a class="btn launch" asp-action="Edit" asp-route-id="@item.IdMiembro">
                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                    </a>@* 
-                    <a class="btn launch" data-toggle="modal" data-target="#staticBackdrop-@item.IdMiembro">
-                        <i class="fa fa-trash" aria-hidden="true"></i>
-                    </a> *@
+                    </a>
                 </td>
             </tr>
         }

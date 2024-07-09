@@ -1,8 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using My_Journal.Models.Divisa;
 using My_Journal.Models.Miembros;
+using My_Journal.Models.Ofrenda;
+using My_Journal.Models.OfrendaCategoria;
 
 namespace My_Journal.Controllers
 {
@@ -81,153 +82,114 @@ namespace My_Journal.Controllers
                 return Json(new { success = false, message = ex.Message });
             }
         }
-        //private readonly CbnIglesiaContext _context;
 
-        //public MiembrosController(CbnIglesiaContext context)
-        //{
-        //    _context = context;
-        //}
+        // GET: Miembros/Create
+        public IActionResult Create()
+        {
+            try
+            {
+                var model = new Miembro
+                {
+                    Miembros = new Miembro()
+                };
 
-        //// GET: Miembroes
-        //public async Task<IActionResult> Index()
-        //{
-        //    var cbnIglesiaContext = _context.Miembros.Include(m => m.UsuarioCreacionNavigation);
-        //    return View(await cbnIglesiaContext.ToListAsync());
-        //}
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                // Manejar la excepción según sea necesario
+                return View(new Miembro());
+            }
+        }
 
-        //// GET: Miembroes/Details/5
-        //public async Task<IActionResult> Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
+        [HttpPost]
+        public ActionResult Create(List<string> Nombre, List<string> Apellido, List<string> Direccion, List<string> Telefono, List<DateTime> FechaNacimiento, List<DateTime> FechaBautismo)
+        {
+            try
+            {
+                // Validar que todas las listas tengan la misma longitud
+                if (Nombre.Count == Apellido.Count &&
+                    Apellido.Count == Direccion.Count &&
+                    Direccion.Count == Telefono.Count &&
+                    Telefono.Count == FechaNacimiento.Count &&
+                    FechaNacimiento.Count == FechaBautismo.Count)
+                {
+                    // Crear una lista para almacenar las Miembros
+                    var miembros = new List<Miembro>();
 
-        //    var miembro = await _context.Miembros
-        //        .Include(m => m.UsuarioCreacionNavigation)
-        //        .FirstOrDefaultAsync(m => m.IdMiembro == id);
-        //    if (miembro == null)
-        //    {
-        //        return NotFound();
-        //    }
+                    // Iterar sobre las listas y crear objetos Miembros
+                    for (int i = 0; i < Nombre.Count; i++)
+                    {
+                        var miembro = new Miembro
+                        {
+                            Nombre = Nombre[i],
+                            Apellido = Apellido[i],
+                            Direccion = Direccion[i],
+                            Telefono = Telefono[i],
+                            FechaNacimiento = FechaNacimiento[i],
+                            FechaBautismo = FechaBautismo[i]
+                        };
+                        miembros.Add(miembro);
+                    }
 
-        //    return View(miembro);
-        //}
+                    // Insertar los Miembros en la base de datos
+                    MantMiembro mantMiembro = new MantMiembro();
+                    foreach (var miembro in miembros)
+                    {
+                        mantMiembro.Insertar(miembro);
+                    }
 
-        //// GET: Miembroes/Create
-        //public IActionResult Create()
-        //{
-        //    ViewData["UsuarioCreacion"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario");
-        //    return View();
-        //}
+                    // Redirigir a la acción Index después de la inserción
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    throw new InvalidOperationException("Las listas proporcionadas tienen diferentes longitudes.");
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar la excepción según sea necesario
+                // Devolver la vista con los datos ingresados y el mensaje de error
+                ModelState.AddModelError("", "Ocurrió un error al guardar los datos: " + ex.Message);
+                return View();
+            }
+        }
 
-        //// POST: Miembroes/Create
-        //// To protect from overposting attacks, enable the specific properties you want to bind to.
-        //// For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Create([Bind("IdMiembro,Nombre,Apellido,Direccion,Telefono,FechaNacimiento,FechaBautismo,Estado,UsuarioCreacion,FechaCreacion,UsuarioModifica,FechaModifica")] Miembro miembro)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        _context.Add(miembro);
-        //        await _context.SaveChangesAsync();
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    ViewData["UsuarioCreacion"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario", miembro.UsuarioCreacion);
-        //    return View(miembro);
-        //}
+        // GET: Miembro/Edit que lo abre
+        public IActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-        //// GET: Miembroes/Edit/5
-        //public async Task<IActionResult> Edit(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
+            var viewModel = new MantMiembro().GetMiembro(id.Value);
 
-        //    var miembro = await _context.Miembros.FindAsync(id);
-        //    if (miembro == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    ViewData["UsuarioCreacion"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario", miembro.UsuarioCreacion);
-        //    return View(miembro);
-        //}
+            
+            if (viewModel == null)
+            {
+                return NotFound();
+            }
 
-        //// POST: Miembroes/Edit/5
-        //// To protect from overposting attacks, enable the specific properties you want to bind to.
-        //// For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Edit(int id, [Bind("IdMiembro,Nombre,Apellido,Direccion,Telefono,FechaNacimiento,FechaBautismo,Estado,UsuarioCreacion,FechaCreacion,UsuarioModifica,FechaModifica")] Miembro miembro)
-        //{
-        //    if (id != miembro.IdMiembro)
-        //    {
-        //        return NotFound();
-        //    }
+            return View(viewModel);
+        }
 
-        //    if (ModelState.IsValid)
-        //    {
-        //        try
-        //        {
-        //            _context.Update(miembro);
-        //            await _context.SaveChangesAsync();
-        //        }
-        //        catch (DbUpdateConcurrencyException)
-        //        {
-        //            if (!MiembroExists(miembro.IdMiembro))
-        //            {
-        //                return NotFound();
-        //            }
-        //            else
-        //            {
-        //                throw;
-        //            }
-        //        }
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    ViewData["UsuarioCreacion"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario", miembro.UsuarioCreacion);
-        //    return View(miembro);
-        //}
+        // POST: Miembro/Edit que lo guarda
+        public ActionResult Editar(Miembro miembro)
+        {
+            try
+            {
+                MantMiembro mant = new MantMiembro();
+                var miembros = mant.Editar(miembro);
 
-        //// GET: Miembroes/Delete/5
-        //public async Task<IActionResult> Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var miembro = await _context.Miembros
-        //        .Include(m => m.UsuarioCreacionNavigation)
-        //        .FirstOrDefaultAsync(m => m.IdMiembro == id);
-        //    if (miembro == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return View(miembro);
-        //}
-
-        //// POST: Miembroes/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> DeleteConfirmed(int id)
-        //{
-        //    var miembro = await _context.Miembros.FindAsync(id);
-        //    if (miembro != null)
-        //    {
-        //        _context.Miembros.Remove(miembro);
-        //    }
-
-        //    await _context.SaveChangesAsync();
-        //    return RedirectToAction(nameof(Index));
-        //}
-
-        //private bool MiembroExists(int id)
-        //{
-        //    return _context.Miembros.Any(e => e.IdMiembro == id);
-        //}
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                // Manejar la excepción según sea necesario
+                return View(miembro);
+            }
+        }
     }
 }

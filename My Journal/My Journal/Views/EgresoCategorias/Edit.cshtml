@@ -1,0 +1,92 @@
+﻿@model My_Journal.Models.EgresosCategoria.EgresoCategoria
+
+@{
+    ViewData["Title"] = "Editar Egresos Categoria";
+}
+
+<!-- Enlaces CSS -->
+<link href="/theme-assets/css/app-lite.css" rel="stylesheet" />
+<link href="/theme-assets/css/bootstrap.css" rel="stylesheet" />
+<link href="/theme-assets/css/bootstrap-extended.css" rel="stylesheet" />
+<link href="/theme-assets/css/colors.css" rel="stylesheet" />
+<link href="/theme-assets/css/components-lite.css" rel="stylesheet" />
+<link href="/theme-assets/css/core/colors/palette-gradient.css" rel="stylesheet" />
+<link href="/theme-assets/css/pages/dashboard-ecommerce.css" rel="stylesheet" />
+<link href="/theme-assets/css/core/menu/menu-types/vertical-menu.css" rel="stylesheet" />
+<link rel="apple-touch-icon" href="theme-assets/images/ico/apple-icon-120.png">
+<link rel="shortcut icon" type="image/x-icon" href="theme-assets/images/ico/favicon.ico">
+<link href="/theme-assets/css/index_style.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
+<link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
+<script src="https://kit.fontawesome.com/60f66db414.js" crossorigin="anonymous"></script>
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+
+
+<!-- Formulario de Edición -->
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <form class="form" asp-action="Editar" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="IdCatEgreso" />
+
+                <div class="form-group row">
+                    <div class="col-lg-5">
+                        <label class="control-label">Nombre</label>
+                        <input asp-for="Nombre" class="form-control" />
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-lg-5">
+                        <label class="control-label">Apellido</label>
+                        <input asp-for="Descripcion" class="form-control" />
+                        <span asp-validation-for="Descripcion" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-lg-3 switch-container">
+                        <label>Estado</label>
+                        <label class="switch">
+                            <input type="checkbox" id="customSwitch1" @(Model.Estado == 1 ? "checked" : "") onclick="toggleEstado(this)" />
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+
+                    <input type="hidden" asp-for="Estado" id="Estado" />
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Guardar" class="btn btn-primary " />
+                    <button asp-action="Index" class="btn btn-secondary">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        function toggleEstado(checkbox) {
+            var estadoInput = document.getElementById('Estado');
+            if (checkbox.checked) {
+                estadoInput.value = 1;
+            } else {
+                estadoInput.value = 0;
+            }
+        }
+
+        // Initialize the color of the switch based on the initial value
+        document.addEventListener('DOMContentLoaded', function () {
+            var checkbox = document.getElementById('customSwitch1');
+            var estadoInput = document.getElementById('Estado');
+            if (checkbox.checked) {
+                estadoInput.value = 1;
+            } else {
+                estadoInput.value = 0;
+            }
+        });
+    </script>
+}

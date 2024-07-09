@@ -35,8 +35,6 @@ public partial class Usuario
 
     public DateTime? FechaModifica { get; set; }
 
-    public virtual ICollection<Diezmo> Diezmos { get; set; } = new List<Diezmo>();
-
     public virtual ICollection<EgresosVario> EgresosVarios { get; set; } = new List<EgresosVario>();
 
     public virtual ICollection<EgresosVariosDetalle> EgresosVariosDetalles { get; set; } = new List<EgresosVariosDetalle>();

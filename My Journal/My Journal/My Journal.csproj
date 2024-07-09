@@ -10,12 +10,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\theme-assets\createdatablemiembro.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="wwwroot\Reports\rptOfrenda.rdlc" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="wwwroot\Reports\rptOfrenda.rdlc" />
     <None Include="wwwroot\src\scss\bootstrap-extended\.sass-cache\b161be96449978188ab92f1e37bbeda94f2952ce\buttons.scssc" />
+    <None Include="wwwroot\theme-assets\createdatablemiembro.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -48,6 +53,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
