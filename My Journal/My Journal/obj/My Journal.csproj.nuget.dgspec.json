@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Usuario\\Desktop\\My-Journal-web\\My Journal\\My Journal\\My Journal.csproj": {}
+    "C:\\Users\\MYender\\Desktop\\My Journal web 3\\My Journal\\My Journal\\My Journal.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Usuario\\Desktop\\My-Journal-web\\My Journal\\My Journal\\My Journal.csproj": {
+    "C:\\Users\\MYender\\Desktop\\My Journal web 3\\My Journal\\My Journal\\My Journal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Usuario\\Desktop\\My-Journal-web\\My Journal\\My Journal\\My Journal.csproj",
+        "projectUniqueName": "C:\\Users\\MYender\\Desktop\\My Journal web 3\\My Journal\\My Journal\\My Journal.csproj",
         "projectName": "My Journal",
-        "projectPath": "C:\\Users\\Usuario\\Desktop\\My-Journal-web\\My Journal\\My Journal\\My Journal.csproj",
-        "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Usuario\\Desktop\\My-Journal-web\\My Journal\\My Journal\\obj\\",
+        "projectPath": "C:\\Users\\MYender\\Desktop\\My Journal web 3\\My Journal\\My Journal\\My Journal.csproj",
+        "packagesPath": "C:\\Users\\MYender\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\MYender\\Desktop\\My Journal web 3\\My Journal\\My Journal\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\MYender\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -46,15 +50,13 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-<<<<<<< HEAD
-            "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
-              "target": "Package",
-              "version": "[8.0.0, )"
-=======
             "AspNetCore.Reporting": {
               "target": "Package",
               "version": "[2.1.0, )"
->>>>>>> ac70cc454c392c0a9fe5da34e0b2e2dcd89d2f49
+            },
+            "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
+              "target": "Package",
+              "version": "[8.0.0, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -98,7 +100,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
