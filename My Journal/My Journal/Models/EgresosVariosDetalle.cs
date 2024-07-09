@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using My_Journal.Models.Divisa;
+using My_Journal.Models.Miembros;
 
 namespace My_Journal;
 

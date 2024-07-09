@@ -1,177 +1,126 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using My_Journal;
-using My_Journal.Models.Ofrenda;
+﻿using Microsoft.AspNetCore.Mvc;
 using My_Journal.Models.OfrendaCategoria;
 
 namespace My_Journal.Controllers
 {
     public class OfrendasCategoriasController : Controller
     {
-        private readonly CbnIglesiaContext _context;
-
-        public OfrendasCategoriasController(CbnIglesiaContext context)
-        {
-            _context = context;
-        }
-
-        // GET: OfrendasCategorias
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             try
             {
-                MantOfrendaCategoria mantOfrendaCategoria = new MantOfrendaCategoria();
-                var categorias = mantOfrendaCategoria.Getlistado();
-                return View(categorias);
+                MantOfrendaCategoria mantOfrendaCat = new MantOfrendaCategoria();
+                var ofrendacat = mantOfrendaCat.Getlistado();
+
+                return View(ofrendacat);
             }
             catch (Exception ex)
             {
                 // Manejar la excepción según sea necesario
-                return View(new List<OfrendaViewModel>());
+                ViewBag.ErrorMessage = $"Error al cargar el listado de ofrendas categorias: {ex.Message}";
+                return View(new List<OfrendasCategoria>());
             }
-
-            //var cbnIglesiaContext = _context.OfrendasCategorias.Include(o => o.UsuarioCreacionNavigation);
-            //return View(await cbnIglesiaContext.ToListAsync());
         }
 
-        // GET: OfrendasCategorias/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var ofrendasCategoria = await _context.OfrendasCategorias
-                .Include(o => o.UsuarioCreacionNavigation)
-                .FirstOrDefaultAsync(m => m.IdCatOfrenda == id);
-            if (ofrendasCategoria == null)
-            {
-                return NotFound();
-            }
-
-            return View(ofrendasCategoria);
-        }
-
-        // GET: OfrendasCategorias/Create
+        // GET: OfrendasCat/Create
         public IActionResult Create()
         {
-            ViewData["UsuarioCreacion"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario");
-            return View();
-        }
-
-        // POST: OfrendasCategorias/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdCatOfrenda,Nombre,Descripcion,Estado,UsuarioCreacion,FechaCreacion,UsuarioModifica,FechaModifica")] OfrendasCategoria ofrendasCategoria)
-        {
-            if (ModelState.IsValid)
+            try
             {
-                _context.Add(ofrendasCategoria);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                var model = new OfrendasCategoria
+                {
+                    ofrendaCategoria = new OfrendasCategoria()
+                };
+
+                return View(model);
             }
-            ViewData["UsuarioCreacion"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario", ofrendasCategoria.UsuarioCreacion);
-            return View(ofrendasCategoria);
+            catch (Exception ex)
+            {
+                // Manejar la excepción según sea necesario
+                return View(new OfrendasCategoria());
+            }
         }
 
-        // GET: OfrendasCategorias/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        [HttpPost]
+        public ActionResult Create(List<string> Nombre, List<string> Descripcion)
+        {
+            try
+            {
+                // Validar que todas las listas tengan la misma longitud
+                if (Nombre.Count == Descripcion.Count)
+                {
+                    // Crear una lista para almacenar las Ofrendas Categorias
+                    var OfrendaCat = new List<OfrendasCategoria>();
+
+                    // Iterar sobre las listas y crear objetos Ofrendas Categorias
+                    for (int i = 0; i < Nombre.Count; i++)
+                    {
+                        var ofrendacat = new OfrendasCategoria
+                        {
+                            Nombre = Nombre[i],
+                            Descripcion = Descripcion[i],
+                        };
+                        OfrendaCat.Add(ofrendacat);
+                    }
+
+                    // Insertar las Ofrendas Cat en la base de datos
+                    MantOfrendaCategoria mantOfreCat = new MantOfrendaCategoria();
+                    foreach (var ofrendacat in OfrendaCat)
+                    {
+                        mantOfreCat.Insertar(ofrendacat);
+                    }
+
+                    // Redirigir a la acción Index después de la inserción
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    throw new InvalidOperationException("Las listas proporcionadas tienen diferentes longitudes.");
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar la excepción según sea necesario
+                // Devolver la vista con los datos ingresados y el mensaje de error
+                ModelState.AddModelError("", "Ocurrió un error al guardar los datos: " + ex.Message);
+                return View();
+            }
+        }
+
+        // GET: Ofrenda Cat/Edit que lo abre
+        public IActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var ofrendasCategoria = await _context.OfrendasCategorias.FindAsync(id);
-            if (ofrendasCategoria == null)
-            {
-                return NotFound();
-            }
-            ViewData["UsuarioCreacion"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario", ofrendasCategoria.UsuarioCreacion);
-            return View(ofrendasCategoria);
-        }
+            var viewModel = new MantOfrendaCategoria().GetOfrendaCategoria(id.Value);
 
-        // POST: OfrendasCategorias/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdCatOfrenda,Nombre,Descripcion,Estado,UsuarioCreacion,FechaCreacion,UsuarioModifica,FechaModifica")] OfrendasCategoria ofrendasCategoria)
-        {
-            if (id != ofrendasCategoria.IdCatOfrenda)
+
+            if (viewModel == null)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(ofrendasCategoria);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!OfrendasCategoriaExists(ofrendasCategoria.IdCatOfrenda))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["UsuarioCreacion"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario", ofrendasCategoria.UsuarioCreacion);
-            return View(ofrendasCategoria);
+            return View(viewModel);
         }
 
-        // GET: OfrendasCategorias/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        // POST: Ofrenda Cat/Edit que lo guarda
+        public ActionResult Editar(OfrendasCategoria OfrenfaCat)
         {
-            if (id == null)
+            try
             {
-                return NotFound();
-            }
+                MantOfrendaCategoria mant = new MantOfrendaCategoria();
+                var ofrendaCat = mant.Editar(OfrenfaCat);
 
-            var ofrendasCategoria = await _context.OfrendasCategorias
-                .Include(o => o.UsuarioCreacionNavigation)
-                .FirstOrDefaultAsync(m => m.IdCatOfrenda == id);
-            if (ofrendasCategoria == null)
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
             {
-                return NotFound();
+                // Manejar la excepción según sea necesario
+                return View(OfrenfaCat);
             }
-
-            return View(ofrendasCategoria);
-        }
-
-        // POST: OfrendasCategorias/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var ofrendasCategoria = await _context.OfrendasCategorias.FindAsync(id);
-            if (ofrendasCategoria != null)
-            {
-                _context.OfrendasCategorias.Remove(ofrendasCategoria);
-            }
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool OfrendasCategoriaExists(int id)
-        {
-            return _context.OfrendasCategorias.Any(e => e.IdCatOfrenda == id);
         }
     }
 }

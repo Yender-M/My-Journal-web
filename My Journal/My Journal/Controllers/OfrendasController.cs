@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using My_Journal.Models.Divisa;
 using My_Journal.Models.Ofrenda;
 using My_Journal.Models.OfrendaCategoria;
@@ -9,20 +8,78 @@ namespace My_Journal.Controllers
 {
     public class OfrendasController : Controller
     {
-
         // GET: Ofrendas
-        public async Task<IActionResult> Index()
+        public IActionResult Index(DateTime? startDate, DateTime? endDate)
         {
             try
             {
+                // Leer las fechas desde los parámetros o desde las variables de sesión
+                if (startDate.HasValue && endDate.HasValue)
+                {
+                    // Guardar las fechas en la sesión si se proporcionan
+                    HttpContext.Session.SetString("startDate", startDate.Value.ToString("yyyy-MM-dd"));
+                    HttpContext.Session.SetString("endDate", endDate.Value.ToString("yyyy-MM-dd"));
+                }
+                else
+                {
+                    var startDateString = HttpContext.Session.GetString("startDate");
+                    var endDateString = HttpContext.Session.GetString("endDate");
+
+                    if (!string.IsNullOrEmpty(startDateString))
+                    {
+                        startDate = DateTime.Parse(startDateString);
+                    }
+                    if (!string.IsNullOrEmpty(endDateString))
+                    {
+                        endDate = DateTime.Parse(endDateString);
+                    }
+                }
+
+                // Si las fechas no están definidas, establecer un rango predeterminado (ej. último mes)
+                if (!startDate.HasValue)
+                {
+                    startDate = DateTime.Now;
+                }
+                if (!endDate.HasValue)
+                {
+                    endDate = DateTime.Now;
+                }
+
+                // Lógica para obtener el listado de ofrendas según las fechas
+                var desde = startDate.Value.ToString("yyyyMMdd");
+                var hasta = endDate.Value.ToString("yyyyMMdd");
+
                 MantOfrenda mantOfrenda = new MantOfrenda();
-                var ofrendas = mantOfrenda.GetListadoOfrendas();
+                var ofrendas = mantOfrenda.GetListadoOfrendas(desde, hasta);
+
+                // Pasar el listado de ofrendas y las fechas a la vista
+                ViewBag.StartDate = startDate.Value.ToString("yyyy-MM-dd");
+                ViewBag.EndDate = endDate.Value.ToString("yyyy-MM-dd");
+
                 return View(ofrendas);
             }
             catch (Exception ex)
             {
                 // Manejar la excepción según sea necesario
+                ViewBag.ErrorMessage = $"Error al cargar el listado de ofrendas: {ex.Message}";
                 return View(new List<OfrendaViewModel>());
+            }
+        }
+
+        [HttpPost]
+        public IActionResult SetSessionDates(string startDate, string endDate)
+        {
+            try
+            {
+                // Guardar las fechas en formato string en las variables de sesión
+                HttpContext.Session.SetString("startDate", startDate);
+                HttpContext.Session.SetString("endDate", endDate);
+
+                return Json(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
             }
         }
 
@@ -178,67 +235,4 @@ namespace My_Journal.Controllers
             }
         }
     }
-
-
-    // GET: Ofrendas/Delete/5
-    //public async Task<IActionResult> Delete(int? id)
-    //{
-    //    if (id == null)
-    //    {
-    //        return NotFound();
-    //    }
-
-    //    var ofrenda = await _context.Ofrendas
-    //        .Include(o => o.UsuarioCreacionNavigation)
-    //        .FirstOrDefaultAsync(m => m.IdOfrenda == id);
-    //    if (ofrenda == null)
-    //    {
-    //        return NotFound();
-    //    }
-
-    //    return View(ofrenda);
-    //}
-
-    // POST: Ofrendas/Delete/5
-    //[HttpPost, ActionName("Delete")]
-    //[ValidateAntiForgeryToken]
-    ////public async Task<IActionResult> DeleteConfirmed(int id)
-    //{
-    //    var ofrenda = await _context.Ofrendas.FindAsync(id);
-    //    if (ofrenda != null)
-    //    {
-    //        _context.Ofrendas.Remove(ofrenda);
-    //    }
-
-    //    await _context.SaveChangesAsync();
-    //    return RedirectToAction(nameof(Index));
-    //}
-
-    //private bool OfrendaExists(int id)
-    //{
-    //    return _context.Ofrendas.Any(e => e.IdOfrenda == id);
-    //}
-
-    //public ActionResult ListadoOfrendasCategorias()
-    //{
-    //    MantOfrendaCategoria mant = new MantOfrendaCategoria();
-    //    return PartialView("~/Views/Ofrendas/Create.chtml", mant.Getlistado());
-    //}
-
-    //public List<OfrendasCategoria> ListadoOfrendasCategorias()
-    //{
-    //    MantOfrendaCategoria mant = new MantOfrendaCategoria();
-    //    var categorias = mant.Getlistado();
-
-    //    // Crear SelectList
-    //    var categoriasSelectList = new SelectList(categorias, "IdCatOfrenda", "Nombre");
-    //    ViewBag.ListadoOfrendasCategorias = categoriasSelectList;
-
-    //    return View("~/Views/Ofrendas/Create.cshtml");
-    //}
-    //public ActionResult ListadoDivisas()
-    //{
-    //    MantDivisa mant = new MantDivisa();
-    //    return PartialView("~/Views/Ofrendas/Create.cshtml", mant.Getlistado());
-    //}
 }

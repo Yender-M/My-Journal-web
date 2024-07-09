@@ -1,0 +1,24 @@
+﻿@model My_Journal.Models.Reportes.ReporteOfrendasViewModel
+
+@{
+    Layout = null;
+}
+
+<script src="~/Content/assets/plugins/jquery/jquery.min.js"></script>
+
+<div class="col-lg-11">
+    <div class="card">
+        <div class="card-body">
+            <div class="card-title">
+                <h4>@ViewBag.ReportName</h4>
+            </div>
+
+            <div class="col-lg-12" style="text-align:center">
+                @if (ViewBag.ReportViewer != null)
+                {
+                    @Html.Raw(ViewBag.ReportViewer)
+                }
+            </div>
+        </div>
+    </div>
+</div>

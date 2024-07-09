@@ -1,0 +1,71 @@
+﻿@model IEnumerable<My_Journal.Models.Ofrenda.Ofrenda>
+@{
+    ViewData["Title"] = "Ofrendas Report";
+}
+
+<h1>Reporte Ofrendas</h1>
+
+<style>
+    .total-cantidad {
+        text-align: right;
+        font-weight: bold;
+    }
+</style>
+
+
+
+
+
+<form asp-action="Index" method="get">
+    <div>
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" name="startDate" value="@ViewBag.StartDate?.ToString("yyyy-MM-dd")" />
+    </div>
+    <div>
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate" name="endDate" value="@ViewBag.EndDate?.ToString("yyyy-MM-dd")" />
+    </div>
+    <button type="submit">Filtrar</button>
+</form>
+
+
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>IdOfrenda</th>
+            <th>Cantidad</th>
+            <th>Descripcion</th>
+            <th>Divisa</th>
+            <th>TasaCambio</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.IdOfrenda</td>
+                <td>@item.Cantidad</td>
+                <td>@item.Descripcion</td>
+                <td>@item.Divisa</td>
+                <td>@item.TasaCambio</td>
+                <td>@item.Fecha.ToString("dd/MM/yyyy")</td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="5" style="text-align: right; font-weight: bold;">Total:</td>
+            <td>@ViewBag.TotalCantidad</td>
+        </tr>
+    </tfoot>
+</table>
+
+<form asp-action="PrintReport" method="post" target="_blank">
+    <input type="hidden" name="startDate" value="@ViewBag.StartDate?.ToString("yyyy-MM-dd")" />
+    <input type="hidden" name="endDate" value="@ViewBag.EndDate?.ToString("yyyy-MM-dd")" />
+    <button type="submit">Imprimir Reporte</button>
+</form>

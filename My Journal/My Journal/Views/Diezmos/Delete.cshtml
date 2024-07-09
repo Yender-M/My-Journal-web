@@ -1,0 +1,82 @@
+﻿@model My_Journal.Models.Diezmos.Diezmo
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<link href="/theme-assets/css/app-lite.css" rel="stylesheet" />
+<link href="/theme-assets/css/bootstrap.css" rel="stylesheet" />
+<link href="/theme-assets/css/bootstrap-extended.css" rel="stylesheet" />
+<link href="/theme-assets/css/colors.css" rel="stylesheet" />
+<link href="/theme-assets/css/components-lite.css" rel="stylesheet" />
+<link href="/theme-assets/css/core/colors/palette-gradient.css" rel="stylesheet" />
+<link href="/theme-assets/css/pages/dashboard-ecommerce.css" rel="stylesheet" />
+<link href="/theme-assets/css/core/menu/menu-types/vertical-menu.css" rel="stylesheet" />
+<link rel="apple-touch-icon" href="theme-assets/images/ico/apple-icon-120.png">
+<link rel="shortcut icon" type="image/x-icon" href="theme-assets/images/ico/favicon.ico">
+<link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
+<link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
+<script src="https://kit.fontawesome.com/60f66db414.js" crossorigin="anonymous"></script>
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+
+<h4 class="mt-5 theme-color mb-5">Registro eliminado exitosamente!</h4>
+<form asp-action="Delete">
+    <input type="hidden" asp-for="IdDiezmo" />
+    <input type="submit" value="Regresar" class="btn btn-success" /> 
+</form>
+
+@* <button type="button" class="btn btn-danger launch" data-toggle="modal" data-target="#staticBackdrop">
+    <i class="fa fa-warning"></i> Delete
+</button>
+
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body ">
+                <div class="text-right"> <i class="fa fa-close close" data-dismiss="modal"></i> </div>
+
+                <div class="px-4 py-5">
+
+                    <h5 class="text-uppercase">Usuario1</h5>
+                    <span class="theme-color">Record Summary</span>
+                    <div class="mb-3">
+                        <hr class="new1">
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <span class="font-weight-bold">Ether Chair(Qty:1)</span>
+                        <span class="text-muted">$1750.00</span>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <small>Shipping</small>
+                        <small>$175.00</small>
+                    </div>
+
+
+                    <div class="d-flex justify-content-between">
+                        <small>Tax</small>
+                        <small>$200.00</small>
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-3">
+                        <span class="font-weight-bold">Total</span>
+                        <span class="font-weight-bold theme-color">$2125.00</span>
+                    </div>
+                    <form asp-action="Delete">
+                        <input type="hidden" asp-for="IdDiezmo" />
+                        <input type="submit" value="Delete" class="btn btn-danger" /> |
+                        <a asp-action="Index">Back to List</a>
+                    </form>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div> *@
+
+
+
+ 

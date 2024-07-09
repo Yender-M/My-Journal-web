@@ -15,6 +15,7 @@ function agregarRegistro() {
 
     var tasaCambio = document.getElementById("tasaCambio").value;
     var fecha = document.getElementById("fecha").value;
+    var fechaFormatted = formatDate(fecha);
 
     // Validar que todos los campos estén llenos
     if (!categoria || !descripcion || !cantidad || !divisa || !tasaCambio || !fecha) {
@@ -29,7 +30,7 @@ function agregarRegistro() {
         cantidad,
         divisaText,
         tasaCambio,
-        fecha,
+        fechaFormatted,
         '<button class="btn btn-danger btn-sm" onclick="eliminarRegistro(this)"><i class="fa fa-trash" aria-hidden="true"></i></button>'
     ]).draw(false);
 
@@ -48,7 +49,7 @@ function agregarRegistro() {
     document.getElementById("cantidad").value = '';
     document.getElementById("divisa").selectedIndex = 0;
     document.getElementById("tasaCambio").value = '';
-    document.getElementById("fecha").value = '';
+    setTodayDate("fecha");
 
     // Actualizar la tabla para que sea responsive
     table.responsive.recalc();
@@ -61,6 +62,25 @@ function eliminarRegistro(button) {
 
     // Actualizar la tabla para que sea responsive
     table.responsive.recalc();
+}
+
+function formatDate(dateString) {
+    var date = new Date(dateString);
+    // Ajustar la fecha para evitar el problema de zona horaria
+    date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
+    var day = ('0' + date.getDate()).slice(-2);
+    var month = ('0' + (date.getMonth() + 1)).slice(-2);
+    var year = date.getFullYear();
+    return day + "/" + month + "/" + year;
+}
+
+function setTodayDate(elementId) {
+    var today = new Date();
+    var day = ('0' + today.getDate()).slice(-2);
+    var month = ('0' + (today.getMonth() + 1)).slice(-2);
+    var year = today.getFullYear();
+    var todayFormatted = year + '-' + month + '-' + day; // Formato 'yyyy-MM-dd' para el campo datetime-local
+    document.getElementById(elementId).value = todayFormatted;
 }
 
 $(document).ready(function () {
@@ -94,4 +114,7 @@ $(document).ready(function () {
         "sScrollXInner": "110%",
         "bScrollCollapse": true
     });
+
+    // Establecer la fecha actual en el campo de fecha al cargar la página
+    setTodayDate("fecha");
 });
