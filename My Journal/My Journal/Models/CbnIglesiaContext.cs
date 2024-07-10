@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using My_Journal.Models;
 using My_Journal.Models.Divisa;
+using My_Journal.Models.EgresosVarios;
 using My_Journal.Models.IngresosVarios;
 using My_Journal.Models.Miembros;
 using My_Journal.Models.Ofrenda;
@@ -30,13 +31,10 @@ public partial class CbnIglesiaContext : DbContext
 
     public virtual DbSet<EgresosVario> EgresosVarios { get; set; }
 
-    public virtual DbSet<EgresosVariosDetalle> EgresosVariosDetalles { get; set; }
-
     public virtual DbSet<Iglesium> Iglesia { get; set; }
 
     public virtual DbSet<IngresosVario> IngresosVarios { get; set; }
 
-    public virtual DbSet<IngresosVariosDetalle> IngresosVariosDetalles { get; set; }
 
     public virtual DbSet<Miembro> Miembros { get; set; }
 
@@ -112,44 +110,9 @@ public partial class CbnIglesiaContext : DbContext
             entity.ToTable("EgresosVarios", "IGLESIA");
 
             entity.Property(e => e.Descripcion).HasMaxLength(500);
-            entity.Property(e => e.Fecha).HasColumnType("datetime");
+            entity.Property(e => e.FechaEgreso).HasColumnType("datetime");
             entity.Property(e => e.FechaCreacion).HasColumnType("datetime");
             entity.Property(e => e.FechaModifica).HasColumnType("datetime");
-
-            entity.HasOne(d => d.IdProyectoNavigation).WithMany(p => p.EgresosVarios)
-                .HasForeignKey(d => d.IdProyecto)
-                .HasConstraintName("FK__EgresosVa__IdPro__6EF57B66");
-
-            entity.HasOne(d => d.UsuarioCreacionNavigation).WithMany(p => p.EgresosVarios)
-                .HasForeignKey(d => d.UsuarioCreacion)
-                .HasConstraintName("FK__EgresosVa__Usuar__6FE99F9F");
-        });
-
-        modelBuilder.Entity<EgresosVariosDetalle>(entity =>
-        {
-            entity.HasKey(e => e.IdDetalle).HasName("PK__EgresosV__E43646A5D0D30B04");
-
-            entity.ToTable("EgresosVariosDetalle", "IGLESIA");
-
-            entity.Property(e => e.FechaCreacion).HasColumnType("datetime");
-            entity.Property(e => e.FechaModifica).HasColumnType("datetime");
-
-            entity.HasOne(d => d.DivisaNavigation).WithMany(p => p.EgresosVariosDetalles)
-                .HasForeignKey(d => d.Divisa)
-                .HasConstraintName("FK__EgresosVa__Divis__75A278F5");
-
-            entity.HasOne(d => d.IdEgreVariosNavigation).WithMany(p => p.EgresosVariosDetalles)
-                .HasForeignKey(d => d.IdEgreVarios)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__EgresosVa__IdEgr__72C60C4A");
-
-            entity.HasOne(d => d.IdMiembroNavigation).WithMany(p => p.EgresosVariosDetalles)
-                .HasForeignKey(d => d.IdMiembro)
-                .HasConstraintName("FK__EgresosVa__IdMie__74AE54BC");
-
-            entity.HasOne(d => d.UsuarioCreacionNavigation).WithMany(p => p.EgresosVariosDetalles)
-                .HasForeignKey(d => d.UsuarioCreacion)
-                .HasConstraintName("FK__EgresosVa__Usuar__73BA3083");
         });
 
         modelBuilder.Entity<Iglesium>(entity =>
@@ -173,45 +136,15 @@ public partial class CbnIglesiaContext : DbContext
             entity.ToTable("IngresosVarios", "IGLESIA");
 
             entity.Property(e => e.Descripcion).HasMaxLength(500);
-            entity.Property(e => e.Fecha).HasColumnType("datetime");
+            entity.Property(e => e.FechaIngreso).HasColumnType("datetime");
             entity.Property(e => e.FechaCreacion).HasColumnType("datetime");
             entity.Property(e => e.FechaModifica).HasColumnType("datetime");
-
-            entity.HasOne(d => d.IdProyectoNavigation).WithMany(p => p.IngresosVarios)
-                .HasForeignKey(d => d.IdProyecto)
-                .HasConstraintName("FK__IngresosV__IdPro__4CA06362");
 
             entity.HasOne(d => d.UsuarioCreacionNavigation).WithMany(p => p.IngresosVarios)
                 .HasForeignKey(d => d.UsuarioCreacion)
                 .HasConstraintName("FK__IngresosV__Usuar__4D94879B");
         });
 
-        modelBuilder.Entity<IngresosVariosDetalle>(entity =>
-        {
-            entity.HasKey(e => e.IdDetalle).HasName("PK__Ingresos__E43646A5F90E4641");
-
-            entity.ToTable("IngresosVariosDetalle", "IGLESIA");
-
-            entity.Property(e => e.FechaCreacion).HasColumnType("datetime");
-            entity.Property(e => e.FechaModifica).HasColumnType("datetime");
-
-            entity.HasOne(d => d.DivisaNavigation).WithMany(p => p.IngresosVariosDetalles)
-                .HasForeignKey(d => d.Divisa)
-                .HasConstraintName("FK__IngresosV__Divis__534D60F1");
-
-            entity.HasOne(d => d.IdIngreVariosNavigation).WithMany(p => p.IngresosVariosDetalles)
-                .HasForeignKey(d => d.IdIngreVarios)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__IngresosV__IdIng__5070F446");
-
-            entity.HasOne(d => d.IdMiembroNavigation).WithMany(p => p.IngresosVariosDetalles)
-                .HasForeignKey(d => d.IdMiembro)
-                .HasConstraintName("FK__IngresosV__IdMie__52593CB8");
-
-            entity.HasOne(d => d.UsuarioCreacionNavigation).WithMany(p => p.IngresosVariosDetalles)
-                .HasForeignKey(d => d.UsuarioCreacion)
-                .HasConstraintName("FK__IngresosV__Usuar__5165187F");
-        });
 
         modelBuilder.Entity<Miembro>(entity =>
         {

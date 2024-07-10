@@ -26,10 +26,6 @@ public partial class Miembro
 
     public DateTime? FechaModifica { get; set; }
 
-    public virtual ICollection<EgresosVariosDetalle> EgresosVariosDetalles { get; set; } = new List<EgresosVariosDetalle>();
-
-    public virtual ICollection<IngresosVariosDetalle> IngresosVariosDetalles { get; set; } = new List<IngresosVariosDetalle>();
-
     public virtual Usuario? UsuarioCreacionNavigation { get; set; }
     public Miembro Miembros { get; internal set; }
 
