@@ -8,7 +8,6 @@ using My_Journal.Models.Ofrenda;
 using My_Journal.Models.OfrendaCategoria;
 using My_Journal.Models.Pagos;
 using My_Journal.Models.PagosCategoria;
-using My_Journal.Models.PagosDetalle;
 
 namespace My_Journal;
 
@@ -49,8 +48,6 @@ public partial class Usuario
     public virtual ICollection<Pago> Pagos { get; set; } = new List<Pago>();
 
     public virtual ICollection<PagosCategoria> PagosCategoria { get; set; } = new List<PagosCategoria>();
-
-    public virtual ICollection<PagosDetalle> PagosDetalles { get; set; } = new List<PagosDetalle>();
 
     public virtual ICollection<OfrendasCategoria> OfrendasCategorias { get; set; } = new List<OfrendasCategoria>();
 }

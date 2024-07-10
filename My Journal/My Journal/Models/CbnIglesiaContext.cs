@@ -10,7 +10,6 @@ using My_Journal.Models.Ofrenda;
 using My_Journal.Models.OfrendaCategoria;
 using My_Journal.Models.Pagos;
 using My_Journal.Models.PagosCategoria;
-using My_Journal.Models.PagosDetalle;
 
 namespace My_Journal;
 
@@ -40,15 +39,9 @@ public partial class CbnIglesiaContext : DbContext
 
     public virtual DbSet<Ofrenda> Ofrendas { get; set; }
 
-    public virtual DbSet<OfrendaPatoral> OfrendaPatorals { get; set; }
-
     public virtual DbSet<Pago> Pagos { get; set; }
 
     public virtual DbSet<PagosCategoria> PagosCategorias { get; set; }
-
-    public virtual DbSet<PagosDetalle> PagosDetalles { get; set; }
-
-    public virtual DbSet<Proyecto> Proyectos { get; set; }
 
     public virtual DbSet<Role> Roles { get; set; }
 
@@ -182,19 +175,6 @@ public partial class CbnIglesiaContext : DbContext
                 .HasConstraintName("FK__Ofrendas__Usuari__59063A47");
         });
 
-        modelBuilder.Entity<OfrendaPatoral>(entity =>
-        {
-            entity.HasKey(e => e.IdOfrePasto).HasName("PK__OfrendaP__7FDB1189941D10B5");
-
-            entity.ToTable("OfrendaPatoral", "IGLESIA");
-
-            entity.Property(e => e.Descripcion).HasMaxLength(200);
-            entity.Property(e => e.Fecha).HasColumnType("datetime");
-            entity.Property(e => e.FechaCreacion).HasColumnType("datetime");
-            entity.Property(e => e.FechaModifica).HasColumnType("datetime");
-            entity.Property(e => e.Nombre).HasMaxLength(50);
-        });
-
         //modelBuilder.Entity<OfrendasCategoria>(entity =>
         //{
         //    entity.HasKey(e => e.IdCatOfrenda).HasName("PK__Ofrendas__A053EF0856DEF2C8");
@@ -219,7 +199,7 @@ public partial class CbnIglesiaContext : DbContext
             entity.ToTable("Pagos", "IGLESIA");
 
             entity.Property(e => e.Descripcion).HasMaxLength(500);
-            entity.Property(e => e.Fecha).HasColumnType("datetime");
+            entity.Property(e => e.FechaPago).HasColumnType("datetime");
             entity.Property(e => e.FechaCreacion).HasColumnType("datetime");
             entity.Property(e => e.FechaModifica).HasColumnType("datetime");
 
@@ -244,46 +224,7 @@ public partial class CbnIglesiaContext : DbContext
                 .HasConstraintName("FK__PagosCate__Usuar__6383C8BA");
         });
 
-        modelBuilder.Entity<PagosDetalle>(entity =>
-        {
-            entity.HasKey(e => e.IdDetalle).HasName("PK__PagosDet__E43646A579B9C150");
-
-            entity.ToTable("PagosDetalle", "IGLESIA");
-
-            entity.Property(e => e.FechaCreacion).HasColumnType("datetime");
-            entity.Property(e => e.FechaModifica).HasColumnType("datetime");
-
-            entity.HasOne(d => d.DivisaNavigation).WithMany(p => p.PagosDetalles)
-                .HasForeignKey(d => d.Divisa)
-                .HasConstraintName("FK__PagosDeta__Divis__6B24EA82");
-
-            entity.HasOne(d => d.IdCategoriaNavigation).WithMany(p => p.PagosDetalles)
-                .HasForeignKey(d => d.IdCategoria)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__PagosDeta__IdCat__6A30C649");
-
-            entity.HasOne(d => d.IdPagoNavigation).WithMany(p => p.PagosDetalles)
-                .HasForeignKey(d => d.IdPago)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__PagosDeta__IdPag__693CA210");
-
-            entity.HasOne(d => d.UsuarioCreacionNavigation).WithMany(p => p.PagosDetalles)
-                .HasForeignKey(d => d.UsuarioCreacion)
-                .HasConstraintName("FK__PagosDeta__Usuar__6C190EBB");
-        });
-
-        modelBuilder.Entity<Proyecto>(entity =>
-        {
-            entity.HasKey(e => e.IdProyecto).HasName("PK__Proyecto__F4888673CE4C17E6");
-
-            entity.ToTable("Proyecto", "IGLESIA");
-
-            entity.Property(e => e.Descripcion).HasMaxLength(200);
-            entity.Property(e => e.FechaCreacion).HasColumnType("datetime");
-            entity.Property(e => e.FechaModifica).HasColumnType("datetime");
-            entity.Property(e => e.Nombre).HasMaxLength(50);
-        });
-
+        
         modelBuilder.Entity<Role>(entity =>
         {
             entity.HasKey(e => e.IdRol).HasName("PK__Roles__2A49584C6251E999");
