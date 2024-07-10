@@ -23,7 +23,5 @@ public partial class Proyecto
 
     public DateTime? FechaModifica { get; set; }
 
-    public virtual ICollection<EgresosVario> EgresosVarios { get; set; } = new List<EgresosVario>();
-
     public virtual ICollection<IngresosVario> IngresosVarios { get; set; } = new List<IngresosVario>();
 }
