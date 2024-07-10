@@ -38,5 +38,7 @@ public class OfrendaViewModel
 
     public OfrendaCategoria.OfrendasCategoria OfrendaCategoria { get; set; }
 
+    public Ministerios.Ministerios Ministerios { get; set; }
+
 }
 

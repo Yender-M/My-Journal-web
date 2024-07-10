@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7O/CzbeLLZ+gQ1alBrmsho+RogqpeHvQNw5fjeHBwRKfkrd4/vrvcQ95ydjQz4YuqPcdSQe6zAkWSLLVzt06Aw==",
+  "dgSpecHash": "3nn+C8eIQun0EQWK4m3s9vYAhlZOqLogmY24eEMaFxX8YfXxhvPte2+4xCl/fOLPnRbPtMUnqTywBEG3xkbm2A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\MYender\\Desktop\\My Journal web 3\\My Journal\\My Journal\\My Journal.csproj",
+  "projectFilePath": "C:\\Users\\MYender\\Desktop\\My Jounal\\My Journal\\My Journal\\My Journal.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\MYender\\.nuget\\packages\\aspnetcore.reporting\\2.1.0\\aspnetcore.reporting.2.1.0.nupkg.sha512",
     "C:\\Users\\MYender\\.nuget\\packages\\aspnetcore.reportingservices\\2.1.0\\aspnetcore.reportingservices.2.1.0.nupkg.sha512",
