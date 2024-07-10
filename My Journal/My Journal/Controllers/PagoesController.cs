@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using My_Journal.Models.Divisa;
-using My_Journal.Models.Ofrenda;
-using My_Journal.Models.OfrendaCategoria;
 using My_Journal.Models.Pagos;
 using My_Journal.Models.PagosCategoria;
 
@@ -15,30 +8,82 @@ namespace My_Journal.Controllers
 {
     public class PagoesController : Controller
     {
-        private readonly CbnIglesiaContext _context;
-
-        public PagoesController(CbnIglesiaContext context)
-        {
-            _context = context;
-        }
-
-        // GET: Pagoes
-        public async Task<IActionResult> Index()
+        // GET: Pagos
+        public IActionResult Index(DateTime? startDate, DateTime? endDate)
         {
             try
             {
-                MantPago mantPago = new MantPago();
-                var pagos = mantPago.GetListadoPagos();
-                return View(pagos);
+                // Leer las fechas desde los parámetros o desde las variables de sesión
+                if (startDate.HasValue && endDate.HasValue)
+                {
+                    // Guardar las fechas en la sesión si se proporcionan
+                    HttpContext.Session.SetString("startDatepa", startDate.Value.ToString("yyyy-MM-dd"));
+                    HttpContext.Session.SetString("endDatepa", endDate.Value.ToString("yyyy-MM-dd"));
+                }
+                else
+                {
+                    var startDateString = HttpContext.Session.GetString("startDatepa");
+                    var endDateString = HttpContext.Session.GetString("endDatepa");
+
+                    if (!string.IsNullOrEmpty(startDateString))
+                    {
+                        startDate = DateTime.Parse(startDateString);
+                    }
+                    if (!string.IsNullOrEmpty(endDateString))
+                    {
+                        endDate = DateTime.Parse(endDateString);
+                    }
+                }
+
+                // Si las fechas no están definidas, establecer un rango predeterminado (ej. último mes)
+                if (!startDate.HasValue)
+                {
+                    startDate = DateTime.Now;
+                }
+                if (!endDate.HasValue)
+                {
+                    endDate = DateTime.Now;
+                }
+
+                // Lógica para obtener el listado de Ppagos según las fechas
+                var desde = startDate.Value.ToString("yyyyMMdd");
+                var hasta = endDate.Value.ToString("yyyyMMdd");
+
+                MantPago MantPago = new MantPago();
+                var pago = MantPago.GetListadoPagos(desde, hasta);
+
+                // Pasar el listado de Pagos y las fechas a la vista
+                ViewBag.StartDate = startDate.Value.ToString("yyyy-MM-dd");
+                ViewBag.EndDate = endDate.Value.ToString("yyyy-MM-dd");
+
+                return View(pago);
             }
             catch (Exception ex)
             {
                 // Manejar la excepción según sea necesario
+                ViewBag.ErrorMessage = $"Error al cargar el listado de Pagos: {ex.Message}";
                 return View(new List<PagosViewModel>());
             }
         }
 
-        // GET: Pagoes/Create
+        [HttpPost]
+        public IActionResult SetSessionDates(string startDate, string endDate)
+        {
+            try
+            {
+                // Guardar las fechas en formato string en las variables de sesión
+                HttpContext.Session.SetString("startDatepa", startDate);
+                HttpContext.Session.SetString("endDatepa", endDate);
+
+                return Json(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
+
+        // GET: Ofrendas/Create
         public IActionResult Create()
         {
             try
@@ -51,11 +96,10 @@ namespace My_Journal.Controllers
                 var divisa = mantDivisa.Getlistado();
                 var divisaSelectList = new SelectList(divisa, "IdDivisa", "CodDivisa");
 
-
                 ViewBag.ListadoPagosCategorias = categoriasSelectList;
                 ViewBag.ListadoDivisa = divisaSelectList;
 
-                var model = new PagosViewModel()
+                var model = new PagosViewModel
                 {
                     Pagos = new Pago()
                 };
@@ -69,13 +113,104 @@ namespace My_Journal.Controllers
             }
         }
 
-        // POST: Pagoes/Create
-        public ActionResult Crear(PagosViewModel viewModel)
+        [HttpPost]
+        public ActionResult Create(List<int> PagoCategoria, List<string> Descripcion, List<decimal> Cantidad, List<int> Divisa, List<decimal> TasaCambio, List<DateTime> FechaPago)
+        {
+            try
+            {
+                // Validar que todas las listas tengan la misma longitud
+                if (PagoCategoria.Count == Descripcion.Count &&
+                    Descripcion.Count == Cantidad.Count &&
+                    Cantidad.Count == Divisa.Count &&
+                    Divisa.Count == TasaCambio.Count &&
+                    TasaCambio.Count == FechaPago.Count)
+                {
+                    // Crear una lista para almacenar las ofrendas
+                    var pagos = new List<Pago>();
+
+                    // Iterar sobre las listas y crear objetos Ofrenda
+                    for (int i = 0; i < PagoCategoria.Count; i++)
+                    {
+                        var pago = new Pago
+                        {
+                            IdCategoria = PagoCategoria[i],
+                            Descripcion = Descripcion[i],
+                            Cantidad = (double)Cantidad[i],
+                            Divisa = Divisa[i],
+                            TasaCambio = (double)TasaCambio[i],
+                            FechaPago = FechaPago[i]
+                        };
+                        pagos.Add(pago);
+                    }
+
+                    // Insertar los Pagos en la base de datos
+                    MantPago mantPagos = new MantPago();
+                    foreach (var pago in pagos)
+                    {
+                        mantPagos.Insertar(pago);
+                    }
+
+                    // Redirigir a la acción Index después de la inserción
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    throw new InvalidOperationException("Las listas proporcionadas tienen diferentes longitudes.");
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar la excepción según sea necesario
+                // Cargar la lista de categorías para la vista en caso de error
+                MantPagosCategoria mant = new MantPagosCategoria();
+                var categorias = mant.Getlistado();
+                var categoriasSelectList = new SelectList(categorias, "IdCategoria", "Nombre");
+                MantDivisa mantDivisa = new MantDivisa();
+                var divisa = mantDivisa.Getlistado();
+                var divisaSelectList = new SelectList(divisa, "IdDivisa", "CodDivisa");
+                ViewBag.ListadoPagosCategorias = categoriasSelectList;
+                ViewBag.ListadoDivisa = divisaSelectList;
+
+                // Devolver la vista con los datos ingresados y el mensaje de error
+                ModelState.AddModelError("", "Ocurrió un error al guardar los datos: " + ex.Message);
+                return View();
+            }
+        }
+
+        // GET: Ofrendas/Edit/5
+        public IActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var viewModel = new MantPago().GetPago(id.Value);
+
+            MantPagosCategoria mant = new MantPagosCategoria();
+            var categorias = mant.Getlistado();
+            var categoriasSelectList = new SelectList(categorias, "IdCategoria", "Nombre", viewModel.Pagos.IdCategoria);
+            MantDivisa mantDivisa = new MantDivisa();
+            var divisa = mantDivisa.Getlistado();
+            var divisaSelectList = new SelectList(divisa, "IdDivisa", "CodDivisa", viewModel.Pagos.Divisa);
+            ViewBag.ListadoPagosCategorias = categoriasSelectList;
+            ViewBag.ListadoDivisa = divisaSelectList;
+
+            if (viewModel == null)
+            {
+                return NotFound();
+            }
+
+            return View(viewModel);
+        }
+
+        // POST: Ofrendas/Edit/5
+        public ActionResult Editar(PagosViewModel viewModel)
         {
             try
             {
                 MantPago mant = new MantPago();
-                var ofrenda = mant.Insertar(viewModel);
+                var pago = mant.Editar(viewModel);
 
                 return RedirectToAction("Index");
             }
@@ -85,172 +220,21 @@ namespace My_Journal.Controllers
                 return View(viewModel);
             }
         }
-        //// To protect from overposting attacks, enable the specific properties you want to bind to.
-        //// For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Create([Bind("IdPago,,Descripcion,Fecha,UsuarioCreacion,FechaCreacion,UsuarioModifica,FechaModifica, Cantidad")] Pago pago)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        _context.Add(pago);
-        //        await _context.SaveChangesAsync();
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    ViewData["UsuarioCreacion"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario", pago.UsuarioCreacion);
-        //    return View(pago);
-        //}
 
-        //public ActionResult Create(List<int> OfrendaCategoria, List<string> Descripcion, List<decimal> Cantidad, List<int> Divisa, List<decimal> TasaCambio, List<DateTime> Fecha)
-        //{
-        //    try
-        //    {
-        //        // Validar que todas las listas tengan la misma longitud
-        //        if (OfrendaCategoria.Count == Descripcion.Count &&
-        //            Descripcion.Count == Cantidad.Count &&
-        //            Cantidad.Count == Divisa.Count &&
-        //            Divisa.Count == TasaCambio.Count &&
-        //            TasaCambio.Count == Fecha.Count)
-        //        {
-        //            // Crear una lista para almacenar las ofrendas
-        //            var ofrendas = new List<Ofrenda>();
-
-        //            // Iterar sobre las listas y crear objetos Ofrenda
-        //            for (int i = 0; i < OfrendaCategoria.Count; i++)
-        //            {
-        //                var ofrenda = new Ofrenda
-        //                {
-        //                    IdCatOfrenda = OfrendaCategoria[i],
-        //                    Descripcion = Descripcion[i],
-        //                    Cantidad = (double)Cantidad[i],
-        //                    Divisa = Divisa[i],
-        //                    TasaCambio = (double)TasaCambio[i],
-        //                    Fecha = Fecha[i]
-        //                };
-        //                ofrendas.Add(ofrenda);
-        //            }
-
-        //            // Insertar las ofrendas en la base de datos
-        //            MantOfrenda mantOfrenda = new MantOfrenda();
-        //            foreach (var ofrenda in ofrendas)
-        //            {
-        //                mantOfrenda.Insertar(ofrenda);
-        //            }
-
-        //            // Redirigir a la acción Index después de la inserción
-        //            return RedirectToAction("Index");
-        //        }
-        //        else
-        //        {
-        //            throw new InvalidOperationException("Las listas proporcionadas tienen diferentes longitudes.");
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        // Manejar la excepción según sea necesario
-        //        // Cargar la lista de categorías para la vista en caso de error
-        //        MantOfrendaCategoria mantCategoria = new MantOfrendaCategoria();
-        //        var categorias = mantCategoria.Getlistado();
-        //        var categoriasSelectList = new SelectList(categorias, "IdCatOfrenda", "Nombre");
-        //        ViewBag.ListadoOfrendasCategorias = categoriasSelectList;
-
-        //        // Devolver la vista con los datos ingresados y el mensaje de error
-        //        ModelState.AddModelError("", "Ocurrió un error al guardar los datos: " + ex.Message);
-        //        return View();
-        //    }
-        //}
-
-
-        // GET: Pagoes/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public ActionResult Anular(int id)
         {
-            if (id == null)
+            try
             {
-                return NotFound();
-            }
+                MantPago mant = new MantPago();
+                mant.AnularPago(id); // Asegúrate de que este método cambia el estado a cero
 
-            var pago = await _context.Pagos.FindAsync(id);
-            if (pago == null)
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
             {
-                return NotFound();
+                // Manejar la excepción según sea necesario
+                return Json(new { success = false, error = ex.Message });
             }
-            ViewData["UsuarioCreacion"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario", pago.UsuarioCreacion);
-            return View(pago);
-        }
-
-        // POST: Pagoes/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdPago,Descripcion,Fecha,UsuarioCreacion,FechaCreacion,UsuarioModifica,FechaModifica, Cantidad")] Pago pago)
-        {
-            if (id != pago.IdPago)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(pago);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!PagoExists(pago.IdPago))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["UsuarioCreacion"] = new SelectList(_context.Usuarios, "IdUsuario", "IdUsuario", pago.UsuarioCreacion);
-            return View(pago);
-        }
-
-        // GET: Pagoes/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var pago = await _context.Pagos
-                .Include(p => p.UsuarioCreacionNavigation)
-                .FirstOrDefaultAsync(m => m.IdPago == id);
-            if (pago == null)
-            {
-                return NotFound();
-            }
-
-            return View(pago);
-        }
-
-        // POST: Pagoes/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var pago = await _context.Pagos.FindAsync(id);
-            if (pago != null)
-            {
-                _context.Pagos.Remove(pago);
-            }
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool PagoExists(int id)
-        {
-            return _context.Pagos.Any(e => e.IdPago == id);
         }
     }
 }

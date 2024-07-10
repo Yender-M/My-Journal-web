@@ -1,4 +1,4 @@
-﻿@model IEnumerable<My_Journal.IngresosVario>
+﻿@model IEnumerable<My_Journal.Models.IngresosVarios.IngresosVariosViewModel>
 
 @{
     ViewData["Title"] = "Ingresos Varios";
@@ -8,107 +8,136 @@
 <!-- Font Awesome CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <link href="/theme-assets/css/index_style.css" rel="stylesheet" />
-<a asp-controller="IngresosVarios" asp-action="Create" title="" class="btn btn btn-lg box-shadow--4dp">Crear registro</a>
 
-<div class="container" style="margin-top:30px;">
-    <div class="form-group row">
+<a asp-controller="IngresosVarios" asp-action="Create" title="" class="btn btn-lg btn-primary box-shadow--4dp">Crear registro</a>
 
-        <div class="form-group col-lg-2">
-            <label for="startDate">Desde</label>
-            <input type="datetime-local" id="startDate" name="startDate" class="form-control" />
+<div class="container" style="margin-top: 30px;">
+    <form id="filterForm" asp-controller="IngresosVarios" asp-action="Index" method="get">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="form-group">
+                    <label for="startDate">Desde</label>
+                    <input type="date" id="startDate" name="startDate" class="form-control" value="@ViewBag.StartDate" />
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    <label for="endDate">Hasta</label>
+                    <input type="date" id="endDate" name="endDate" class="form-control" value="@ViewBag.EndDate" />
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="form-group">
+                    <label>&nbsp;</label>
+                    <button type="submit" class="btn btn-primary form-control box-shadow--4dp white-text-button">Filtrar</button>
+                </div>
+            </div>
         </div>
-        <div class="form-group col-lg-2">
-            <label for="endDate">Hasta</label>
-            <input type="datetime-local" id="endDate" name="endDate" class="form-control" />
-        </div>
-    </div>
+    </form>
 </div>
 
-
-<div class="container" style="margin-top:10px;">
-    <table id="example" class="table table-striped table-bordered" style="width:100%">
-        <thead>
-            <tr>
-                <th>@Html.DisplayNameFor(model => model.Descripcion)</th>
-                <th>@Html.DisplayNameFor(model => model.Cantidad)</th>
-                <th>@Html.DisplayNameFor(model => model.Fecha)</th>
-                <th></th>
-
+<table id="example" class="table table-striped table-bordered" style="width:100%">
+    <thead>
+        <tr>
+            <th>Categoría</th>
+            <th>Ministerio</th>
+            <th>@Html.DisplayNameFor(model => model.IngresosVario.Descripcion)</th>
+            <th>@Html.DisplayNameFor(model => model.IngresosVario.Cantidad)</th>
+            <th>Divisa</th>
+            <th>Tasa de Cambio</th>
+            <th>@Html.DisplayNameFor(model => model.IngresosVario.FechaIngreso)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            // Determinar si la fila debe ser anulada
+            var rowClass = item.IngresosVario.Estado == 0 ? "anulado" : "";
+            <tr class="@rowClass">
+                <td>@Html.DisplayFor(modelItem => item.IngresoCategoria.Nombre)</td>
+                <td>@Html.DisplayFor(modelItem => item.Ministerios.Nombre)</td>
+                <td>@Html.DisplayFor(modelItem => item.IngresosVario.Descripcion)</td>
+                <td>@Html.DisplayFor(modelItem => item.IngresosVario.Cantidad)</td>
+                <td>@Html.DisplayFor(modelItem => item.Divisa.CodDivisa)</td>
+                <td>@Html.DisplayFor(modelItem => item.IngresosVario.TasaCambio)</td>
+                <td>@item.IngresosVario.FechaIngreso.ToString("dd/MM/yyyy")</td>
+                <td>
+                    @if (item.IngresosVario.Estado == 0)
+                    {
+                        <span>Anulado</span>
+                    }
+                    else
+                    {
+                        <a class="btn launch" asp-action="Edit" asp-route-id="@item.IngresosVario.IdIngreVarios">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        </a>
+                        <a class="btn launch" data-toggle="modal" data-target="#staticBackdrop-@item.IngresosVario.IdIngreVarios">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </a>
+                    }
+                </td>
             </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
+            @if (item.IngresosVario.Estado != 0)
             {
-
-                <tr>
-                    <td>@Html.DisplayFor(modelItem => item.Descripcion)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Cantidad)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Fecha)</td>
-
-                    <td>
-                        <a class="btn launch" asp-action="Edit" asp-route-id="@item.IdIngreVarios"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                        <a class="btn launch" data-toggle="modal" data-target="#staticBackdrop"> <i class="fa fa-trash" aria-hidden="true"></i></a>
-                    </td>
-                </tr>
-                <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal fade" id="staticBackdrop-@item.IngresosVario.IdIngreVarios" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <div class="modal-body ">
-                                <div class="text-right"> <i class="fa fa-close close" data-dismiss="modal"></i> </div>
-
-                                <div class="px-4 py-5">
-
-                                    <h5 class="text-uppercase">Usuario1</h5>
-
-
-
-                                    <h4 class="mt-5 theme-color mb-5">Estás a punto de eliminar un elemento!</h4>
-
+                            <div class="modal-body">
+                                <div class="text-right">
+                                    <i class="fa fa-close close" data-dismiss="modal"></i>
+                                </div>
+                                <div class="px-2 py-3">
+                                    <h4 class="mt-5 theme-color mb-5">Estás a punto de Anular este Ingreso Vario!</h4>
                                     <span class="theme-color">Resumen</span>
                                     <div class="mb-3">
                                         <hr class="new1">
                                     </div>
-
+                                    <div class="d-flex justify-content-between">
+                                        <small>Categoria</small>
+                                        <small>@Html.DisplayFor(modelItem => item.IngresoCategoria.Nombre)</small>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <small>Ministerio</small>
+                                        <small>@Html.DisplayFor(modelItem => item.Ministerios.Nombre)</small>
+                                    </div>
                                     <div class="d-flex justify-content-between">
                                         <small>Descripción</small>
-                                        <small>@Html.DisplayFor(modelItem => item.Descripcion)</small>
+                                        <small>@Html.DisplayFor(modelItem => item.IngresosVario.Descripcion)</small>
                                     </div>
                                     <div class="d-flex justify-content-between">
                                         <small>Cantidad</small>
-                                        <small>@Html.DisplayFor(modelItem => item.Cantidad)</small>
+                                        <small>@Html.DisplayFor(modelItem => item.IngresosVario.Cantidad)</small>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <small>Divisa</small>
+                                        <small>@Html.DisplayFor(modelItem => item.Divisa.CodDivisa)</small>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <small>Tasa Cambio</small>
+                                        <small>@Html.DisplayFor(modelItem => item.IngresosVario.TasaCambio)</small>
                                     </div>
                                     <div class="d-flex justify-content-between">
                                         <small>Fecha</small>
-                                        <small>@Html.DisplayFor(modelItem => item.Fecha)</small>
+                                        <small>@item.IngresosVario.FechaIngreso.ToString("dd/MM/yyyy")</small>
                                     </div>
-
-
                                     <div class="form-group">
                                         <button class="btn btn-danger">
-
-                                            <a style="color:white;" asp-action="Delete" asp asp-route-id="@item.IdIngreVarios">Sí, quiero eliminar</a>
+                                            <a style="color:white;" asp-action="Anular" asp-route-id="@item.IngresosVario.IdIngreVarios">Sí, quiero Anular</a>
                                         </button>
-                                        <button class="btn btn-secondary">
-
-                                            <a style="color:white;" asp-action="Index">Cancelar</a>
+                                        <button class="btn btn-secondary" data-dismiss="modal">
+                                            Cancelar
                                         </button>
                                     </div>
-
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
                 </div>
             }
-        </tbody>
-
-    </table>
-</div>
-
-<br />
-
+        }
+    </tbody>
+</table>
 
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
@@ -116,10 +145,19 @@
 <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
-
-
-<!-- Script JS para la tabla
-       Función DataTable provee la tabla, filtros, paginación, barra de búsqueda
--->
+<!-- Script JS -->
 <script src="/theme-assets/js/Datatable.js"></script>
 
+<script>
+    $(document).ready(function () {
+        // Cargar las fechas de la sesión
+        var startDate = '@ViewBag.StartDate';
+        var endDate = '@ViewBag.EndDate';
+
+        $('#startDate').val(startDate);
+        $('#endDate').val(endDate);
+
+        // Inicializar DataTable
+        $('#example').DataTable();
+    });
+</script>

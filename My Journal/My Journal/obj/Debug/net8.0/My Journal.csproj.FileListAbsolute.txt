@@ -1067,46 +1067,6 @@ C:\Users\MYender\Desktop\My Journal web\My Journal\My Journal\obj\Debug\net8.0\r
 C:\Users\cinth\Source\Repos\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\My Journal.csproj.Up2Date
 C:\Users\cinth\Source\Repos\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\My Journal.genruntimeconfig.cache
 C:\Users\cinth\Source\Repos\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\ref\My Journal.dll
-C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\My Journal.csproj.AssemblyReference.cache
-C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\My_Journal.Properties.Resources.resources
-C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\My Journal.csproj.GenerateResource.cache
-C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\My Journal.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\My Journal.AssemblyInfoInputs.cache
-C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\My Journal.AssemblyInfo.cs
-C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\My Journal.csproj.CoreCompileInputs.cache
-C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\My Journal.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\My Journal.RazorAssemblyInfo.cache
-C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\My Journal.RazorAssemblyInfo.cs
-C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\My Journal.sourcelink.json
-C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\staticwebassets.build.json
-C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\staticwebassets.development.json
-C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\staticwebassets\msbuild.My Journal.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\staticwebassets\msbuild.build.My Journal.props
-C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.My Journal.props
-C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.My Journal.props
-C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
-C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\scopedcss\bundle\My Journal.styles.css
-C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\scopedcss\projectbundle\My Journal.bundle.scp.css
-C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\My Journal.csproj.Up2Date
-C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\My Journal.dll
-C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\refint\My Journal.dll
-C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\My Journal.pdb
-C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\My Journal.genruntimeconfig.cache
-C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\ref\My Journal.dll
-C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\appsettings.Development.json
-C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\appsettings.json
-C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\bin\Debug\net8.0\appsettings.Development.json
-C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\bin\Debug\net8.0\appsettings.json
-C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\bin\Debug\net8.0\My Journal.deps.json
-C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\bin\Debug\net8.0\My Journal.runtimeconfig.json
-C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\bin\Debug\net8.0\My Journal.staticwebassets.runtime.json
-C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\My Journal.staticwebassets.runtime.json
-C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\My Journal.exe
-C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\My Journal.deps.json
-C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\My Journal.runtimeconfig.json
-C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\My Journal.dll
-C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\My Journal.pdb
 C:\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\My Journal.csproj.AssemblyReference.cache
 C:\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\My_Journal.Properties.Resources.resources
 C:\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\My Journal.csproj.GenerateResource.cache
@@ -1134,3 +1094,400 @@ C:\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\refint\My Journal.dll
 C:\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\My Journal.pdb
 C:\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\My Journal.genruntimeconfig.cache
 C:\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\ref\My Journal.dll
+C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\My Journal.csproj.AssemblyReference.cache
+C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\My_Journal.Properties.Resources.resources
+C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\My Journal.csproj.GenerateResource.cache
+C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\My Journal.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\My Journal.AssemblyInfoInputs.cache
+C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\My Journal.AssemblyInfo.cs
+C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\My Journal.csproj.CoreCompileInputs.cache
+C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\My Journal.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\My Journal.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\My Journal.RazorAssemblyInfo.cache
+C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\My Journal.RazorAssemblyInfo.cs
+C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\My Journal.sourcelink.json
+C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\staticwebassets\msbuild.My Journal.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\staticwebassets\msbuild.build.My Journal.props
+C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.My Journal.props
+C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.My Journal.props
+C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\scopedcss\bundle\My Journal.styles.css
+C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\scopedcss\projectbundle\My Journal.bundle.scp.css
+C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\My Journal.csproj.Up2Date
+C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\My Journal.dll
+C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\refint\My Journal.dll
+C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\My Journal.pdb
+C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\My Journal.genruntimeconfig.cache
+C:\Users\MYender\Desktop\My Journal web 3\My Journal\My Journal\obj\Debug\net8.0\ref\My Journal.dll
+C:\Users\Usuario\Desktop\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\My Journal.csproj.AssemblyReference.cache
+C:\Users\Usuario\Desktop\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\My_Journal.Properties.Resources.resources
+C:\Users\Usuario\Desktop\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\My Journal.csproj.GenerateResource.cache
+C:\Users\Usuario\Desktop\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\My Journal.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Usuario\Desktop\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\My Journal.AssemblyInfoInputs.cache
+C:\Users\Usuario\Desktop\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\My Journal.AssemblyInfo.cs
+C:\Users\Usuario\Desktop\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\My Journal.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Desktop\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\My Journal.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Usuario\Desktop\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\My Journal.RazorAssemblyInfo.cache
+C:\Users\Usuario\Desktop\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\My Journal.RazorAssemblyInfo.cs
+C:\Users\Usuario\Desktop\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\My Journal.sourcelink.json
+C:\Users\Usuario\Desktop\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\Usuario\Desktop\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\Usuario\Desktop\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\staticwebassets\msbuild.My Journal.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\Usuario\Desktop\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\staticwebassets\msbuild.build.My Journal.props
+C:\Users\Usuario\Desktop\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.My Journal.props
+C:\Users\Usuario\Desktop\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.My Journal.props
+C:\Users\Usuario\Desktop\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\Usuario\Desktop\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\Usuario\Desktop\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\scopedcss\bundle\My Journal.styles.css
+C:\Users\Usuario\Desktop\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\scopedcss\projectbundle\My Journal.bundle.scp.css
+C:\Users\Usuario\Desktop\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\My Journal.csproj.Up2Date
+C:\Users\Usuario\Desktop\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\My Journal.dll
+C:\Users\Usuario\Desktop\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\refint\My Journal.dll
+C:\Users\Usuario\Desktop\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\My Journal.pdb
+C:\Users\Usuario\Desktop\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\My Journal.genruntimeconfig.cache
+C:\Users\Usuario\Desktop\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\ref\My Journal.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\appsettings.Development.json
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\appsettings.json
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\bin\Debug\net8.0\appsettings.Development.json
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\bin\Debug\net8.0\appsettings.json
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\bin\Debug\net8.0\My Journal.deps.json
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\bin\Debug\net8.0\My Journal.runtimeconfig.json
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\bin\Debug\net8.0\My Journal.staticwebassets.runtime.json
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\My Journal.staticwebassets.runtime.json
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\My Journal.exe
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\My Journal.deps.json
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\My Journal.runtimeconfig.json
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\My Journal.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\My Journal.pdb
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Antiforgery.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Authentication.Abstractions.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Authentication.BearerToken.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Authentication.Cookies.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Authentication.Core.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Authentication.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Authentication.OAuth.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Authorization.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Authorization.Policy.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Components.Authorization.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Components.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Components.Endpoints.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Components.Forms.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Components.Server.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Components.Web.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Connections.Abstractions.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.CookiePolicy.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Cors.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.DataProtection.Abstractions.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.DataProtection.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.DataProtection.Extensions.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Diagnostics.Abstractions.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Diagnostics.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Diagnostics.HealthChecks.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.HostFiltering.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Hosting.Abstractions.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Hosting.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Hosting.Server.Abstractions.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Html.Abstractions.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Http.Abstractions.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Http.Connections.Common.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Http.Connections.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Http.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Http.Extensions.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Http.Features.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Http.Results.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.HttpLogging.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.HttpOverrides.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.HttpsPolicy.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Identity.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Localization.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Localization.Routing.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Metadata.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Mvc.Abstractions.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Mvc.ApiExplorer.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Mvc.Core.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Mvc.Cors.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Mvc.DataAnnotations.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Mvc.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Mvc.Formatters.Json.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Mvc.Formatters.Xml.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Mvc.Localization.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Mvc.Razor.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Mvc.RazorPages.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Mvc.TagHelpers.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Mvc.ViewFeatures.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.OutputCaching.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.RateLimiting.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Razor.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Razor.Runtime.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.RequestDecompression.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.ResponseCaching.Abstractions.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.ResponseCaching.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.ResponseCompression.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Rewrite.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Routing.Abstractions.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Routing.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Server.HttpSys.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Server.IIS.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Server.IISIntegration.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Server.Kestrel.Core.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Server.Kestrel.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Server.Kestrel.Transport.NamedPipes.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Server.Kestrel.Transport.Quic.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.Session.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.SignalR.Common.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.SignalR.Core.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.SignalR.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.SignalR.Protocols.Json.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.StaticFiles.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.WebSockets.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.AspNetCore.WebUtilities.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.CSharp.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.Caching.Abstractions.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.Caching.Memory.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.Configuration.Binder.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.Configuration.CommandLine.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.Configuration.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.Configuration.EnvironmentVariables.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.Configuration.FileExtensions.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.Configuration.Ini.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.Configuration.Json.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.Configuration.KeyPerFile.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.Configuration.UserSecrets.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.Configuration.Xml.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.DependencyInjection.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.Diagnostics.Abstractions.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.Diagnostics.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.Diagnostics.HealthChecks.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.Features.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.FileProviders.Composite.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.FileProviders.Embedded.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.FileProviders.Physical.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.FileSystemGlobbing.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.Hosting.Abstractions.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.Hosting.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.Http.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.Identity.Core.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.Identity.Stores.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.Localization.Abstractions.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.Localization.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.Logging.Abstractions.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.Logging.Configuration.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.Logging.Console.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.Logging.Debug.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.Logging.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.Logging.EventLog.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.Logging.EventSource.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.Logging.TraceSource.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.ObjectPool.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.Options.ConfigurationExtensions.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.Options.DataAnnotations.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.Options.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.Primitives.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Extensions.WebEncoders.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.JSInterop.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Net.Http.Headers.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.VisualBasic.Core.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.VisualBasic.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Win32.Primitives.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\Microsoft.Win32.Registry.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\mscorlib.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\netstandard.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.AppContext.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Buffers.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Collections.Concurrent.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Collections.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Collections.Immutable.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Collections.NonGeneric.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Collections.Specialized.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.ComponentModel.Annotations.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.ComponentModel.DataAnnotations.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.ComponentModel.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.ComponentModel.EventBasedAsync.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.ComponentModel.Primitives.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.ComponentModel.TypeConverter.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Configuration.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Console.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Core.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Data.Common.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Data.DataSetExtensions.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Data.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Diagnostics.Contracts.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Diagnostics.Debug.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Diagnostics.DiagnosticSource.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Diagnostics.EventLog.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Diagnostics.FileVersionInfo.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Diagnostics.Process.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Diagnostics.StackTrace.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Diagnostics.TextWriterTraceListener.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Diagnostics.Tools.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Diagnostics.TraceSource.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Diagnostics.Tracing.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Drawing.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Drawing.Primitives.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Dynamic.Runtime.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Formats.Asn1.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Formats.Tar.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Globalization.Calendars.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Globalization.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Globalization.Extensions.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.IO.Compression.Brotli.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.IO.Compression.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.IO.Compression.FileSystem.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.IO.Compression.ZipFile.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.IO.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.IO.FileSystem.AccessControl.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.IO.FileSystem.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.IO.FileSystem.DriveInfo.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.IO.FileSystem.Primitives.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.IO.FileSystem.Watcher.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.IO.IsolatedStorage.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.IO.MemoryMappedFiles.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.IO.Pipelines.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.IO.Pipes.AccessControl.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.IO.Pipes.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.IO.UnmanagedMemoryStream.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Linq.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Linq.Expressions.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Linq.Parallel.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Linq.Queryable.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Memory.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Net.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Net.Http.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Net.Http.Json.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Net.HttpListener.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Net.Mail.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Net.NameResolution.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Net.NetworkInformation.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Net.Ping.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Net.Primitives.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Net.Quic.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Net.Requests.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Net.Security.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Net.ServicePoint.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Net.Sockets.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Net.WebClient.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Net.WebHeaderCollection.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Net.WebProxy.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Net.WebSockets.Client.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Net.WebSockets.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Numerics.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Numerics.Vectors.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.ObjectModel.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Reflection.DispatchProxy.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Reflection.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Reflection.Emit.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Reflection.Emit.ILGeneration.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Reflection.Emit.Lightweight.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Reflection.Extensions.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Reflection.Metadata.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Reflection.Primitives.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Reflection.TypeExtensions.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Resources.Reader.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Resources.ResourceManager.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Resources.Writer.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Runtime.CompilerServices.Unsafe.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Runtime.CompilerServices.VisualC.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Runtime.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Runtime.Extensions.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Runtime.Handles.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Runtime.InteropServices.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Runtime.InteropServices.JavaScript.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Runtime.Intrinsics.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Runtime.Loader.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Runtime.Numerics.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Runtime.Serialization.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Runtime.Serialization.Formatters.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Runtime.Serialization.Json.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Runtime.Serialization.Primitives.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Runtime.Serialization.Xml.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Security.AccessControl.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Security.Claims.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Security.Cryptography.Algorithms.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Security.Cryptography.Cng.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Security.Cryptography.Csp.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Security.Cryptography.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Security.Cryptography.Encoding.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Security.Cryptography.OpenSsl.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Security.Cryptography.Primitives.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Security.Cryptography.X509Certificates.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Security.Cryptography.Xml.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Security.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Security.Principal.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Security.Principal.Windows.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Security.SecureString.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.ServiceModel.Web.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.ServiceProcess.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Text.Encoding.CodePages.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Text.Encoding.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Text.Encoding.Extensions.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Text.Encodings.Web.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Text.Json.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Text.RegularExpressions.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Threading.Channels.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Threading.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Threading.Overlapped.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Threading.RateLimiting.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Threading.Tasks.Dataflow.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Threading.Tasks.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Threading.Tasks.Extensions.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Threading.Tasks.Parallel.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Threading.Thread.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Threading.ThreadPool.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Threading.Timer.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Transactions.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Transactions.Local.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.ValueTuple.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Web.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Web.HttpUtility.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Windows.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Xml.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Xml.Linq.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Xml.ReaderWriter.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Xml.Serialization.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Xml.XDocument.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Xml.XmlDocument.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Xml.XmlSerializer.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Xml.XPath.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Xml.XPath.XDocument.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\WindowsBase.dll
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.csproj.AssemblyReference.cache
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My_Journal.Properties.Resources.resources
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.csproj.GenerateResource.cache
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.AssemblyInfoInputs.cache
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.AssemblyInfo.cs
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.csproj.CoreCompileInputs.cache
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.RazorAssemblyInfo.cache
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.RazorAssemblyInfo.cs
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.sourcelink.json
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\staticwebassets\msbuild.My Journal.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\staticwebassets\msbuild.build.My Journal.props
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.My Journal.props
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.My Journal.props
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\scopedcss\bundle\My Journal.styles.css
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\scopedcss\projectbundle\My Journal.bundle.scp.css
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.csproj.Up2Date
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.dll
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\refint\My Journal.dll
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.pdb
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.genruntimeconfig.cache
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\ref\My Journal.dll

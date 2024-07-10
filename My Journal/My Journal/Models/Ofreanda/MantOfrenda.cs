@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
+﻿using Microsoft.Data.SqlClient;
 using My_Journal.Properties;
 using System.Data;
 
@@ -53,7 +50,7 @@ namespace My_Journal.Models.Ofrenda
             return valstring;
         }
 
-        public List<OfrendaViewModel> GetListadoOfrendas()
+        public List<OfrendaViewModel> GetListadoOfrendas(String desde, string hasta)
         {
             List<OfrendaViewModel> resultado = new List<OfrendaViewModel>();
             var cnn = Utilidad.getConexString();
@@ -64,6 +61,8 @@ namespace My_Journal.Models.Ofrenda
                     using (SqlCommand sqlCommand = new SqlCommand("[IGLESIA].pcdGetListadoOfrendas", connection))
                     {
                         sqlCommand.CommandType = CommandType.StoredProcedure;
+                        sqlCommand.Parameters.AddWithValue("@FechaIni", desde);
+                        sqlCommand.Parameters.AddWithValue("@FechaFin", hasta);
                         connection.Open();
                         var dt = new DataTable();
                         dt.Load(sqlCommand.ExecuteReader());
@@ -221,6 +220,7 @@ namespace My_Journal.Models.Ofrenda
                     {
                         sqlCommand.CommandType = CommandType.StoredProcedure;
                         sqlCommand.Parameters.AddWithValue("@IdOfrenda", id);
+                        sqlCommand.Parameters.AddWithValue("@IdUsuario", 1);
                         connection.Open();
                         sqlCommand.ExecuteNonQuery();
                         connection.Close();
