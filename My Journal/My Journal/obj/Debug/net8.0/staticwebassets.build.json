@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "zwz5Co3GiyZXnNUjnCO+h6B5fg/M9yktujwY+yTHK6A=",
+  "Hash": "rZ0tIHyD9BV3Yxpp/1wJVjj/XgjMT0UWgJLszOwctoo=",
   "Source": "My Journal",
   "BasePath": "_content/My Journal",
   "Mode": "Default",
@@ -6171,6 +6171,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\theme-assets\\createdatableofrendacat.js"
+    },
+    {
+      "Identity": "C:\\Users\\MYender\\Desktop\\My Jounal\\My Journal\\My Journal\\wwwroot\\theme-assets\\createdatablePagos.js",
+      "SourceId": "My Journal",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MYender\\Desktop\\My Jounal\\My Journal\\My Journal\\wwwroot\\",
+      "BasePath": "_content/My Journal",
+      "RelativePath": "theme-assets/createdatablePagos.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\theme-assets\\createdatablePagos.js"
     },
     {
       "Identity": "C:\\Users\\MYender\\Desktop\\My Jounal\\My Journal\\My Journal\\wwwroot\\theme-assets\\css\\app-lite.css",
