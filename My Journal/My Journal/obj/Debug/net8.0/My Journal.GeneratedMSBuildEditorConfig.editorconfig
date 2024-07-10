@@ -58,10 +58,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWdyZXNvc1Zhcmlvc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MYender/Desktop/My Jounal/My Journal/My Journal/Views/EgresosVarios/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWdyZXNvc1Zhcmlvc1xEZWxldGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [c:/Users/MYender/Desktop/My Jounal/My Journal/My Journal/Views/EgresosVarios/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWdyZXNvc1Zhcmlvc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -92,10 +88,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [c:/Users/MYender/Desktop/My Jounal/My Journal/My Journal/Views/IngresosVarios/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5ncmVzb3NWYXJpb3NcQ3JlYXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[c:/Users/MYender/Desktop/My Jounal/My Journal/My Journal/Views/IngresosVarios/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5ncmVzb3NWYXJpb3NcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [c:/Users/MYender/Desktop/My Jounal/My Journal/My Journal/Views/IngresosVarios/Edit.cshtml]
@@ -146,10 +138,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZyZW5kYXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/MYender/Desktop/My Jounal/My Journal/My Journal/Views/Ofrendas/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZyZW5kYXNcRGVsZXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [c:/Users/MYender/Desktop/My Jounal/My Journal/My Journal/Views/Ofrendas/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZyZW5kYXNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -160,10 +148,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [c:/Users/MYender/Desktop/My Jounal/My Journal/My Journal/Views/Pagoes/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnb2VzXENyZWF0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[c:/Users/MYender/Desktop/My Jounal/My Journal/My Journal/Views/Pagoes/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnb2VzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [c:/Users/MYender/Desktop/My Jounal/My Journal/My Journal/Views/Pagoes/Edit.cshtml]
