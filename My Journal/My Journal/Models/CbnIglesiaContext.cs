@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using My_Journal.Models;
 using My_Journal.Models.Divisa;
+using My_Journal.Models.IngresosVarios;
 using My_Journal.Models.Miembros;
 using My_Journal.Models.Ofrenda;
 using My_Journal.Models.OfrendaCategoria;

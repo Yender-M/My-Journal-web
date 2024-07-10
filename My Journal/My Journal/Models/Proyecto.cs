@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using My_Journal.Models;
+using My_Journal.Models.IngresosVarios;
 
 namespace My_Journal;
 
