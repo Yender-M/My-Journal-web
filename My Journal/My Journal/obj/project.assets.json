@@ -10093,11 +10093,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\MYender\\Desktop\\My Journal web 3\\My Journal\\My Journal\\My Journal.csproj",
+      "projectUniqueName": "C:\\Users\\MYender\\Desktop\\My Jounal\\My Journal\\My Journal\\My Journal.csproj",
       "projectName": "My Journal",
-      "projectPath": "C:\\Users\\MYender\\Desktop\\My Journal web 3\\My Journal\\My Journal\\My Journal.csproj",
+      "projectPath": "C:\\Users\\MYender\\Desktop\\My Jounal\\My Journal\\My Journal\\My Journal.csproj",
       "packagesPath": "C:\\Users\\MYender\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\MYender\\Desktop\\My Journal web 3\\My Journal\\My Journal\\obj\\",
+      "outputPath": "C:\\Users\\MYender\\Desktop\\My Jounal\\My Journal\\My Journal\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
