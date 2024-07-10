@@ -1,15 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace My_Journal.Models.Pagos;
+﻿namespace My_Journal.Models.Pagos;
 
 public partial class Pago
 {
     public int IdPago { get; set; }
 
+    public int IdCategoria { get; set; }
+
+    public double? Cantidad { get; set; }
+
+    public int Divisa { get; set; }
+
+    public double? TasaCambio { get; set; }
+
     public string? Descripcion { get; set; }
 
-    public DateTime Fecha { get; set; }
+    public DateTime FechaPago { get; set; }
+
+    public int? Estado { get; set; }
 
     public int? UsuarioCreacion { get; set; }
 
@@ -19,18 +26,18 @@ public partial class Pago
 
     public DateTime? FechaModifica { get; set; }
 
-    public virtual ICollection<PagosDetalle.PagosDetalle> PagosDetalles { get; set; } = new List<PagosDetalle.PagosDetalle>();
+    public int? UsuarioAnula { get; set; }
+
+    public DateTime? FechaAnulacion { get; set; }
 
     public virtual Usuario? UsuarioCreacionNavigation { get; set; }
-
-    public double Cantidad { get; set; }
 }
+
 public class PagosViewModel
 {
     public Pago Pagos { get; set; }
 
     public PagosCategoria.PagosCategoria PagosCategoria { get; set; }
 
-    public PagosDetalle.PagosDetalle PagosDetalle { get; set; }
     public Divisa.Divisa Divisa { get; set; }
 }

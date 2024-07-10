@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using My_Journal.Models;
+using My_Journal.Models.EgresosVarios;
 using My_Journal.Models.IngresosVarios;
 using My_Journal.Models.Miembros;
 using My_Journal.Models.Ofrenda;
 using My_Journal.Models.OfrendaCategoria;
 using My_Journal.Models.Pagos;
 using My_Journal.Models.PagosCategoria;
-using My_Journal.Models.PagosDetalle;
 
 namespace My_Journal;
 
@@ -39,11 +39,7 @@ public partial class Usuario
 
     public virtual ICollection<EgresosVario> EgresosVarios { get; set; } = new List<EgresosVario>();
 
-    public virtual ICollection<EgresosVariosDetalle> EgresosVariosDetalles { get; set; } = new List<EgresosVariosDetalle>();
-
     public virtual ICollection<IngresosVario> IngresosVarios { get; set; } = new List<IngresosVario>();
-
-    public virtual ICollection<IngresosVariosDetalle> IngresosVariosDetalles { get; set; } = new List<IngresosVariosDetalle>();
 
     public virtual ICollection<Miembro> Miembros { get; set; } = new List<Miembro>();
 
@@ -52,8 +48,6 @@ public partial class Usuario
     public virtual ICollection<Pago> Pagos { get; set; } = new List<Pago>();
 
     public virtual ICollection<PagosCategoria> PagosCategoria { get; set; } = new List<PagosCategoria>();
-
-    public virtual ICollection<PagosDetalle> PagosDetalles { get; set; } = new List<PagosDetalle>();
 
     public virtual ICollection<OfrendasCategoria> OfrendasCategorias { get; set; } = new List<OfrendasCategoria>();
 }

@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using My_Journal.Models.Divisa;
 using My_Journal.Models.IngresosCategoria;
 using My_Journal.Models.IngresosVarios;
 using My_Journal.Models.Ministerios;
-using My_Journal.Models.Ofrenda;
-using My_Journal.Models.OfrendaCategoria;
 
 namespace My_Journal.Controllers
 {
@@ -108,7 +101,7 @@ namespace My_Journal.Controllers
                 var ministerio = mantMinisterio.Getlistado();
                 var ministerioSelectList = new SelectList(ministerio, "IdMinisterio", "Nombre");
 
-                ViewBag.ListadoOfrendasCategorias = categoriasSelectList;
+                ViewBag.ListadoIngresosCategorias = categoriasSelectList;
                 ViewBag.ListadoDivisa = divisaSelectList;
                 ViewBag.ListadoMinisterio = ministerioSelectList;
 
@@ -147,7 +140,7 @@ namespace My_Journal.Controllers
                     {
                         var Ingresos = new IngresosVario
                         {
-                            IdIngreVarios = IngresosCategorias[i],
+                            IdCatIngreso = IngresosCategorias[i],
                             IdMinisterio = Ministerios[i],
                             Descripcion = Descripcion[i],
                             Cantidad = (double)Cantidad[i],
@@ -186,7 +179,7 @@ namespace My_Journal.Controllers
                 MantMinisterios mantMinisterio = new MantMinisterios();
                 var ministerio = mantMinisterio.Getlistado();
                 var ministerioSelectList = new SelectList(ministerio, "IdMinisterio", "Nombre");
-                ViewBag.ListadoOfrendasCategorias = categoriasSelectList;
+                ViewBag.ListadoIngresosCategorias = categoriasSelectList;
                 ViewBag.ListadoDivisa = divisaSelectList;
                 ViewBag.ListadoMinisterio = ministerioSelectList;
 
@@ -218,7 +211,7 @@ namespace My_Journal.Controllers
             var ministerio = mantMinisterio.Getlistado();
             var ministerioSelectList = new SelectList(ministerio, "IdMinisterio", "Nombre", viewModel.Ministerios.IdMinisterio);
 
-            ViewBag.ListadoOfrendasCategorias = categoriasSelectList;
+            ViewBag.ListadoIngresosCategorias = categoriasSelectList;
             ViewBag.ListadoDivisa = divisaSelectList;
             ViewBag.ListadoMinisterio = ministerioSelectList;
 
@@ -251,8 +244,8 @@ namespace My_Journal.Controllers
         {
             try
             {
-                MantOfrenda mant = new MantOfrenda();
-                mant.AnularOfrenda(id); // Asegúrate de que este método cambia el estado a cero
+                MantIngresosVarios mant = new MantIngresosVarios();
+                mant.AnularIngreVarios(id); // Asegúrate de que este método cambia el estado a cero
 
                 return RedirectToAction("Index");
             }
