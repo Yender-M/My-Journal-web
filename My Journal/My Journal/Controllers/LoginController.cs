@@ -1,6 +1,7 @@
 ﻿using System;
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using My_Journal.Models.Usuario;
 
 
 namespace My_Journal.Controllers

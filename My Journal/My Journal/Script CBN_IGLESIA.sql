@@ -2,18 +2,18 @@ USE [master]
 GO
 DROP DATABASE [CBN_IGLESIA]
 GO
-/****** Object:  Database [CBN_IGLESIA]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  Database [CBN_IGLESIA]    Script Date: 6/7/2024 19:42:31 ******/
 CREATE DATABASE [CBN_IGLESIA]
 GO
 USE [CBN_IGLESIA]
 GO
-/****** Object:  Schema [ADM]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  Schema [ADM]    Script Date: 6/7/2024 19:42:31 ******/
 CREATE SCHEMA [ADM]
 GO
-/****** Object:  Schema [IGLESIA]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  Schema [IGLESIA]    Script Date: 6/7/2024 19:42:31 ******/
 CREATE SCHEMA [IGLESIA]
 GO
-/****** Object:  Table [ADM].[Divisas]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  Table [ADM].[Divisas]    Script Date: 6/7/2024 19:42:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -31,7 +31,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [ADM].[EgresosCategoria]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  Table [ADM].[EgresosCategoria]    Script Date: 6/7/2024 19:42:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -51,7 +51,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [ADM].[Iglesia]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  Table [ADM].[Iglesia]    Script Date: 6/7/2024 19:42:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -73,7 +73,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [ADM].[IngresosCategoria]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  Table [ADM].[IngresosCategoria]    Script Date: 6/7/2024 19:42:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -93,11 +93,13 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [ADM].[Ministerios]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  Table [ADM].[Ministerios]    Script Date: 6/7/2024 19:42:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
+
+
 CREATE TABLE [ADM].[Ministerios](
 	[IdMinisterio] [int] IDENTITY(1,1) NOT NULL,
 	[Nombre] [nvarchar](50) NOT NULL,
@@ -113,14 +115,9 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [ADM].[MinisteriosDetalle]    Script Date: 10/7/2024 02:47:17 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [ADM].[MinisteriosDetalle](
-	[IdDetalle] [int] IDENTITY(1,1) NOT NULL,
-	[IdMinisterio] [int] NOT NULL,
+	[IdDetalle][int] IDENTITY(1,1) NOT NULL,
+	[IdMinisterio]  [int] NOT NULL,
 	[IdUsuario] [int] NOT NULL,
 	[Ver] [int] NULL,
 	[Crear] [int] NULL,
@@ -136,7 +133,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [ADM].[OfrendasCategoria]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  Table [ADM].[OfrendasCategoria]    Script Date: 6/7/2024 19:42:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -156,7 +153,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [ADM].[Permisos]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  Table [ADM].[Permisos]    Script Date: 6/7/2024 19:42:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -175,7 +172,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [ADM].[Roles]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  Table [ADM].[Roles]    Script Date: 6/7/2024 19:42:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -195,11 +192,12 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [ADM].[Usuarios]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  Table [ADM].[Usuarios]    Script Date: 6/7/2024 19:42:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
+
 CREATE TABLE [ADM].[Usuarios](
 	[IdUsuario] [int] IDENTITY(1,1) NOT NULL,
 	[Nombres] [nvarchar](50) NOT NULL,
@@ -219,12 +217,12 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [ADM].[UsuariosCregoriasOfrenda]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  Table [ADM].[UsuariosCregoriasOfrenda]    Script Date: 6/7/2024 19:42:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [ADM].[UsuariosCregoriasOfrenda](
+ALTER TABLE [ADM].[UsuariosCategoriasOfrenda](
 	[IdUserCat] [int] IDENTITY(1,1) NOT NULL,
 	[IdUsuario] [int] NOT NULL,
 	[IdCatOfrenda] [int] NOT NULL,
@@ -238,7 +236,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [ADM].[UsuariosMinisterio]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  Table [ADM].[UsuariosMinisterio]    Script Date: 6/7/2024 19:42:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -261,7 +259,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [IGLESIA].[Diezmo]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  Table [IGLESIA].[Diezmo]    Script Date: 6/7/2024 19:42:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -288,7 +286,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [IGLESIA].[EgresosVarios]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  Table [IGLESIA].[EgresosVarios]    Script Date: 6/7/2024 19:42:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -301,21 +299,20 @@ CREATE TABLE [IGLESIA].[EgresosVarios](
 	[Divisa] [int] NULL,
 	[TasaCambio] [float] NULL,
 	[Descripcion] [nvarchar](500) NOT NULL,
-	[FechaEgreso] [datetime] NOT NULL,
+	[FechaIngreso] [datetime] NOT NULL,
 	[UsuarioCreacion] [int] NULL,
 	[FechaCreacion] [datetime] NULL,
 	[UsuarioModifica] [int] NULL,
 	[FechaModifica] [datetime] NULL,
 	[UsuarioAnula] [int] NULL,
 	[FechaAnulacion] [datetime] NULL,
-	[Estado] [int] NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[IdEgreVarios] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [IGLESIA].[IngresosVarios]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  Table [IGLESIA].[IngresosVarios]    Script Date: 6/7/2024 19:42:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -335,14 +332,13 @@ CREATE TABLE [IGLESIA].[IngresosVarios](
 	[FechaModifica] [datetime] NULL,
 	[UsuarioAnula] [int] NULL,
 	[FechaAnulacion] [datetime] NULL,
-	[Estado] [int] NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[IdIngreVarios] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [IGLESIA].[Miembros]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  Table [IGLESIA].[Miembros]    Script Date: 6/7/2024 19:42:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -366,7 +362,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [IGLESIA].[OfrendaPatoral]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  Table [IGLESIA].[OfrendaPatoral]    Script Date: 6/7/2024 19:42:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -390,7 +386,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [IGLESIA].[Ofrendas]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  Table [IGLESIA].[Ofrendas]    Script Date: 6/7/2024 19:42:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -416,33 +412,26 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [IGLESIA].[Pagos]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  Table [IGLESIA].[Pagos]    Script Date: 6/7/2024 19:42:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [IGLESIA].[Pagos](
 	[IdPago] [int] IDENTITY(1,1) NOT NULL,
-	[IdCategoria] [int] NOT NULL,
 	[Descripcion] [nvarchar](500) NULL,
-	[Cantidad] [float] NOT NULL,
-	[Divisa] [int] NULL,
-	[TasaCambio] [float] NULL,
-	[FechaPago] [datetime] NOT NULL,
-	[Estado] [int] NULL,
+	[Fecha] [datetime] NOT NULL,
 	[UsuarioCreacion] [int] NULL,
 	[FechaCreacion] [datetime] NULL,
 	[UsuarioModifica] [int] NULL,
 	[FechaModifica] [datetime] NULL,
-	[UsuarioAnula] [int] NULL,
-	[FechaAnulacion] [datetime] NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[IdPago] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [IGLESIA].[PagosCategorias]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  Table [IGLESIA].[PagosCategorias]    Script Date: 6/7/2024 19:42:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -462,7 +451,29 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [IGLESIA].[Proyecto]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  Table [IGLESIA].[PagosDetalle]    Script Date: 6/7/2024 19:42:31 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [IGLESIA].[PagosDetalle](
+	[IdDetalle] [int] IDENTITY(1,1) NOT NULL,
+	[IdPago] [int] NOT NULL,
+	[IdCategoria] [int] NOT NULL,
+	[Cantidad] [float] NOT NULL,
+	[Divisa] [int] NULL,
+	[TasaCambio] [float] NULL,
+	[UsuarioCreacion] [int] NULL,
+	[FechaCreacion] [datetime] NULL,
+	[UsuarioModifica] [int] NULL,
+	[FechaModifica] [datetime] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[IdDetalle] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [IGLESIA].[Proyecto]    Script Date: 6/7/2024 19:42:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -563,22 +574,28 @@ GO
 ALTER TABLE [IGLESIA].[Ofrendas]  WITH CHECK ADD FOREIGN KEY([UsuarioCreacion])
 REFERENCES [ADM].[Usuarios] ([IdUsuario])
 GO
-ALTER TABLE [IGLESIA].[Pagos]  WITH CHECK ADD FOREIGN KEY([Divisa])
-REFERENCES [ADM].[Divisas] ([IdDivisa])
-GO
-ALTER TABLE [IGLESIA].[Pagos]  WITH CHECK ADD FOREIGN KEY([IdCategoria])
-REFERENCES [IGLESIA].[PagosCategorias] ([IdCategoria])
-GO
 ALTER TABLE [IGLESIA].[Pagos]  WITH CHECK ADD FOREIGN KEY([UsuarioCreacion])
 REFERENCES [ADM].[Usuarios] ([IdUsuario])
 GO
 ALTER TABLE [IGLESIA].[PagosCategorias]  WITH CHECK ADD FOREIGN KEY([UsuarioCreacion])
 REFERENCES [ADM].[Usuarios] ([IdUsuario])
 GO
+ALTER TABLE [IGLESIA].[PagosDetalle]  WITH CHECK ADD FOREIGN KEY([Divisa])
+REFERENCES [ADM].[Divisas] ([IdDivisa])
+GO
+ALTER TABLE [IGLESIA].[PagosDetalle]  WITH CHECK ADD FOREIGN KEY([IdCategoria])
+REFERENCES [IGLESIA].[PagosCategorias] ([IdCategoria])
+GO
+ALTER TABLE [IGLESIA].[PagosDetalle]  WITH CHECK ADD FOREIGN KEY([IdPago])
+REFERENCES [IGLESIA].[Pagos] ([IdPago])
+GO
+ALTER TABLE [IGLESIA].[PagosDetalle]  WITH CHECK ADD FOREIGN KEY([UsuarioCreacion])
+REFERENCES [ADM].[Usuarios] ([IdUsuario])
+GO
 ALTER TABLE [IGLESIA].[Proyecto]  WITH CHECK ADD FOREIGN KEY([UsuarioCreacion])
 REFERENCES [ADM].[Usuarios] ([IdUsuario])
 GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdGetAnularDiezmo]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  StoredProcedure [IGLESIA].[pcdGetAnularDiezmo]    Script Date: 6/7/2024 19:42:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -595,41 +612,7 @@ AS
 		SET Estado = 0, UsuarioAnula = @IdUsuario, FechaAnulacin = GETDATE() WHERE IdDiezmo = @IdDiezmo
 	END
 GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdGetAnularEgreVarios]    Script Date: 10/7/2024 02:47:17 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE     PROCEDURE [IGLESIA].[pcdGetAnularEgreVarios]
-(
-	@IdEgreVarios INT,
-	@IdUsuario INT
-)
-AS
-	BEGIN
-		UPDATE [IGLESIA].EgresosVarios
-		SET Estado = 0, UsuarioAnula = @IdUsuario, FechaAnulacion = GETDATE() WHERE IdEgreVarios = @IdEgreVarios
-	END
-GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdGetAnularIngreVarios]    Script Date: 10/7/2024 02:47:17 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE   PROCEDURE [IGLESIA].[pcdGetAnularIngreVarios]
-(
-	@IdIngreVarios INT,
-	@IdUsuario INT
-)
-AS
-	BEGIN
-		UPDATE [IGLESIA].IngresosVarios
-		SET Estado = 0, UsuarioAnula = @IdUsuario, FechaAnulacion = GETDATE() WHERE IdIngreVarios = @IdIngreVarios
-	END
-GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdGetAnularOfrenda]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  StoredProcedure [IGLESIA].[pcdGetAnularOfrenda]    Script Date: 6/7/2024 19:42:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -646,24 +629,7 @@ AS
 		SET Estado = 0, UsuarioAnula = @IdUsuario, FechaAnulacion = GETDATE() WHERE IdOfrenda = @IdOfrenda
 	END
 GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdGetAnularPago]    Script Date: 10/7/2024 02:47:17 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE PROCEDURE [IGLESIA].[pcdGetAnularPago]
-(
-	@IdPago INT,
-	@IdUsuario INT
-)
-AS
-	BEGIN
-		UPDATE [IGLESIA].Pagos SET Estado = 0, UsuarioAnula = @IdUsuario, FechaAnulacion = GETDATE()
-		WHERE IdPago = @IdPago
-	END
-GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdGetCategoriaEgreso]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  StoredProcedure [IGLESIA].[pcdGetCategoriaEgreso]    Script Date: 6/7/2024 19:42:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -675,7 +641,7 @@ BEGIN
 	SELECT ec.IdCatEgreso, ec.Nombre, ec.Descripcion, ec.Estado FROM [ADM].EgresosCategoria ec
 END
 GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdGetCategoriaIngreso]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  StoredProcedure [IGLESIA].[pcdGetCategoriaIngreso]    Script Date: 6/7/2024 19:42:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -687,7 +653,7 @@ BEGIN
 	SELECT ic.IdCatIngreso, ic.Nombre, ic.Descripcion, ic.Estado FROM [ADM].IngresosCategoria ic
 END
 GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdGetCategoriaOfrenda]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  StoredProcedure [IGLESIA].[pcdGetCategoriaOfrenda]    Script Date: 6/7/2024 19:42:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -699,7 +665,7 @@ BEGIN
 	SELECT oc.IdCatOfrenda, oc.Nombre, oc.Descripcion, oc.Estado FROM [ADM].OfrendasCategoria oc
 END
 GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdGetCategoriaPagos]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  StoredProcedure [IGLESIA].[pcdGetCategoriaPagos]    Script Date: 6/7/2024 19:42:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -711,7 +677,7 @@ BEGIN
 	SELECT IdCategoria, Nombre, Descripcion, Estado FROM IGLESIA.PagosCategorias
 END
 GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdGetDiezmo]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  StoredProcedure [IGLESIA].[pcdGetDiezmo]    Script Date: 6/7/2024 19:42:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -733,7 +699,7 @@ BEGIN
 	WHERE di.IdDiezmo = @IdDiezmo
 	END
 GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdGetDivisas]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  StoredProcedure [IGLESIA].[pcdGetDivisas]    Script Date: 6/7/2024 19:42:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -745,35 +711,7 @@ BEGIN
 	SELECT d.IdDivisa, d.CodDivisa, d.Descripcion, d.Simbolo FROM [ADM].Divisas d
 END
 GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdGetEgreso]    Script Date: 10/7/2024 02:47:17 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-
-CREATE       PROCEDURE [IGLESIA].[pcdGetEgreso] 
-(
-	@IdEgreVarios int
-)
-AS
-	BEGIN
-		SET NOCOUNT ON;
-
-		SELECT 
-			i.IdEgreVarios, i.IdCatEgreso, i.IdMinisterio, i.Cantidad, i.Descripcion,
-			convert (date, i.FechaEgreso) FechaEgreso,i.Divisa,i.TasaCambio, i.Estado,
-			ic.IdCatEgreso, ic.Nombre CategoriaNombre, ic.Descripcion CategoriaDescripcion,
-			m.IdMinisterio,m.Nombre MinisterioNombre,m.Descripcion MinisterioDescripcion,
-		    d.IdDivisa, d.CodDivisa CodDivisa, d.Descripcion Divisa
-		FROM [IGLESIA].EgresosVarios i
-		LEFT JOIN [ADM].EgresosCategoria ic ON i.IdCatEgreso = ic.IdCatEgreso
-		LEFT JOIN [ADM].Divisas d ON i.Divisa = d.IdDivisa
-		LEFT JOIN [ADM].Ministerios m ON i.IdMinisterio = m.IdMinisterio
-		WHERE i.IdEgreVarios = @IdEgreVarios
-	END
-GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdGetEgresoCat]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  StoredProcedure [IGLESIA].[pcdGetEgresoCat]    Script Date: 6/7/2024 19:42:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -790,34 +728,7 @@ AS
 		WHERE ec.IdCatEgreso = @IdEgresoCat
 	END
 GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdGetIngreso]    Script Date: 10/7/2024 02:47:17 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE   PROCEDURE [IGLESIA].[pcdGetIngreso] 
-(
-	@IdIngreVarios int
-)
-AS
-	BEGIN
-		SET NOCOUNT ON;
-
-		SELECT 
-			i.IdIngreVarios, i.IdCatIngreso, i.IdMinisterio, i.Cantidad, i.Descripcion,
-			convert (date, i.FechaIngreso) FechaIngreso,i.Divisa,i.TasaCambio, i.Estado,
-			ic.IdCatIngreso, ic.Nombre CategoriaNombre, ic.Descripcion CategoriaDescripcion,
-			m.IdMinisterio,m.Nombre MinisterioNombre,m.Descripcion MinisterioDescripcion,
-		    d.IdDivisa, d.CodDivisa CodDivisa, d.Descripcion Divisa
-		FROM [IGLESIA].IngresosVarios i
-		LEFT JOIN [ADM].IngresosCategoria ic ON i.IdCatIngreso = ic.IdCatIngreso
-		LEFT JOIN [ADM].Divisas d ON i.Divisa = d.IdDivisa
-		LEFT JOIN [ADM].Ministerios m ON i.IdMinisterio = m.IdMinisterio
-		WHERE i.IdIngreVarios = @IdIngreVarios
-	END
-GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdGetIngresoCat]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  StoredProcedure [IGLESIA].[pcdGetIngresoCat]    Script Date: 6/7/2024 19:42:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -834,7 +745,7 @@ AS
 		WHERE ic.IdCatIngreso = @IdIngresoCat
 	END
 GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdGetListadoDiezmo]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  StoredProcedure [IGLESIA].[pcdGetListadoDiezmo]    Script Date: 6/7/2024 19:42:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -858,63 +769,7 @@ BEGIN
     ORDER BY di.FechaDiezmo DESC
 	END
 GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdGetListadoEgresosVarios]    Script Date: 10/7/2024 02:47:17 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE    PROCEDURE [IGLESIA].[pcdGetListadoEgresosVarios] 
-(
-	@FechaIni NVARCHAR(8),
-	@FechaFin NVARCHAR(8)
-)
-AS
-	BEGIN
-		SET NOCOUNT ON;
-
-		SELECT 
-			i.IdEgreVarios, i.IdCatEgreso, i.IdMinisterio, i.Cantidad, i.Descripcion,
-			convert (date, i.FechaEgreso) FechaEgreso,i.Divisa,i.TasaCambio, i.Estado,
-			ic.IdCatEgreso, ic.Nombre CategoriaNombre, ic.Descripcion CategoriaDescripcion,
-			m.IdMinisterio,m.Nombre MinisterioNombre,m.Descripcion MinisterioDescripcion,
-		    d.IdDivisa, d.CodDivisa CodDivisa, d.Descripcion Divisa
-		FROM [IGLESIA].EgresosVarios i
-		LEFT JOIN [ADM].EgresosCategoria ic ON i.IdCatEgreso = ic.IdCatEgreso
-		LEFT JOIN [ADM].Divisas d ON i.Divisa = d.IdDivisa
-		LEFT JOIN [ADM].Ministerios m ON i.IdMinisterio = m.IdMinisterio
-		WHERE i.FechaEgreso >= @FechaIni AND i.FechaEgreso <= @FechaFin
-	END
-GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdGetListadoIngresosVarios]    Script Date: 10/7/2024 02:47:17 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE     PROCEDURE [IGLESIA].[pcdGetListadoIngresosVarios] 
-(
-	@FechaIni NVARCHAR(8),
-	@FechaFin NVARCHAR(8)
-)
-AS
-	BEGIN
-		SET NOCOUNT ON;
-
-		SELECT 
-			i.IdIngreVarios, i.IdCatIngreso, i.IdMinisterio, i.Cantidad, i.Descripcion,
-			convert (date, i.FechaIngreso) FechaIngreso,i.Divisa,i.TasaCambio, i.Estado,
-			ic.IdCatIngreso, ic.Nombre CategoriaNombre, ic.Descripcion CategoriaDescripcion,
-			m.IdMinisterio,m.Nombre MinisterioNombre,m.Descripcion MinisterioDescripcion,
-		    d.IdDivisa, d.CodDivisa CodDivisa, d.Descripcion Divisa
-		FROM [IGLESIA].IngresosVarios i
-		LEFT JOIN [ADM].IngresosCategoria ic ON i.IdCatIngreso = ic.IdCatIngreso
-		LEFT JOIN [ADM].Divisas d ON i.Divisa = d.IdDivisa
-		LEFT JOIN [ADM].Ministerios m ON i.IdMinisterio = m.IdMinisterio
-		WHERE i.FechaIngreso >= @FechaIni AND i.FechaIngreso <= @FechaFin
-	END
-GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdGetListadoMiembros]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  StoredProcedure [IGLESIA].[pcdGetListadoMiembros]    Script Date: 6/7/2024 19:42:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -932,25 +787,7 @@ AS
 		where FORMAT(m.FechaCreacion,'yyyyMMdd') >= @FechaIni AND FORMAT(m.FechaCreacion,'yyyyMMdd') <= @FechaFin
 	END
 GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdGetListadoMinisterios]    Script Date: 10/7/2024 02:47:17 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE PROCEDURE [IGLESIA].[pcdGetListadoMinisterios] --20240101,20240606
-AS
-	BEGIN
-		SET NOCOUNT ON;
-
-		SELECT 
-			m.IdMinisterio, m.Nombre, m.Descripcion, m.Estado, m.FechaCreacion, m.UsuarioCreacion, u.Usuario, md.Ver, md.Crear, md.Editar, md.Anular
-		FROM ADM.Ministerios m
-		LEFT JOIN [ADM].MinisteriosDetalle md ON m.IdMinisterio = md.IdMinisterio
-		LEFT JOIN [ADM].Usuarios u ON md.IdUsuario = u.IdUsuario 
-	END
-GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdGetListadoOfrendas]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  StoredProcedure [IGLESIA].[pcdGetListadoOfrendas]    Script Date: 6/7/2024 19:42:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -979,32 +816,28 @@ BEGIN
 END
 
 GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdGetListadosPagos]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  StoredProcedure [IGLESIA].[pcdGetListadosPagos]    Script Date: 6/7/2024 19:42:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-
-CREATE   PROCEDURE [IGLESIA].[pcdGetListadosPagos] 
-(
-	@FechaIni NVARCHAR(8),
-	@FechaFin NVARCHAR(8)
-)
+CREATE PROCEDURE [IGLESIA].[pcdGetListadosPagos] 
 AS
 	BEGIN
 		SET NOCOUNT ON;
 
-		SELECT 
-		p.IdPago,p.IdCategoria,p.Cantidad,p.Descripcion,p.FechaPago,p.Divisa,p.TasaCambio,p.Estado,
-		pc.IdCategoria, pc.Nombre CategoriaNombre, pc.Descripcion CategoriaDescripcion,
-		d.IdDivisa,d.CodDivisa,d.Descripcion Divisa
-		FROM IGLESIA.Pagos p
-		INNER JOIN IGLESIA.PagosCategorias pc ON pc.IdCategoria = p.IdCategoria 
-		INNER JOIN ADM.Divisas d ON p.Divisa = d.IdDivisa
-		WHERE p.FechaPago >= @FechaIni and p.FechaPago <= @FechaFin
+		SELECT Pagos.IdPago, Pagos.Descripcion, Pagos.Fecha,
+		PagosCategorias.IdCategoria, PagosCategorias.Nombre,PagosCategorias.Descripcion,PagosCategorias.Estado,
+		PagosDetalle.IdDetalle,PagosDetalle.Cantidad,PagosDetalle.TasaCambio,
+		Divisas.CodDivisa, Divisas.Descripcion
+		FROM IGLESIA.PagosDetalle 
+		INNER JOIN IGLESIA.PagosCategorias ON PagosDetalle.IdCategoria = PagosCategorias.IdCategoria 
+		INNER JOIN IGLESIA.Pagos ON PagosDetalle.IdPago = Pagos.IdPago 
+		INNER JOIN ADM.Divisas ON PagosDetalle.Divisa = Divisas.IdDivisa
+		ORDER BY Pagos.Fecha DESC
 	END
 GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdGetMiembro]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  StoredProcedure [IGLESIA].[pcdGetMiembro]    Script Date: 6/7/2024 19:42:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1024,7 +857,7 @@ AS
 		WHERE m.IdMiembro = @IdMiembro
 	END
 GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdGetMiembros]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  StoredProcedure [IGLESIA].[pcdGetMiembros]    Script Date: 6/7/2024 19:42:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1036,19 +869,7 @@ CREATE PROCEDURE [IGLESIA].[pcdGetMiembros]
 		SELECT m.IdMiembro,  m.Nombre,m.Apellido,m.Estado FROM [IGLESIA].Miembros m
 	END
 GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdGetMinisteriosLista]    Script Date: 10/7/2024 02:47:17 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE PROCEDURE [IGLESIA].[pcdGetMinisteriosLista]
-AS
-	BEGIN
-		SELECT IdMinisterio, Nombre, Descripcion, Estado FROM [ADM].Ministerios
-	END
-GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdGetOfrenda]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  StoredProcedure [IGLESIA].[pcdGetOfrenda]    Script Date: 6/7/2024 19:42:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1074,7 +895,7 @@ AS
 		WHERE o.IdOfrenda = @IdOfrenda
 	END
 GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdGetOfrendaCat]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  StoredProcedure [IGLESIA].[pcdGetOfrendaCat]    Script Date: 6/7/2024 19:42:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1091,31 +912,24 @@ AS
 		WHERE oc.IdCatOfrenda = @IdOfrendaCat
 	END
 GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdGetPagos]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  StoredProcedure [IGLESIA].[pcdGetPagos]    Script Date: 6/7/2024 19:42:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE     PROCEDURE [IGLESIA].[pcdGetPagos] 
+CREATE PROCEDURE [IGLESIA].[pcdGetPagos] 
 (
-	@IdPago INT
+	@IdPago int
 )
 AS
 	BEGIN
 		SET NOCOUNT ON;
 
-		SELECT 
-		p.IdPago,p.IdCategoria,p.Cantidad,p.Descripcion,p.FechaPago,p.Divisa,p.TasaCambio,p.Estado,
-		pc.IdCategoria, pc.Nombre CategoriaNombre, pc.Descripcion CategoriaDescripcion,
-		d.IdDivisa,d.CodDivisa,d.Descripcion Divisa
-		FROM IGLESIA.Pagos p
-		INNER JOIN IGLESIA.PagosCategorias pc ON pc.IdCategoria = p.IdCategoria 
-		INNER JOIN ADM.Divisas d ON p.Divisa = d.IdDivisa
-		WHERE P.IdPago = @IdPago
+		SELECT * FROM IGLESIA.PagosDetalle INNER JOIN IGLESIA.PagosCategorias ON PagosDetalle.IdCategoria = PagosCategorias.IdCategoria INNER JOIN IGLESIA.Pagos ON PagosDetalle.IdPago = Pagos.IdPago WHERE Pagos.IdPago = @IdPago ORDER BY Pagos.Fecha DESC
 	END
 GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdSetDiezmoEdit]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  StoredProcedure [IGLESIA].[pcdSetDiezmoEdit]    Script Date: 6/7/2024 19:42:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1148,7 +962,7 @@ AS
 			WHERE IdDiezmo = @IdDiezmo
 	END
 GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdSetDiezmos]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  StoredProcedure [IGLESIA].[pcdSetDiezmos]    Script Date: 6/7/2024 19:42:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1171,7 +985,7 @@ AS
 							 VALUES (@IdMiembro,@Cantidad,@IdDivisa,@TasaCambio,@Fecha,@Descripcion,@Alias,1,@IdUsuario,GETDATE())
 	END
 GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdSetEgresoCat]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  StoredProcedure [IGLESIA].[pcdSetEgresoCat]    Script Date: 6/7/2024 19:42:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1189,7 +1003,7 @@ AS
 		VALUES (@Nombre,@Descripcion,1,@IdUsuario,GETDATE())
 	END
 GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdSetEgresoCatEdit]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  StoredProcedure [IGLESIA].[pcdSetEgresoCatEdit]    Script Date: 6/7/2024 19:42:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1214,64 +1028,7 @@ AS
 			WHERE IdCatEgreso = @IdCatEgreso
 	END
 GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdSetEgresosVarios]    Script Date: 10/7/2024 02:47:17 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE     procedure [IGLESIA].[pcdSetEgresosVarios]
-(
-	@IdCatEgreso INT,
-	@IdMinisterio INT,
-	@Descripcion NVARCHAR(500),
-	@Cantidad FLOAT,
-	@IdDivisa INT,
-	@TasaCambio FLOAT,
-	@FechaEgreso DATETIME,
-	@IdUsuario INT
-)
-AS
-	BEGIN
-		INSERT INTO [IGLESIA].EgresosVarios (IdCatEgreso,IdMinisterio,Cantidad,Divisa,TasaCambio,Descripcion,FechaEgreso,UsuarioCreacion,FechaCreacion,Estado) 
-		VALUES (@IdCatEgreso,@IdMinisterio,@Cantidad,@IdDivisa,@TasaCambio,@Descripcion,@FechaEgreso,@IdUsuario,GETDATE(),1)
-	END
-GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdSetEgresoVariosEdit]    Script Date: 10/7/2024 02:47:17 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE     procedure [IGLESIA].[pcdSetEgresoVariosEdit]
-(
-	@IdCatEgreso INT,
-	@IdMinisterio INT,
-	@Descripcion NVARCHAR(200),
-	@Cantidad FLOAT,
-	@IdDivisa INT,
-	@TasaCambio FLOAT,
-	@FechaEgreso DATETIME,
-	@Estado INT,
-	@IdUsuario INT,
-	@IdEgreVarios INT
-)
-AS
-	BEGIN
-		UPDATE [IGLESIA].EgresosVarios
-		SET IdCatEgreso = @IdCatEgreso,
-			IdMinisterio = @IdMinisterio,
-			Cantidad = @Cantidad,
-			Descripcion = @Descripcion,
-			FechaEgreso = @FechaEgreso,
-			Divisa = @IdDivisa,
-			TasaCambio = @TasaCambio,
-			UsuarioModifica = @IdUsuario,
-			FechaModifica = GETDATE()
-			WHERE IdEgreVarios = @IdEgreVarios
-	END
-GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdSetIngresoCat]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  StoredProcedure [IGLESIA].[pcdSetIngresoCat]    Script Date: 6/7/2024 19:42:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1289,7 +1046,7 @@ AS
 		VALUES (@Nombre,@Descripcion,1,@IdUsuario,GETDATE())
 	END
 GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdSetIngresoCatEdit]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  StoredProcedure [IGLESIA].[pcdSetIngresoCatEdit]    Script Date: 6/7/2024 19:42:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1314,64 +1071,7 @@ AS
 			WHERE IdCatIngreso = @IdCatIngreso
 	END
 GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdSetIngresosVarios]    Script Date: 10/7/2024 02:47:17 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE   procedure [IGLESIA].[pcdSetIngresosVarios]
-(
-	@IdCatIngreso INT,
-	@IdMinisterio INT,
-	@Descripcion NVARCHAR(500),
-	@Cantidad FLOAT,
-	@IdDivisa INT,
-	@TasaCambio FLOAT,
-	@FechaIngreso DATETIME,
-	@IdUsuario INT
-)
-AS
-	BEGIN
-		INSERT INTO [IGLESIA].IngresosVarios (IdCatIngreso,IdMinisterio,Cantidad,Divisa,TasaCambio,Descripcion,FechaIngreso,UsuarioCreacion,FechaCreacion,Estado) 
-		VALUES (@IdCatIngreso,@IdMinisterio,@Cantidad,@IdDivisa,@TasaCambio,@Descripcion,@FechaIngreso,@IdUsuario,GETDATE(),1)
-	END
-GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdSetIngresoVariosEdit]    Script Date: 10/7/2024 02:47:17 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE   procedure [IGLESIA].[pcdSetIngresoVariosEdit]
-(
-	@IdCatIngreso INT,
-	@IdMinisterio INT,
-	@Descripcion NVARCHAR(200),
-	@Cantidad FLOAT,
-	@IdDivisa INT,
-	@TasaCambio FLOAT,
-	@FechaIngreso DATETIME,
-	@Estado INT,
-	@IdUsuario INT,
-	@IdIngreVarios INT
-)
-AS
-	BEGIN
-		UPDATE [IGLESIA].IngresosVarios
-		SET IdCatIngreso = @IdCatIngreso,
-			IdMinisterio = @IdMinisterio,
-			Cantidad = @Cantidad,
-			Descripcion = @Descripcion,
-			FechaIngreso = @FechaIngreso,
-			Divisa = @IdDivisa,
-			TasaCambio = @TasaCambio,
-			UsuarioModifica = @IdUsuario,
-			FechaModifica = GETDATE()
-			WHERE IdIngreVarios = @IdIngreVarios
-	END
-GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdSetMiembroEdit]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  StoredProcedure [IGLESIA].[pcdSetMiembroEdit]    Script Date: 6/7/2024 19:42:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1405,7 +1105,7 @@ AS
 			WHERE IdMiembro = @IdMiembro
 	END
 GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdSetMiembros]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  StoredProcedure [IGLESIA].[pcdSetMiembros]    Script Date: 6/7/2024 19:42:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1427,26 +1127,7 @@ AS
 		VALUES (@nombre,@apellido,@direccion,@telefono,@FechaNaci,@FechaBauti,1,GETDATE(),@IdUsuario)
 	END
 GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdSetMinisterios]    Script Date: 10/7/2024 02:47:17 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE procedure [IGLESIA].[pcdSetMinisterios]
-(
-	@IdMinisterio INT,
-	@Nombre NVARCHAR(200),
-	@Descripcion NVARCHAR(200),
-	@Estado INT,
-	@IdUsuario INT
-)
-AS
-	BEGIN
-		INSERT INTO ADM.Ministerios(IdMinisterio, Nombre, Descripcion, Estado, UsuarioCreacion, FechaCreacion) VALUES(@IdMinisterio, @Nombre,@Descripcion, @Estado, @IdUsuario, GETDATE())
-		INSERT INTO ADM.MinisteriosDetalle(IdMinisterio,IdUsuario, Ver, Crear, Editar, Anular, UsuarioCreacion, FechaCreacion) VALUES(@IdMinisterio, @IdUsuario, 1, 1, 1, 1,@IdUsuario, GETDATE())
-	end
-GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdSetOfrenda]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  StoredProcedure [IGLESIA].[pcdSetOfrenda]    Script Date: 6/7/2024 19:42:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1470,7 +1151,7 @@ BEGIN
 END
 
 GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdSetOfrendaCat]    Script Date: 10/7/2024 02:47:17 ******/
+/****** Object:  StoredProcedure [IGLESIA].[pcdSetOfrendaCat]    Script Date: 6/7/2024 19:42:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1488,7 +1169,7 @@ AS
 		VALUES (@Nombre,@Descripcion,1,@IdUsuario,GETDATE())
 	END
 GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdSetOfrendaCatEdit]    Script Date: 10/7/2024 02:47:18 ******/
+/****** Object:  StoredProcedure [IGLESIA].[pcdSetOfrendaCatEdit]    Script Date: 6/7/2024 19:42:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1513,7 +1194,7 @@ AS
 			WHERE IdCatOfrenda = @IdCatOfrenda
 	END
 GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdSetOfrendaEdit]    Script Date: 10/7/2024 02:47:18 ******/
+/****** Object:  StoredProcedure [IGLESIA].[pcdSetOfrendaEdit]    Script Date: 6/7/2024 19:42:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1546,13 +1227,13 @@ AS
 			WHERE IdOfrenda = @IdOfrenda
 	END
 GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdSetPago]    Script Date: 10/7/2024 02:47:18 ******/
+/****** Object:  StoredProcedure [IGLESIA].[pcdSetPago]    Script Date: 6/7/2024 19:42:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE   procedure [IGLESIA].[pcdSetPago]
+CREATE procedure [IGLESIA].[pcdSetPago]
 (
 	@IdCategoria INT,
 	@Descripcion NVARCHAR(200),
@@ -1560,47 +1241,22 @@ CREATE   procedure [IGLESIA].[pcdSetPago]
 	@IdDivisa INT,
 	@TasaCambio FLOAT,
 	@Fecha DATETIME,
+	@Estado INT,
 	@IdUsuario INT 
 	)
 AS
 	BEGIN
-		INSERT INTO [IGLESIA].Pagos(IdCategoria,Descripcion, Cantidad,Divisa,TasaCambio,FechaPago, UsuarioCreacion, FechaCreacion, Estado) 
-		VALUES (@IdCategoria,@Descripcion,@Cantidad,@IdDivisa,@TasaCambio,@Fecha,@IdUsuario,GETDATE(),1);
-	END
-GO
-/****** Object:  StoredProcedure [IGLESIA].[pcdSetPagoEdit]    Script Date: 10/7/2024 02:47:18 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
+		INSERT INTO [IGLESIA].Pagos(Descripcion,Fecha, UsuarioCreacion, FechaCreacion) VALUES (@Descripcion,@Fecha,@IdUsuario, GETDATE());
+	
+		DECLARE @idpago int;
 
-CREATE PROCEDURE [IGLESIA].[pcdSetPagoEdit]
-(
-	@IdCategoria INT,
-	@Descripcion NVARCHAR(500),
-	@Cantidad FLOAT,
-	@Fecha DATETIME,
-	@IdDivisa INT,
-	@TasaCambio FLOAT,
-	@Estado INT,
-	@IdUsuario INT,
-	@IdPago INT
-)
-AS
-	BEGIN
-		UPDATE [IGLESIA].Pagos 
-		SET IdCategoria = @IdCategoria,
-			Descripcion = @Descripcion,
-			Cantidad = @Cantidad,
-			FechaPago = @Fecha,
-			Divisa = @IdDivisa,
-			TasaCambio = @TasaCambio,
-			Estado = @Estado,
-			UsuarioModifica = @IdUsuario
-			where IdPago = @IdPago
+		set @idpago = SCOPE_IDENTITY();
+
+		INSERT INTO [IGLESIA].PagosDetalle(IdPago,IdCategoria,Cantidad,Divisa,TasaCambio,UsuarioCreacion,FechaCreacion) VALUES(@idpago,@IdCategoria,@Cantidad,@IdDivisa,@TasaCambio,@IdUsuario,GETDATE())
+
 	END
 GO
-/****** Object:  StoredProcedure [IGLESIA].[rptListadoOfrendas]    Script Date: 10/7/2024 02:47:18 ******/
+/****** Object:  StoredProcedure [IGLESIA].[rptListadoOfrendas]    Script Date: 6/7/2024 19:42:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1627,3 +1283,247 @@ AS
 		ORDER BY o.Fecha DESC
 	END
 GO
+
+/* SET MINISTERIOS */
+ALTER procedure [IGLESIA].[pcdSetMinisterios]
+(
+	@IdMinisterio INT,
+	@Nombre NVARCHAR(200),
+	@Descripcion NVARCHAR(200),
+	@Estado INT,
+	@IdUsuario INT
+
+)
+AS
+BEGIN
+		INSERT INTO ADM.Ministerios(Nombre, Descripcion, Estado, UsuarioCreacion, FechaCreacion) VALUES( @Nombre,@Descripcion, @Estado, @IdUsuario, GETDATE())
+	end
+GO
+/****** Object:  StoredProcedure [IGLESIA].[pcdSetOfrendaCat]    Script Date: 6/7/2024 19:42:32 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+CREATE procedure [IGLESIA].[pcdSetMinisteriosDetalle] 
+(
+	@IdMinisterio INT,
+	@Nombre NVARCHAR(200),
+	@Descripcion NVARCHAR(200),
+	@Estado INT,
+	@IdUsuario INT,
+	@Ver INT,
+	@Crear INT,
+	@Editar INT,
+	@Anular INT
+)
+AS
+BEGIN
+		INSERT INTO ADM.MinisteriosDetalle(IdMinisterio,IdUsuario, Ver, Crear, Editar, Anular, UsuarioCreacion, FechaCreacion) VALUES(@IdMinisterio, @IdUsuario, @Ver, @Crear, @Editar, @Anular,@IdUsuario, GETDATE())
+	end
+GO
+CREATE procedure [IGLESIA].[pcdSetMinisterios]
+(
+	@IdMinisterio INT,
+	@Nombre NVARCHAR(200),
+	@Descripcion NVARCHAR(200),
+	@Estado INT,
+	@IdUsuario INT
+)
+AS
+BEGIN
+		INSERT INTO ADM.Ministerios(Nombre, Descripcion, Estado, UsuarioCreacion, FechaCreacion) VALUES( @Nombre,@Descripcion, @Estado, @IdUsuario, GETDATE())
+		INSERT INTO ADM.MinisteriosDetalle(IdMinisterio,IdUsuario, Ver, Crear, Editar, Anular, UsuarioCreacion, FechaCreacion) VALUES(@IdMinisterio, @IdUsuario, 1, 1, 1, 1,@IdUsuario, GETDATE())
+	end
+GO
+/****** Object:  StoredProcedure [IGLESIA].[pcdSetOfrendaCat]    Script Date: 6/7/2024 19:42:32 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+
+		INSERT INTO ADM.MinisteriosDetalle(IdMinisterio,IdUsuario, Ver, Crear, Editar, Anular, UsuarioCreacion, FechaCreacion) VALUES(@IdMinisterio, @IdUsuario, 1, 1, 1, 1,@IdUsuario, GETDATE())
+
+
+CREATE PROCEDURE [IGLESIA].[pcdGetListadoMinisterios] --20240101,20240606
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT 
+        m.IdMinisterio, m.Nombre, m.Descripcion, m.Estado, m.FechaCreacion, m.UsuarioCreacion, u.Usuario, md.Ver, md.Crear, md.Editar, md.Anular
+    FROM ADM.Ministerios m
+    LEFT JOIN [ADM].MinisteriosDetalle md ON m.IdMinisterio = md.IdMinisterio
+    LEFT JOIN [ADM].Usuarios u ON md.IdUsuario = u.IdUsuario 
+END
+
+GO
+/****** Object:  StoredProcedure [IGLESIA].[pcdGetListadosPagos]    Script Date: 6/7/2024 19:42:32 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [IGLESIA].[pcdGetMinisterios] 
+(
+	@IdMinisterio int
+)
+AS
+	BEGIN
+		SET NOCOUNT ON;
+   SELECT 
+        m.IdMinisterio, m.Nombre, m.Descripcion, m.Estado, m.FechaCreacion, m.UsuarioCreacion, u.Usuario, md.Ver, md.Crear, md.Editar, md.Anular
+    FROM ADM.Ministerios m
+    LEFT JOIN [ADM].MinisteriosDetalle md ON m.IdMinisterio = md.IdMinisterio
+    LEFT JOIN [ADM].Usuarios u ON md.IdUsuario = u.IdUsuario WHERE m.IdMinisterio = @IdMinisterio
+	END
+GO
+/****** Object:  StoredProcedure [IGLESIA].[pcdGetOfrendaCat]    Script Date: 6/7/2024 19:42:32 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE procedure [IGLESIA].[pcdSetMinisteriosEdit]
+(
+
+	@IdMinisterio INT,
+	@Nombre NVARCHAR(200),
+	@Descripcion NVARCHAR(200),
+	@Estado INT,
+	@IdUsuario INT
+)
+AS
+	BEGIN
+		UPDATE ADM.Ministerios
+		SET 
+			Nombre = @Nombre,
+			Descripcion = @Descripcion,
+			Estado = @Estado
+			WHERE IdMinisterio = @IdMinisterio
+	END
+GO
+/****** Object:  StoredProcedure [IGLESIA].[pcdSetPago]    Script Date: 6/7/2024 19:42:32 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE procedure [IGLESIA].[pcdSetMinisteriosDetalleEdit]
+(
+	@IdDetalle INT,
+	@IdMinisterio INT,
+	@IdUsuario INT, 
+	@Ver INT,
+	@Crear INT,
+	@Editar INT,
+	@Anular INT
+)
+AS
+	BEGIN
+		UPDATE ADM.MinisteriosDetalle
+		SET 
+			IdMinisterio = @IdMinisterio,
+			IdUsuario = @IdUsuario,
+			Ver = @Ver,
+			Crear = @Crear,
+			Editar = @Editar,
+			Anular = @Anular
+			WHERE IdDetalle = @IdDetalle
+	END
+GO
+/****** Object:  StoredProcedure [IGLESIA].[pcdSetPago]    Script Date: 6/7/2024 19:42:32 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+/* SET USUARIO */
+ALTER procedure [IGLESIA].[pcdSetUsuarios]
+(
+	@Nombres NVARCHAR(50),
+	@Apellidos NVARCHAR(50),
+	@Telefono NVARCHAR(20),
+	@Direccion NVARCHAR(200),
+	@Usuario NVARCHAR(20),
+	@Clave NVARCHAR(20),
+	@Estado bit,
+	@IdUsuario INT
+)
+AS
+BEGIN
+		INSERT INTO ADM.Usuarios(Nombres, Apellidos, Telefono, Direccion, Usuario, Estado, Clave,UsuarioCreacion, FechaCreacion) VALUES( @Nombres,@Apellidos, @Telefono, @Direccion, @Usuario, @Estado, @Clave, @IdUsuario, GETDATE())
+	end
+GO
+/****** Object:  StoredProcedure [IGLESIA].[pcdSetOfrendaCat]    Script Date: 6/7/2024 19:42:32 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+
+CREATE PROCEDURE [IGLESIA].[pcdGetListadoUsuarios] --20240101,20240606
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT 
+        m.IdUsuario, m.Nombres, m.Apellidos, m.Telefono, m.Direccion, m.Usuario, m.Clave, m.Estado, m.UsuarioCreacion
+    FROM ADM.Usuarios m
+END
+
+GO
+/****** Object:  StoredProcedure [IGLESIA].[pcdGetListadosPagos]    Script Date: 6/7/2024 19:42:32 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [IGLESIA].[pcdGetUsuario] 
+(
+	@IdUsuario int
+)
+AS
+	BEGIN
+		SET NOCOUNT ON;
+   SELECT 
+        m.IdUsuario, m.Nombres, m.Apellidos, m.Telefono, m.Direccion, m.Usuario, m., m.Estado, m.FechaCreacion, m.UsuarioCreacion
+    FROM ADM.Usuarios m WHERE m.IdUsuario = @IdUsuario
+	END
+GO
+/****** Object:  StoredProcedure [IGLESIA].[pcdGetOfrendaCat]    Script Date: 6/7/2024 19:42:32 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+/* Usuario */
+CREATE procedure [IGLESIA].[pcdSetUsuarioEdit]
+(
+
+	@IdUsuario INT,
+	@Nombres NVARCHAR(50),
+	@Apellidos NVARCHAR(50),
+	@Telefono NVARCHAR(20),
+	@Direccion NVARCHAR(200),
+	@Usuario NVARCHAR(20),
+	@Clave NVARCHAR(20),
+	@Estado bit
+)
+AS
+	BEGIN
+		UPDATE ADM.Usuarios
+		SET 
+			Nombres = @Nombres,
+			Apellidos = @Apellidos,
+			Telefono = @Telefono,
+			Direccion = @Direccion,
+			Usuario = @Usuario,
+			Clave = @Clave,
+			Estado = @Estado
+			WHERE IdUsuario = @IdUsuario
+	END
+GO
+/****** Object:  StoredProcedure [IGLESIA].[pcdSetPago]    Script Date: 6/7/2024 19:42:32 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+select * from ADM.Usuarios

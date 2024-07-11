@@ -20,5 +20,6 @@
     {
         public Ministerios Ministerios { get; set; }
         public MinisteriosDetalle.MinisteriosDetalle  MinisteriosDetalle { get; set; }
+        public Usuario.Usuario Usuario { get; set; }
     }
 }
