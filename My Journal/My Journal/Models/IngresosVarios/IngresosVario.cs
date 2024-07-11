@@ -32,7 +32,7 @@ public partial class IngresosVario
 
     public DateTime? FechaAnula { get; set; }
     
-    public virtual Usuario? UsuarioCreacionNavigation { get; set; }
+    public virtual Usuario.Usuario? UsuarioCreacionNavigation { get; set; }
 }
 
 public class IngresosVariosViewModel
