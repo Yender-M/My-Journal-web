@@ -1491,3 +1491,4 @@ C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\refint
 C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.pdb
 C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.genruntimeconfig.cache
 C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\ref\My Journal.dll
+C:\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\My Journal.MvcApplicationPartsAssemblyInfo.cs

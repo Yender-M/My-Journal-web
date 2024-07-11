@@ -26,7 +26,7 @@ public partial class Miembro
 
     public DateTime? FechaModifica { get; set; }
 
-    public virtual Usuario? UsuarioCreacionNavigation { get; set; }
+    public virtual Usuario.Usuario? UsuarioCreacionNavigation { get; set; }
     public Miembro Miembros { get; internal set; }
 
 }

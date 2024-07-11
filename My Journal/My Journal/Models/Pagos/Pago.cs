@@ -30,7 +30,7 @@ public partial class Pago
 
     public DateTime? FechaAnulacion { get; set; }
 
-    public virtual Usuario? UsuarioCreacionNavigation { get; set; }
+    public virtual Usuario.Usuario? UsuarioCreacionNavigation { get; set; }
 }
 
 public class PagosViewModel
