@@ -10,6 +10,7 @@ using My_Journal.Models.Ofrenda;
 using My_Journal.Models.OfrendaCategoria;
 using My_Journal.Models.Pagos;
 using My_Journal.Models.PagosCategoria;
+using My_Journal.Models.Usuario;
 
 namespace My_Journal;
 

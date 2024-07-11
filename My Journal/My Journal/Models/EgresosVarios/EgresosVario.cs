@@ -32,7 +32,7 @@ public partial class EgresosVario
 
     public DateTime? FechaAnula { get; set; }
 
-    public virtual Usuario? UsuarioCreacionNavigation { get; set; }
+    public virtual Usuario.Usuario? UsuarioCreacionNavigation { get; set; }
 }
 
 

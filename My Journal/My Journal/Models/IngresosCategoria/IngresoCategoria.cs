@@ -20,7 +20,7 @@ namespace My_Journal.Models.IngresosCategoria
 
         public DateTime? FechaModifica { get; set; }
 
-        public virtual Usuario? UsuarioCreacionNavigation { get; set; }
+        public virtual Usuario.Usuario? UsuarioCreacionNavigation { get; set; }
 
         public IngresoCategoria ingresoCategoria { get; internal set; }
     }

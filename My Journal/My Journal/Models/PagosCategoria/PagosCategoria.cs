@@ -18,5 +18,5 @@ public partial class PagosCategoria
 
     public DateTime? FechaModifica { get; set; }
 
-    public virtual Usuario? UsuarioCreacionNavigation { get; set; }
+    public virtual Usuario.Usuario? UsuarioCreacionNavigation { get; set; }
 }

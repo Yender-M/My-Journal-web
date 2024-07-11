@@ -109,7 +109,7 @@
                 <li class="active">
                     <a asp-controller="Home" asp-action="Index"><i class="fa-solid fa-house-chimney"></i><span class="menu-title" data-i18n="">Dashboard</span></a>
                 </li>
-                <li class="nav-item has-sub open">
+                <li class="nav-item has-sub closed">
                     <a href="#"><i class="fa-solid fa-shield-halved"></i><span class="menu-title" data-i18n="">Seguridad</span></a>
                     <ul class="menu-content" style="">
 
@@ -118,11 +118,13 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item has-sub open">
+                <li class="nav-item has-sub closed">
                     <a href="#"><i class="fa-solid fa-book-open"></i><span class="menu-title" data-i18n="">Catálogos</span></a>
                     <ul class="menu-content" style="">
 
                         <li class="is-shown">
+                            <a class="menu-item" asp-controller="Ministerios" asp-action="index">Ministerios</a>
+                        </li>  <li class="is-shown">
                             <a class="menu-item" asp-controller="OfrendasCategorias" asp-action="index">Ofrendas</a>
                         </li>
 
@@ -134,7 +136,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item has-sub open">
+                <li class="nav-item has-sub closed">
                     <a href="#"><i class="fa-solid fa-money-bills"></i><span class="menu-title" data-i18n="">Ingresos</span></a>
                     <ul class="menu-content" style="">
 
@@ -150,7 +152,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item has-sub open">
+                <li class="nav-item has-sub closed">
                     <a href="#"><i class="fa-solid fa-money-bill-transfer"></i><span class="menu-title" data-i18n="">Egresos</span></a>
                     <ul class="menu-content" style="">
 
@@ -162,21 +164,21 @@
                         </li>
                     </ul>
                 </li>
-                <li class=" nav-item">
+  @*               <li class=" nav-item">
                     <a asp-controller="Reports" asp-action="index"><i class="fa-solid fa-chart-column"></i><span class="menu-title" data-i18n="">Reportes</span></a>
-                </li>
-                <li class=" nav-item">
+                </li> *@
+      @*           <li class=" nav-item">
                     <a asp-controller="Saldo" asp-action="index"><i class="fa-solid fa-wallet"></i><span class="menu-title" data-i18n="">Saldo Total</span></a>
-                </li>
+                </li> *@
                 <li class=" nav-item">
                     <a asp-controller="Miembros" asp-action="index"><i class="fa-solid fa-users"></i><span class="menu-title" data-i18n="">Miembros</span></a>
                 </li>
-                <li class="nav-item has-sub open">
-                    <a href="#"><i class="fa-solid fa-money-bills"></i><span class="menu-title" data-i18n="">Reportes</span></a>
+                <li class="nav-item has-sub closed">
+                    <a href="#"><i class="fa-solid fa-chart-column"></i><span class="menu-title" data-i18n="">Reportes</span></a>
                     <ul class="menu-content" style="">
 
                         <li class="is-shown">
-                            <a class="menu-item" asp-controller="Report" asp-action="Index" asp-route-report="rptOfrendas">Rpt Ofrendas</a>
+                            <a class="menu-item" asp-controller="Report" asp-action="Index" asp-route-report="rptOfrendas"> Ofrendas</a>
                         </li>
 
                     </ul>

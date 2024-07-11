@@ -11,5 +11,5 @@ public partial class DetUsuarioPermiso
 
     public virtual Permiso IdPermisoNavigation { get; set; } = null!;
 
-    public virtual Usuario IdUsuarioNavigation { get; set; } = null!;
+    public virtual Usuario.Usuario IdUsuarioNavigation { get; set; } = null!;
 }

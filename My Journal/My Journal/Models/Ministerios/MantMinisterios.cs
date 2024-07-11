@@ -45,7 +45,7 @@ namespace My_Journal.Models.Ministerios
             }
             return valstring;
         }
-        public List<MinisteriosViewModel> GetListadoMinisterios(String desde, string hasta)
+        public List<MinisteriosViewModel> GetListadoMinisterios()
         {
             List<MinisteriosViewModel> resultado = new List<MinisteriosViewModel>();
             var cnn = Utilidad.getConexString();
@@ -56,8 +56,7 @@ namespace My_Journal.Models.Ministerios
                     using (SqlCommand sqlCommand = new SqlCommand("[IGLESIA].pcdGetListadoMinisterios", connection))
                     {
                         sqlCommand.CommandType = CommandType.StoredProcedure;
-                        sqlCommand.Parameters.AddWithValue("@FechaIni", desde);
-                        sqlCommand.Parameters.AddWithValue("@FechaFin", hasta);
+
                         connection.Open();
                         var dt = new DataTable();
                         dt.Load(sqlCommand.ExecuteReader());
