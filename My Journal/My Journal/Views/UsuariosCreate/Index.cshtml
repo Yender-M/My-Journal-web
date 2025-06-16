@@ -1,0 +1,72 @@
+﻿@model My_Journal.Models.Usuario.Usuario
+@{
+    ViewData["Title"] = "Crear Usuario";
+}
+@*#696cff*@
+
+
+<form class="form" asp-action="Index" method="post">
+    <div class="card-body">
+        <div class="form-group row">
+            <div class="col-lg-5">
+                <label>Nombres</label>
+                <input asp-for="Nombres" type="text" class="form-control" placeholder="Ingrese sus nombres" />
+            </div>
+            <div class="col-lg-5">
+                <label>Apellidos</label>
+                <input asp-for="Apellidos" type="text" class="form-control" placeholder="Ingrese sus apellidos" />
+            </div>
+            <div class="col-lg-6">
+                <label>Dirección</label>
+                <div class="input-group">
+                    <input asp-for="Direccion" type="text" class="form-control" placeholder="Ingrese su dirección" />
+                    <div class="input-group-append"><span class="input-group-text"><i class="la la-map-marker"></i></span></div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <label>Teléfono</label>
+                <div class="input-group">
+                    <input asp-for="Telefono" type="tel" class="form-control" placeholder="Provea un número de contacto" />
+                    <div class="input-group-append"><span class="input-group-text"><i class="la la-phone"></i></span></div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-lg-4">
+                <label>Usuario</label>
+                <div class="input-group">
+                    <input asp-for="Usuario1" type="text" class="form-control" placeholder="Cree un nombre de usuario" />
+                    <div class="input-group-append"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <label>Contraseña</label>
+                <div class="input-group">
+                    <input asp-for="Clave" type="password" class="form-control" placeholder="Cree una contraseña" />
+                    <div class="input-group-append"><span class="input-group-text"><i class="la la-key"></i></span></div>
+                </div>
+            </div>
+        </div>
+        <label>Estado</label>
+        <div class="form-group form-check">
+            <div class="col-sm-3">
+
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Estado" />Activo
+                </label>
+            </div>
+    </div>
+    <div class="card-footer">
+        <div class="row">
+            <div class="col-lg-6">
+                <button type="submit" class="btn btn-success mr-2">Guardar</button>
+                <button asp-action="Index" class="btn btn-secondary">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</form>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

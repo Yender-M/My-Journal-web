@@ -64,28 +64,9 @@ namespace My_Journal.Controllers
             return View(usuario);
         }
 
-        // GET: Usuarios/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var usuario = await _context.Usuarios.FindAsync(id);
-            if (usuario == null)
-            {
-                return NotFound();
-            }
-            return View(usuario);
-        }
-
-        // POST: Usuarios/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdUsuario,Nombres,Apellidos,Telefono,Direccion,Usuario1,Clave,Estado,UsuarioCreacion,FechaCreacion,UsuarioModifica,FechaModifica")] Usuario usuario)
+        public async Task<IActionResult> Edit(int id, [Bind("IdUsuario,Nombres,Apellidos,Telefono,Direccion,Usuario1,Clave,Estado")] Usuario usuario)
         {
             if (id != usuario.IdUsuario)
             {
@@ -96,6 +77,8 @@ namespace My_Journal.Controllers
             {
                 try
                 {
+  
+
                     _context.Update(usuario);
                     await _context.SaveChangesAsync();
                 }
@@ -110,9 +93,13 @@ namespace My_Journal.Controllers
                         throw;
                     }
                 }
+
                 return RedirectToAction(nameof(Index));
             }
-            return View(usuario);
+
+            // 👇 Si falla, podrías redirigir a Index con TempData (opcional)
+            TempData["Error"] = "Error al actualizar el usuario.";
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Usuarios/Delete/5
