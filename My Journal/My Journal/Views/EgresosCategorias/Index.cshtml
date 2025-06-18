@@ -4,12 +4,10 @@
     ViewData["Title"] = "Egresos Categorias";
 }
 
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css">
-<!-- Font Awesome CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
 <link href="/theme-assets/css/index_style.css" rel="stylesheet" />
 
-<a asp-controller="EgresoCategorias" asp-action="Create" title="" class="btn btn-lg btn-primary box-shadow--4dp">Crear registro</a>
+<a asp-controller="EgresosCategoriasCreate" asp-action="Index" title="" class="btn btn-lg btn-primary box-shadow--4dp">Crear registro</a>
 <br />
 <div class="container" style="margin-top:30px;">
     <div class="form-group row">
@@ -61,12 +59,11 @@
     </table>
 </div>
 <br />
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-<!-- Data Table JS -->
-<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
-<!-- Script JS -->
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
 <script src="/theme-assets/js/Datatable.js"></script>
+}
 

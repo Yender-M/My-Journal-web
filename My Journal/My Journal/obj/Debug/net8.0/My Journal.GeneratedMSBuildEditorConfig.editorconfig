@@ -26,8 +26,8 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = C:\My-Journal\My Journal\My Journal
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/My-Journal/My Journal/My Journal/Views/Diezmos/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGllem1vc1xDcmVhdGUuY3NodG1s
+[C:/My-Journal/My Journal/My Journal/Views/DiezmosCreate/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGllem1vc0NyZWF0ZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/My-Journal/My Journal/My Journal/Views/Diezmos/Delete.cshtml]
@@ -42,20 +42,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGllem1vc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/My-Journal/My Journal/My Journal/Views/EgresoCategorias/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWdyZXNvQ2F0ZWdvcmlhc1xDcmVhdGUuY3NodG1s
+[C:/My-Journal/My Journal/My Journal/Views/EgresosCategoriasCreate/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWdyZXNvc0NhdGVnb3JpYXNDcmVhdGVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/My-Journal/My Journal/My Journal/Views/EgresoCategorias/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWdyZXNvQ2F0ZWdvcmlhc1xFZGl0LmNzaHRtbA==
+[C:/My-Journal/My Journal/My Journal/Views/EgresosCategorias/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWdyZXNvc0NhdGVnb3JpYXNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/My-Journal/My Journal/My Journal/Views/EgresoCategorias/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWdyZXNvQ2F0ZWdvcmlhc1xJbmRleC5jc2h0bWw=
+[C:/My-Journal/My Journal/My Journal/Views/EgresosCategorias/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWdyZXNvc0NhdGVnb3JpYXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/My-Journal/My Journal/My Journal/Views/EgresosVarios/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWdyZXNvc1Zhcmlvc1xDcmVhdGUuY3NodG1s
+[C:/My-Journal/My Journal/My Journal/Views/EgresosVariosCreate/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWdyZXNvc1Zhcmlvc0NyZWF0ZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/My-Journal/My Journal/My Journal/Views/EgresosVarios/Edit.cshtml]
@@ -74,8 +74,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/My-Journal/My Journal/My Journal/Views/IngresosCategorias/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5ncmVzb3NDYXRlZ29yaWFzXENyZWF0ZS5jc2h0bWw=
+[C:/My-Journal/My Journal/My Journal/Views/IngresosCategoriasCreate/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5ncmVzb3NDYXRlZ29yaWFzQ3JlYXRlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/My-Journal/My Journal/My Journal/Views/IngresosCategorias/Edit.cshtml]
@@ -86,8 +86,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5ncmVzb3NDYXRlZ29yaWFzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/My-Journal/My Journal/My Journal/Views/IngresosVarios/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5ncmVzb3NWYXJpb3NcQ3JlYXRlLmNzaHRtbA==
+[C:/My-Journal/My Journal/My Journal/Views/IngresosVariosCreate/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5ncmVzb3NWYXJpb3NDcmVhdGVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/My-Journal/My Journal/My Journal/Views/IngresosVarios/Edit.cshtml]
@@ -102,8 +102,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/My-Journal/My Journal/My Journal/Views/Miembros/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWllbWJyb3NcQ3JlYXRlLmNzaHRtbA==
+[C:/My-Journal/My Journal/My Journal/Views/MiembrosCreate/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWllbWJyb3NDcmVhdGVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/My-Journal/My Journal/My Journal/Views/Miembros/Delete.cshtml]
@@ -142,8 +142,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZyZW5kYXNDYXRlZ29yaWFzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/My-Journal/My Journal/My Journal/Views/Ofrendas/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZyZW5kYXNcQ3JlYXRlLmNzaHRtbA==
+[C:/My-Journal/My Journal/My Journal/Views/OfrendasCreate/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZyZW5kYXNDcmVhdGVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/My-Journal/My Journal/My Journal/Views/Ofrendas/Edit.cshtml]
@@ -154,8 +154,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZyZW5kYXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/My-Journal/My Journal/My Journal/Views/Pagoes/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnb2VzXENyZWF0ZS5jc2h0bWw=
+[C:/My-Journal/My Journal/My Journal/Views/PagoesCreate/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnb2VzQ3JlYXRlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/My-Journal/My Journal/My Journal/Views/Pagoes/Edit.cshtml]

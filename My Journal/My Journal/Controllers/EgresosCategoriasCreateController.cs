@@ -1,31 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using My_Journal.Models.EgresosCategoria;
-using My_Journal.Models.IngresosCategoria;
 
 namespace My_Journal.Controllers
 {
-    public class EgresoCategoriasController : Controller
+    public class EgresosCategoriasCreateController : Controller
     {
-        public IActionResult Index()
-        {
-            try
-            {
-                MantEgresoCategotia mantEgresodaCat = new MantEgresoCategotia();
-                var egresocat = mantEgresodaCat.Getlistado();
-
-                return View(egresocat);
-            }
-            catch (Exception ex)
-            {
-                // Manejar la excepción según sea necesario
-                ViewBag.ErrorMessage = $"Error al cargar el listado de egresos categorias: {ex.Message}";
-                return View(new List<EgresoCategoria>());
-            }
-        }
-
         // GET: OfrendasCat/Create
-        public IActionResult Create()
+        public IActionResult Index()
         {
             try
             {
@@ -86,42 +67,6 @@ namespace My_Journal.Controllers
                 // Devolver la vista con los datos ingresados y el mensaje de error
                 ModelState.AddModelError("", "Ocurrió un error al guardar los datos: " + ex.Message);
                 return View();
-            }
-        }
-
-        // GET: Ofrenda Cat/Edit que lo abre
-        public IActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var viewModel = new MantEgresoCategotia().GetEgresoCategoria(id.Value);
-
-
-            if (viewModel == null)
-            {
-                return NotFound();
-            }
-
-            return View(viewModel);
-        }
-
-        // POST: Ofrenda Cat/Edit que lo guarda
-        public ActionResult Editar(EgresoCategoria EgresoCat)
-        {
-            try
-            {
-                MantEgresoCategotia mant = new MantEgresoCategotia();
-                var egresoCat = mant.Editar(EgresoCat);
-
-                return RedirectToAction("Index");
-            }
-            catch (Exception ex)
-            {
-                // Manejar la excepción según sea necesario
-                return View(EgresoCat);
             }
         }
 

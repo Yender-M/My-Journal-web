@@ -1,27 +1,28 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using My_Journal.Models.EgresosCategoria;
 using My_Journal.Models.IngresosCategoria;
 
 namespace My_Journal.Controllers
 {
-    public class IngresosCategoriasController : Controller
+    public class EgresosCategoriasController : Controller
     {
         public IActionResult Index()
         {
             try
             {
-                MantIngresoCategoria mantIngresodaCat = new MantIngresoCategoria();
-                var ingresocat = mantIngresodaCat.Getlistado();
+                MantEgresoCategotia mantEgresodaCat = new MantEgresoCategotia();
+                var egresocat = mantEgresodaCat.Getlistado();
 
-                return View(ingresocat);
+                return View(egresocat);
             }
             catch (Exception ex)
             {
                 // Manejar la excepción según sea necesario
-                ViewBag.ErrorMessage = $"Error al cargar el listado de ingresos categorias: {ex.Message}";
-                return View(new List<IngresoCategoria>());
+                ViewBag.ErrorMessage = $"Error al cargar el listado de egresos categorias: {ex.Message}";
+                return View(new List<EgresoCategoria>());
             }
         }
-
 
 
         // GET: Ofrenda Cat/Edit que lo abre
@@ -32,7 +33,7 @@ namespace My_Journal.Controllers
                 return NotFound();
             }
 
-            var viewModel = new MantIngresoCategoria().GetOIngresoCategoria(id.Value);
+            var viewModel = new MantEgresoCategotia().GetEgresoCategoria(id.Value);
 
 
             if (viewModel == null)
@@ -44,20 +45,21 @@ namespace My_Journal.Controllers
         }
 
         // POST: Ofrenda Cat/Edit que lo guarda
-        public ActionResult Editar(IngresoCategoria IngresoCat)
+        public ActionResult Editar(EgresoCategoria EgresoCat)
         {
             try
             {
-                MantIngresoCategoria mant = new MantIngresoCategoria();
-                var ingresoCat = mant.Editar(IngresoCat);
+                MantEgresoCategotia mant = new MantEgresoCategotia();
+                var egresoCat = mant.Editar(EgresoCat);
 
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
                 // Manejar la excepción según sea necesario
-                return View(IngresoCat);
+                return View(EgresoCat);
             }
         }
+
     }
 }
