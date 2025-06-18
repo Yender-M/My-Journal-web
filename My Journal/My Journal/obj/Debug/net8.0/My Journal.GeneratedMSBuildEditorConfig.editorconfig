@@ -126,8 +126,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWluaXN0ZXJpb3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/My-Journal/My Journal/My Journal/Views/OfrendasCategoriasCrear/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZyZW5kYXNDYXRlZ29yaWFzQ3JlYXJcSW5kZXguY3NodG1s
+[C:/My-Journal/My Journal/My Journal/Views/OfrendasCategoriasCreate/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZyZW5kYXNDYXRlZ29yaWFzQ3JlYXRlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/My-Journal/My Journal/My Journal/Views/OfrendasCategorias/Delete.cshtml]

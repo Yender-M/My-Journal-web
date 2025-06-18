@@ -19,10 +19,9 @@
     }
 
     #modalEditarUsuario .modal-dialog {
-        max-width: 75%;/* Ajusta este valor a lo que quieras */
+        max-width: 75%; /* Ajusta este valor a lo que quieras */
         width: 100%;
-        margin-right:20%;
-     
+        margin-right: 20%;
     }
 
     .modal-header {
@@ -83,11 +82,11 @@
             </tr>
         </thead>
         <tbody>
-        @foreach (var item in Model)
-        {
+            @foreach (var item in Model)
+            {
 
-            <tr>
-              
+                <tr>
+
                     <td>@Html.DisplayFor(modelItem => item.Nombres)</td>
                     <td>@Html.DisplayFor(modelItem => item.Apellidos)</td>
                     <td>@Html.DisplayFor(modelItem => item.Telefono)</td>
@@ -98,8 +97,8 @@
                         <a class="btn launch" data-toggle="modal" data-target="#modalEditarUsuario"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                         <a class="btn launch" data-toggle="modal" data-target="#staticBackdrop"> <i class="fa fa-trash" aria-hidden="true"></i></a>
                     </td>
-        
-            </tr>
+
+                </tr>
                 <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -131,11 +130,11 @@
                                         <small>Telefono</small>
                                         <small>@Html.DisplayFor(modelItem => item.Telefono)</small>
                                     </div>
-                                           <div class="d-flex justify-content-between">
+                                    <div class="d-flex justify-content-between">
                                         <small>Direccion</small>
                                         <small>@Html.DisplayFor(modelItem => item.Direccion)</small>
                                     </div>
-                                           <div class="d-flex justify-content-between">
+                                    <div class="d-flex justify-content-between">
                                         <small>Usuario</small>
                                         <small>@Html.DisplayFor(modelItem => item.Usuario1)</small>
                                     </div>
@@ -168,13 +167,13 @@
                                 <div class="modal-body">
 
                                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                                    <input type="hidden"  />
+                                    <input type="hidden" />
 
                                     <div class="form-group row">
                                         <div class="col-lg-5 mb-3">
-                                            <label  class="control-label">Nombres</label>
+                                            <label class="control-label">Nombres</label>
                                             <input value=@Html.DisplayFor(modelItem => item.Nombres) class="form-control" />
-                                            <span  class="text-danger"></span>
+                                            <span class="text-danger"></span>
                                         </div>
                                         <div class="col-lg-5 mb-3">
                                             <label class="control-label">Apellidos:</label>
@@ -182,31 +181,31 @@
                                             <span class="text-danger"></span>
                                         </div>
                                         <div class="col-lg-6 mb-3">
-                                            <label  class="control-label">Dirección:</label>
+                                            <label class="control-label">Dirección:</label>
                                             <div class="input-group">
                                                 <input value=@Html.DisplayFor(modelItem => item.Direccion) type="text" class="form-control" placeholder="Enter your address" />
                                                 <div class="input-group-append"><span class="input-group-text"><i class="la la-map-marker"></i></span></div>
                                             </div>
-                                            <span  class="text-danger"></span>
+                                            <span class="text-danger"></span>
                                         </div>
                                         <div class="col-lg-5 mb-3">
-                                            <label  class="control-label">Teléfono:</label>
+                                            <label class="control-label">Teléfono:</label>
                                             <div class="input-group">
                                                 <input value=@Html.DisplayFor(modelItem => item.Telefono) type="tel" class="form-control" placeholder="Provide a contact number" />
                                                 <div class="input-group-append"><span class="input-group-text"><i class="la la-phone"></i></span></div>
                                             </div>
-                                            <span  class="text-danger"></span>
+                                            <span class="text-danger"></span>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <div class="col-lg-4 mb-3">
-                                            <label  class="control-label">Usuario:</label>
+                                            <label class="control-label">Usuario:</label>
                                             <div class="input-group">
                                                 <input value=@Html.DisplayFor(modelItem => item.Usuario1) type="text" class="form-control" placeholder="Create a new user" />
                                                 <div class="input-group-append"><span class="input-group-text"><i class="la la-user"></i></span></div>
                                             </div>
-                                            <span  class="text-danger"></span>
+                                            <span class="text-danger"></span>
                                         </div>
                                         <div class="col-lg-4 mb-3">
                                             <label class="control-label">Contraseña:</label>
@@ -214,11 +213,11 @@
                                                 <input type="text" class="form-control" placeholder="Create a new password" />
                                                 <div class="input-group-append"><span class="input-group-text"><i class="la la-key"></i></span></div>
                                             </div>
-                                            <span  class="text-danger"></span>
+                                            <span class="text-danger"></span>
                                         </div>
                                     </div>
 
-                                    <label  class="control-label">Estado</label>
+                                    <label class="control-label">Estado</label>
                                     <div class="form-group form-check mb-3">
                                         <div class="col-sm-3">
                                             <label class="form-check-label">
@@ -260,4 +259,3 @@
        Función DataTable provee la tabla, filtros, paginación, barra de busqueda
 -->
 <script src="/theme-assets/js/Datatable.js"></script>
-
