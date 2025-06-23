@@ -66,21 +66,15 @@ namespace My_Journal.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdUsuario,Nombres,Apellidos,Telefono,Direccion,Usuario1,Clave,Estado")] Usuario usuario)
+        public async Task<IActionResult> Edit([Bind("IdUsuario,Nombres,Apellidos,Telefono,Direccion,Usuario1,Clave,Estado")] Usuario usuario)
         {
-            if (id != usuario.IdUsuario)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
                 try
                 {
-  
-
                     _context.Update(usuario);
                     await _context.SaveChangesAsync();
+                    TempData["Success"] = "Usuario actualizado correctamente.";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -93,14 +87,13 @@ namespace My_Journal.Controllers
                         throw;
                     }
                 }
-
                 return RedirectToAction(nameof(Index));
             }
 
-            // 👇 Si falla, podrías redirigir a Index con TempData (opcional)
             TempData["Error"] = "Error al actualizar el usuario.";
             return RedirectToAction(nameof(Index));
         }
+
 
         // GET: Usuarios/Delete/5
         public async Task<IActionResult> Delete(int? id)

@@ -4,10 +4,9 @@
     ViewData["Title"] = "Miembros";
 }
 
-
 <link href="/theme-assets/css/index_style.css" rel="stylesheet" />
 
-<a asp-controller="MiembrosCreate" asp-action="Index" title="" class="btn btn-lg btn-primary box-shadow--4dp">Crear registro</a>
+<a asp-controller="MiembrosCreate" asp-action="Index" class="btn btn-lg btn-primary box-shadow--4dp">Crear registro</a>
 
 <div class="container" style="margin-top: 30px;">
     <form id="filterForm" asp-controller="Miembros" asp-action="Index" method="get">
@@ -50,7 +49,6 @@
     <tbody>
         @foreach (var item in Model)
         {
-            // Determinar si la fila debe ser anulada
             var rowClass = item.Estado == 0 ? "" : "";
             <tr class="@rowClass">
                 <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
@@ -69,8 +67,18 @@
                         <span>Activo</span>
                     }
                 </td>
-                <td>                 
-                    <a class="btn launch" asp-action="Edit" asp-route-id="@item.IdMiembro">
+                <td>
+                    <a class="btn launch btnEditarMiembro"
+                       data-toggle="modal"
+                       data-target="#modalEditarMiembro"
+                       data-id="@item.IdMiembro"
+                       data-nombre="@item.Nombre"
+                       data-apellido="@item.Apellido"
+                       data-direccion="@item.Direccion"
+                       data-telefono="@item.Telefono"
+                       data-fechanacimiento="@item.FechaNacimiento.ToString("yyyy-MM-dd")"
+                       data-fechabautismo="@item.FechaBautismo.ToString("yyyy-MM-dd")"
+                       data-estado="@item.Estado">
                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     </a>
                 </td>
@@ -79,24 +87,110 @@
     </tbody>
 </table>
 
+<!-- MODAL DE EDICIÓN PARA MIEMBROS -->
+<div class="modal fade" id="modalEditarMiembro" tabindex="-1" aria-labelledby="modalMiembroLabel" aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 600px; width: 90vw;">
+        <div class="modal-content">
+            <form asp-action="Edit" method="post" id="formEditarMiembro">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar - <span id="modalMiembroNombre"></span></h5>
+                    <button type="button" class="btn-close" data-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+
+                    <input type="hidden" id="EditIdMiembro" name="IdMiembro" />
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input id="EditNombre" name="Nombre" class="form-control" />
+                    </div>
+                    <div class="form-group mt-3">
+                        <label>Apellido</label>
+                        <input id="EditApellido" name="Apellido" class="form-control" />
+                    </div>
+                    <div class="form-group mt-3">
+                        <label>Dirección</label>
+                        <input id="EditDireccion" name="Direccion" class="form-control" />
+                    </div>
+                    <div class="form-group mt-3">
+                        <label>Teléfono</label>
+                        <input id="EditTelefono" name="Telefono" class="form-control" />
+                    </div>
+                    <div class="form-group mt-3">
+                        <label>Fecha de Nacimiento</label>
+                        <input id="EditFechaNacimiento" name="FechaNacimiento" type="date" class="form-control" />
+                    </div>
+                    <div class="form-group mt-3">
+                        <label>Fecha de Bautismo</label>
+                        <input id="EditFechaBautismo" name="FechaBautismo" type="date" class="form-control" />
+                    </div>
+
+                    <!-- TOGGLE DE ESTADO PARA MIEMBRO -->
+                    <label class="label mt-3">
+                        <div class="toggle">
+                            <input class="toggle-state" id="estadoCheckMiembro" name="Estado" type="checkbox" />
+                            <div class="indicator"></div>
+                        </div>
+                        <div class="label-text" id="estadoLabelMiembro">Inactivo</div>
+                    </label>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success" type="submit">Guardar</button>
+                    <button class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+    @await Html.RenderPartialAsync("_ValidationScriptsPartial")
+
     <script src="/theme-assets/js/Datatable.js"></script>
 
-<script>
-    $(document).ready(function () {
-        // Cargar las fechas de la sesión
-        var startDate = '@ViewBag.StartDate';
-        var endDate = '@ViewBag.EndDate';
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
 
-        $('#startDate').val(startDate);
-        $('#endDate').val(endDate);
+        const estadoCheckMiembro = document.getElementById("estadoCheckMiembro");
+        const estadoLabelMiembro = document.getElementById("estadoLabelMiembro");
+        const toggleContainerMiembro = document.querySelector('#modalEditarMiembro .toggle');
 
-        // Inicializar DataTable
-        $('#example').DataTable();
-    });
-</script>
+        $(document).on('click', '.btnEditarMiembro', function () {
+            var btn = $(this);
+            $("#EditIdMiembro").val(btn.data("id"));
+            $("#EditNombre").val(btn.data("nombre"));
+            $("#EditApellido").val(btn.data("apellido"));
+            $("#EditDireccion").val(btn.data("direccion"));
+            $("#EditTelefono").val(btn.data("telefono"));
+            $("#EditFechaNacimiento").val(btn.data("fechanacimiento"));
+            $("#EditFechaBautismo").val(btn.data("fechabautismo"));
+            $("#modalMiembroNombre").text(btn.data("nombre") + " " + btn.data("apellido"));
+
+            var estado = btn.data("estado");
+            const isActive = estado === true || estado === "True" || estado === "true" || estado == 1;
+
+            $("#estadoCheckMiembro").prop("checked", isActive);
+
+            if (isActive) {
+                estadoLabelMiembro.textContent = "Activo";
+                estadoLabelMiembro.style.color = "#006400"; // Verde
+            } else {
+                estadoLabelMiembro.textContent = "Inactivo";
+                estadoLabelMiembro.style.color = "#394a56"; // Gris estándar
+                toggleContainerMiembro.style.backgroundColor = "#ecf0f3"; // Fondo estándar
+            }
+        });
+
+        estadoCheckMiembro.addEventListener("change", function () {
+            if (estadoCheckMiembro.checked) {
+                estadoLabelMiembro.textContent = "Activo";
+                estadoLabelMiembro.style.color = "#006400"; // Verde
+            } else {
+                estadoLabelMiembro.textContent = "Inactivo";
+                estadoLabelMiembro.style.color = "#394a56"; // Gris estándar
+                toggleContainerMiembro.style.backgroundColor = "#ecf0f3"; // Fondo estándar
+            }
+        });
+    </script>
 }
-

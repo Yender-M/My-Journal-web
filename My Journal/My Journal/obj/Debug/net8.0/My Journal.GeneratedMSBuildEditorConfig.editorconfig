@@ -190,6 +190,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NDcmVhdGVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/My-Journal/My Journal/My Journal/Views/UsuariosEdit/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NFZGl0XEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/My-Journal/My Journal/My Journal/Views/UsuariosEdit/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NFZGl0XEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
