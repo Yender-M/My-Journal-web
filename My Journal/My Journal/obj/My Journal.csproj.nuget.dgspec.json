@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\My-Journal-web\\My Journal\\My Journal\\My Journal.csproj": {}
+    "C:\\My-Journal\\My Journal\\My Journal\\My Journal.csproj": {}
   },
   "projects": {
-    "C:\\My-Journal-web\\My Journal\\My Journal\\My Journal.csproj": {
+    "C:\\My-Journal\\My Journal\\My Journal\\My Journal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\My-Journal-web\\My Journal\\My Journal\\My Journal.csproj",
+        "projectUniqueName": "C:\\My-Journal\\My Journal\\My Journal\\My Journal.csproj",
         "projectName": "My Journal",
-        "projectPath": "C:\\My-Journal-web\\My Journal\\My Journal\\My Journal.csproj",
+        "projectPath": "C:\\My-Journal\\My Journal\\My Journal\\My Journal.csproj",
         "packagesPath": "C:\\Users\\cinth\\.nuget\\packages\\",
-        "outputPath": "C:\\My-Journal-web\\My Journal\\My Journal\\obj\\",
+        "outputPath": "C:\\My-Journal\\My Journal\\My Journal\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -77,7 +77,7 @@
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[8.0.7, )"
             }
           },
           "imports": [

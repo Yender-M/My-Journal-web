@@ -1,0 +1,120 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="modal fade" id="modalEditarUsuario" tabindex="-1" aria-labelledby="modalUsuarioLabel" aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 750px; width: 90vw;">
+        <div class="modal-content">
+            <form asp-action="Edit" method="post" class="form" id="formEditarUsuario">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar Usuario: <span id="modalUsuarioNombre"></span></h5>
+                    <button type="button" class="btn-close" data-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+
+                    <input type="hidden" id="EditUsuarioId" name="IdUsuario" />
+
+                    <div class="form-group row">
+                        <div class="col-lg-5 mb-3">
+                            <label>Nombres</label>
+                            <input id="EditNombres" name="Nombres" class="form-control" />
+                        </div>
+                        <div class="col-lg-5 mb-3">
+                            <label>Apellidos</label>
+                            <input id="EditApellidos" name="Apellidos" class="form-control" />
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <label>Dirección</label>
+                            <input id="EditDireccion" name="Direccion" class="form-control" />
+                        </div>
+                        <div class="col-lg-5 mb-3">
+                            <label>Teléfono</label>
+                            <input id="EditTelefono" name="Telefono" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-lg-4 mb-3">
+                            <label>Usuario</label>
+                            <input id="EditUsuario1" name="Usuario1" class="form-control" />
+                        </div>
+                        <div class="col-lg-4 mb-3">
+                            <label>Contraseña</label>
+                            <input id="EditClave" name="Clave" class="form-control" />
+                        </div>
+                    </div>
+
+                    <!-- TOGGLE DE ESTADO -->
+                    <label class="label">
+                        <div class="toggle">
+                            <input class="toggle-state" id="estadoCheck" name="Estado" type="checkbox" />
+                            <div class="indicator"></div>
+                        </div>
+                        <div class="label-text" id="estadoLabel">No activo</div>
+                    </label>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Guardar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@await Html.PartialAsync("../UsuariosEdit/_Index.cshtml")
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+<script>
+    const estadoCheck = document.getElementById("estadoCheck");
+    const estadoLabel = document.getElementById("estadoLabel");
+    const toggleContainer = document.querySelector(".toggle");
+
+    // Cuando haces clic en editar
+    $(document).on('click', '.btnEditar', function () {
+        var btn = $(this);
+        $("#EditUsuarioId").val(btn.data("id"));
+        $("#EditNombres").val(btn.data("nombres"));
+        $("#EditApellidos").val(btn.data("apellidos"));
+        $("#EditDireccion").val(btn.data("direccion"));
+        $("#EditTelefono").val(btn.data("telefono"));
+        $("#EditUsuario1").val(btn.data("usuario"));
+        $("#EditClave").val(btn.data("clave"));
+        $("#modalUsuarioNombre").text(btn.data("usuario"));
+
+        var estado = btn.data("estado");
+
+        // Asignamos el estado al checkbox
+        const isActive = estado === true || estado === "True" || estado === "true" || estado == 1;
+        $("#estadoCheck").prop("checked", isActive);
+
+        // Ahora actualizamos inmediatamente la presentación del label y el fondo
+        if (isActive) {
+            estadoLabel.textContent = "Activo";
+            estadoLabel.style.color = "#006400"; // Verde
+        } else {
+            estadoLabel.textContent = "No activo";
+            estadoLabel.style.color = "#394a56"; // Gris estándar
+            toggleContainer.style.backgroundColor = "#ecf0f3"; // Fondo estándar
+        }
+    });
+
+    // Cuando haces click en el checkbox para cambiar estado
+    estadoCheck.addEventListener("change", function () {
+        if (estadoCheck.checked) {
+            estadoLabel.textContent = "Activo";
+            estadoLabel.style.color = "#006400"; // Verde
+        } else {
+            estadoLabel.textContent = "No activo";
+            estadoLabel.style.color = "#394a56"; // Gris estándar
+            toggleContainer.style.backgroundColor = "#ecf0f3"; // Fondo estándar
+        }
+    });
+</script>
+}

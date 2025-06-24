@@ -4,12 +4,9 @@
     ViewData["Title"] = "Diezmos";
 }
 
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css">
-<!-- Font Awesome CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <link href="/theme-assets/css/index_style.css" rel="stylesheet" />
 
-<a asp-controller="Diezmos" asp-action="Create" title="" class="btn btn-lg btn-primary box-shadow--4dp">Crear registro</a>
+<a asp-controller="DiezmosCreate" asp-action="Index" title="" class="btn btn-lg btn-primary box-shadow--4dp">Crear registro</a>
 
 <div class="container" style="margin-top: 30px;">
     <form id="filterForm" asp-controller="Diezmos" asp-action="Index" method="get">
@@ -51,7 +48,6 @@
     <tbody>
         @foreach (var item in Model)
         {
-            // Determinar si la fila debe ser anulada
             var rowClass = item.Diezmo.Estado == 0 ? "anulado" : "";
             <tr class="@rowClass">
                 <td>@Html.DisplayFor(modelItem => item.Miembro.Nombre)</td>
@@ -67,17 +63,28 @@
                     }
                     else
                     {
-                        <a class="btn launch" asp-action="Edit" asp-route-id="@item.Diezmo.IdDiezmo">
+                        <!-- Botón para abrir modal de edición -->
+                        <a class="btn launch btnEditarDiezmo"
+                           data-toggle="modal"
+                           data-target="#modalEditarDiezmo"
+                           data-id="@item.Diezmo.IdDiezmo"
+                           data-descripcion="@item.Diezmo.Descripcion"
+                           data-cantidad="@item.Diezmo.Cantidad"
+                           data-tasacambio="@item.Diezmo.TasaCambio"
+                           data-estado="@item.Diezmo.Estado">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                         </a>
+                        <!-- Botón para anular -->
                         <a class="btn launch" data-toggle="modal" data-target="#staticBackdrop-@item.Diezmo.IdDiezmo">
                             <i class="fa fa-trash" aria-hidden="true"></i>
                         </a>
                     }
                 </td>
             </tr>
+
             @if (item.Diezmo.Estado != 0)
             {
+                <!-- Modal para anular -->
                 <div class="modal fade" id="staticBackdrop-@item.Diezmo.IdDiezmo" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -133,25 +140,112 @@
     </tbody>
 </table>
 
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-<!-- Data Table JS -->
-<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
-<!-- Script JS -->
-<script src="/theme-assets/js/Datatable.js"></script>
+<!-- MODAL DE EDICIÓN PARA DIEZMOS -->
+<div class="modal fade" id="modalEditarDiezmo" tabindex="-1" aria-labelledby="modalDiezmoLabel" aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 600px; width: 90vw;">
+        <div class="modal-content">
+            <form asp-action="Edit" method="post" class="form" id="formEditarDiezmo">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar Diezmo - <span id="modalDiezmoDescripcion"></span></h5>
+                    <button type="button" class="btn-close" data-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
 
-<script>
-    $(document).ready(function () {
-        // Cargar las fechas de la sesión
-        var startDate = '@ViewBag.StartDate';
-        var endDate = '@ViewBag.EndDate';
+                    <input type="hidden" id="EditIdDiezmo" name="IdDiezmo" />
 
-        $('#startDate').val(startDate);
-        $('#endDate').val(endDate);
+                    <div class="form-group">
+                        <label>Descripción</label>
+                        <input id="EditDescripcionDiezmo" name="Descripcion" class="form-control" />
+                    </div>
 
-        // Inicializar DataTable
-        $('#example').DataTable();
-    });
-</script>
+                    <div class="form-group mt-3">
+                        <label>Cantidad</label>
+                        <input id="EditCantidadDiezmo" name="Cantidad" class="form-control" />
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <label>Tasa de Cambio</label>
+                        <input id="EditTasaCambioDiezmo" name="TasaCambio" class="form-control" />
+                    </div>
+
+                    <!-- TOGGLE DE ESTADO PARA DIEZMOS -->
+                    <label class="label mt-3">
+                        <div class="toggle">
+                            <input class="toggle-state" id="estadoCheckDiezmo" name="Estado" type="checkbox" />
+                            <div class="indicator"></div>
+                        </div>
+                        <div class="label-text" id="estadoLabelDiezmo">No activo</div>
+                    </label>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Guardar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="/theme-assets/js/Datatable.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var startDate = '@ViewBag.StartDate';
+            var endDate = '@ViewBag.EndDate';
+
+            $('#startDate').val(startDate);
+            $('#endDate').val(endDate);
+
+            $('#example').DataTable();
+        });
+
+        const estadoCheckDiezmo = document.getElementById("estadoCheckDiezmo");
+        const estadoLabelDiezmo = document.getElementById("estadoLabelDiezmo");
+        const toggleContainerDiezmo = document.querySelector('#modalEditarDiezmo .toggle');
+
+        // Abrir modal y llenar datos
+        $(document).on('click', '.btnEditarDiezmo', function () {
+            var btn = $(this);
+
+            $("#EditIdDiezmo").val(btn.data("id"));
+            $("#EditDescripcionDiezmo").val(btn.data("descripcion"));
+            $("#EditCantidadDiezmo").val(btn.data("cantidad"));
+            $("#EditTasaCambioDiezmo").val(btn.data("tasacambio"));
+            $("#modalDiezmoDescripcion").text(btn.data("descripcion"));
+
+            var estado = btn.data("estado");
+            const isActive = estado === true || estado === "True" || estado === "true" || estado == 1;
+
+            $("#estadoCheckDiezmo").prop("checked", isActive);
+
+            if (isActive) {
+                estadoLabelDiezmo.textContent = "Activo";
+                estadoLabelDiezmo.style.color = "#006400"; // Verde
+                toggleContainerDiezmo.style.backgroundColor = "#006400";
+            } else {
+                estadoLabelDiezmo.textContent = "No activo";
+                estadoLabelDiezmo.style.color = "#394a56"; // Gris estándar
+                toggleContainerDiezmo.style.backgroundColor = "#ecf0f3"; // Fondo estándar
+            }
+        });
+
+        // Cambiar etiqueta cuando se clickea toggle
+        estadoCheckDiezmo.addEventListener("change", function () {
+            if (estadoCheckDiezmo.checked) {
+                estadoLabelDiezmo.textContent = "Activo";
+                estadoLabelDiezmo.style.color = "#006400"; // Verde
+                toggleContainerDiezmo.style.backgroundColor = "#006400";
+            } else {
+                estadoLabelDiezmo.textContent = "No activo";
+                estadoLabelDiezmo.style.color = "#394a56"; // Gris estándar
+                toggleContainerDiezmo.style.backgroundColor = "#ecf0f3"; // Fondo estándar
+            }
+        });
+    </script>
+}
