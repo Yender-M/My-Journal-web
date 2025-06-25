@@ -99,7 +99,9 @@
 <div class="modal fade" id="modalEditarCategoria" tabindex="-1" aria-labelledby="modalCategoriaLabel" aria-hidden="true">
     <div class="modal-dialog" style="max-width: 600px; width: 90vw;">
         <div class="modal-content">
-            <form asp-action="Edit" method="post" class="form" id="formEditarCategoria">
+            <form id="formEditarCategoria" class="form">
+                @Html.AntiForgeryToken()
+
                 <div class="modal-header">
                     <h5 class="modal-title">Editar - <span id="modalCategoriaNombre"></span></h5>
                     <button type="button" class="btn-close" data-dismiss="modal"></button>
@@ -140,6 +142,7 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/theme-assets/js/Datatable.js"></script>
     <script>
         const estadoCheckCat = document.getElementById("estadoCheckCat");
@@ -180,5 +183,60 @@
                 toggleContainerCat.style.backgroundColor = "#ecf0f3"; // Fondo estándar
             }
         });
+
+
+        $(document).on('submit', '#formEditarCategoria', async function (e) {
+            e.preventDefault();
+
+            const categoriaData = {
+                IdCatOfrenda: $("#EditIdCatOfrenda").val(),
+                Nombre: $("#EditNombre").val(),
+                Descripcion: $("#EditDescripcion").val(),
+                Estado: $("#estadoCheckCat").is(":checked")
+            };
+
+            try {
+                const response = await fetch("/OfrendasCategorias/Editar", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val()
+                    },
+                    body: JSON.stringify(categoriaData)
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Categoría actualizada',
+                        text: result.message,
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        $("#modalEditarCategoria").modal('hide');
+                        location.reload();
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: result.message || 'Hubo un error al actualizar la categoría',
+                        confirmButtonText: 'OK'
+                    });
+                }
+            } catch (error) {
+                console.error(error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error de comunicación',
+                    text: 'Hubo un error al conectar con el servidor',
+                    confirmButtonText: 'OK'
+                });
+            }
+        });
+
+
+
     </script>
 }

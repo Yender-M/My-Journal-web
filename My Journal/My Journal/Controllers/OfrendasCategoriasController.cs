@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using My_Journal.Models.OfrendaCategoria;
-
 namespace My_Journal.Controllers
 {
     public class OfrendasCategoriasController : Controller
@@ -87,40 +86,63 @@ namespace My_Journal.Controllers
             }
         }
 
-        // GET: Ofrenda Cat/Edit que lo abre
-        public IActionResult Edit(int? id)
+        //[HttpPost]
+        //public IActionResult Editar([FromBody] OfrendasCategoria ofrendaCat)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(new { success = false, message = "Modelo no válido" });
+        //    }
+
+        //    try
+        //    {
+        //        MantOfrendaCategoria mant = new MantOfrendaCategoria();
+        //        var resultado = mant.Editar(ofrendaCat);
+
+        //        if (resultado == "OK")
+        //        {
+        //            return Json(new { success = true, message = "Categoría actualizada correctamente" });
+        //        }
+        //        else
+        //        {
+        //            return BadRequest(new { success = false, message = "Error al actualizar la categoría" });
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return StatusCode(500, new { success = false, message = "Error interno del servidor" });
+        //    }
+        //}
+        [HttpPost]
+        public IActionResult Editar([FromBody] OfrendasCategoria OfrendaCat)
         {
-            if (id == null)
+            if (!ModelState.IsValid)
             {
-                return NotFound();
+                var errores = ModelState.Values
+                    .SelectMany(v => v.Errors.Select(b => b.ErrorMessage))
+                    .ToList();
+                return BadRequest(new { success = false, message = "Modelo no válido", errores });
             }
 
-            var viewModel = new MantOfrendaCategoria().GetOfrendaCategoria(id.Value);
-
-
-            if (viewModel == null)
-            {
-                return NotFound();
-            }
-
-            return View(viewModel);
-        }
-
-        // POST: Ofrenda Cat/Edit que lo guarda
-        public ActionResult Editar(OfrendasCategoria OfrenfaCat)
-        {
             try
             {
                 MantOfrendaCategoria mant = new MantOfrendaCategoria();
-                var ofrendaCat = mant.Editar(OfrenfaCat);
+                var resultado = mant.Editar(OfrendaCat);
 
-                return RedirectToAction("Index");
+                if (string.IsNullOrEmpty(resultado) || resultado == "OK")
+                {
+                    return Json(new { success = true, message = "Categoría actualizada correctamente" });
+                }
+                else
+                {
+                    return BadRequest(new { success = false, message = resultado });
+                }
             }
             catch (Exception ex)
             {
-                // Manejar la excepción según sea necesario
-                return View(OfrenfaCat);
+                return StatusCode(500, new { success = false, message = "Error interno del servidor: " + ex.Message });
             }
         }
+
     }
 }

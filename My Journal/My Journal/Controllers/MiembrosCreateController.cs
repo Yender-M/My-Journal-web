@@ -16,7 +16,7 @@ namespace My_Journal.Controllers
                     Miembros = new Miembro()
                 };
 
-                return View(model);
+                return View();
             }
             catch (Exception ex)
             {
@@ -26,7 +26,7 @@ namespace My_Journal.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(List<string> Nombre, List<string> Apellido, List<string> Direccion, List<string> Telefono, List<DateTime> FechaNacimiento, List<DateTime> FechaBautismo)
+        public ActionResult Index(List<string> Nombre, List<string> Apellido, List<string> Direccion, List<string> Telefono, List<DateTime> FechaNacimiento, List<DateTime> FechaBautismo)
         {
             try
             {
