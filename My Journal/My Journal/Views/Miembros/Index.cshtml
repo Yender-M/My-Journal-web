@@ -6,8 +6,9 @@
 
 <link href="/theme-assets/css/index_style.css" rel="stylesheet" />
 <style>
-
-
+    /* ==========================
+               ESTILOS GENERALES (no cambiar)
+               ========================== */
     .label {
         display: inline-flex;
         align-items: center;
@@ -50,6 +51,42 @@
         background-color: #006400;
     }
 
+    /* ==========================
+               ESTILOS PARA OTRO MODAL (#modalEditarUsuario)
+               ========================== */
+    #modalEditarUsuario .modal-content {
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    #modalEditarUsuario .modal-dialog {
+        max-width: 75%;
+        width: 100%;
+        margin-right: 20%;
+    }
+
+    #modalEditarUsuario .modal-header {
+        border-bottom: none;
+        padding: 20px;
+    }
+
+    #modalEditarUsuario .modal-title {
+        font-weight: bold;
+        color: #343a40;
+    }
+
+    #modalEditarUsuario .modal-body {
+        padding: 20px;
+    }
+
+    #modalEditarUsuario .modal-footer {
+        border-top: none;
+        padding: 20px;
+    }
+
+    .swal2-actions .btn {
+        margin: 0 0.25rem; /* Ajusta el margen horizontal entre botones */
+    }
 </style>
 
 <a asp-controller="MiembrosCreate" asp-action="Index" class="btn btn-lg btn-primary box-shadow--4dp">Crear registro</a>
@@ -95,8 +132,7 @@
     <tbody>
         @foreach (var item in Model)
         {
-            var rowClass = item.Estado == 0 ? "" : "";
-            <tr class="@rowClass">
+            <tr>
                 <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
                 <td>@Html.DisplayFor(modelItem => item.Apellido)</td>
                 <td>@Html.DisplayFor(modelItem => item.Direccion)</td>
@@ -104,14 +140,7 @@
                 <td>@item.FechaNacimiento.ToString("dd/MM/yyyy")</td>
                 <td>@item.FechaBautismo.ToString("dd/MM/yyyy")</td>
                 <td>
-                    @if (item.Estado == 0)
-                    {
-                        <span>Inactivo</span>
-                    }
-                    else
-                    {
-                        <span>Activo</span>
-                    }
+                    @(item.Estado == 0 ? "Inactivo" : "Activo")
                 </td>
                 <td>
                     <a class="btn launch btnEditarMiembro"
@@ -127,6 +156,14 @@
                        data-estado="@item.Estado">
                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     </a>
+                    <button class="btn btn-danger"
+                            data-miembro-id="@item.IdMiembro"
+                            data-miembro-nombre="@item.Nombre @item.Apellido"
+                            title="Eliminar"
+                            onClick="confirmDeleteMiembro(this)">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </button>
+
                 </td>
             </tr>
         }
@@ -137,7 +174,8 @@
 <div class="modal fade" id="modalEditarMiembro" tabindex="-1" aria-labelledby="modalMiembroLabel" aria-hidden="true">
     <div class="modal-dialog" style="max-width: 600px; width: 90vw;">
         <div class="modal-content">
-            <form asp-action="Edit" method="post" id="formEditarMiembro">
+            <form id="formEditarMiembro" class="form">
+                @Html.AntiForgeryToken()
                 <div class="modal-header">
                     <h5 class="modal-title">Editar - <span id="modalMiembroNombre"></span></h5>
                     <button type="button" class="btn-close" data-dismiss="modal"></button>
@@ -171,12 +209,12 @@
                     </div>
 
                     <!-- TOGGLE DE ESTADO PARA MIEMBRO -->
-                    <label class="label">
+                    <label class="label mt-3">
                         <div class="toggle">
-                            <input class="toggle-state" id="estadoCheck" name="Estado" type="checkbox" />
+                            <input class="toggle-state" id="estadoCheckMiembro" name="Estado" type="checkbox" />
                             <div class="indicator"></div>
                         </div>
-                        <div class="label-text" id="estadoLabel">No activo</div>
+                        <div class="label-text" id="estadoLabelMiembro">Inactivo</div>
                     </label>
                 </div>
                 <div class="modal-footer">
@@ -187,12 +225,12 @@
         </div>
     </div>
 </div>
-
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
     <script src="/theme-assets/js/Datatable.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
         $(document).ready(function () {
@@ -239,5 +277,102 @@
                 toggleContainerMiembro.style.backgroundColor = "#ecf0f3"; // Fondo estándar
             }
         });
+
+        // Enviar formulario por AJAX
+        $(document).on('submit', '#formEditarMiembro', async function (e) {
+            e.preventDefault();
+
+            const miembroData = {
+                IdMiembro: $("#EditIdMiembro").val(),
+                Nombre: $("#EditNombre").val(),
+                Apellido: $("#EditApellido").val(),
+                Direccion: $("#EditDireccion").val(),
+                Telefono: $("#EditTelefono").val(),
+                FechaNacimiento: $("#EditFechaNacimiento").val(),
+                FechaBautismo: $("#EditFechaBautismo").val(),
+                Estado: $("#estadoCheckMiembro").is(":checked") ? 1 : 0
+            };
+
+            try {
+                const response = await fetch("/Miembros/Editar", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val()
+                    },
+                    body: JSON.stringify(miembroData)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.message || 'Error al actualizar');
+                }
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Miembro actualizado',
+                    text: 'El miembro ha sido actualizado correctamente.',
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    $("#modalEditarMiembro").modal('hide');
+                    location.reload();
+                });
+            } catch (error) {
+                console.error(error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: error.message || 'Hubo un error al conectar con el servidor',
+                    confirmButtonText: 'OK'
+                });
+            }
+        });
+
+
+        function confirmDeleteMiembro(button) {
+            const miembroId = button.getAttribute('data-miembro-id');
+            const miembroNombre = button.getAttribute('data-miembro-nombre');
+            const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: "btn btn-success",
+                    cancelButton: "btn btn-danger"
+                },
+                buttonsStyling: false
+            });
+
+            swalWithBootstrapButtons.fire({
+                title: "¿Estás seguro?",
+                text: `Estás a punto de eliminar al miembro "${miembroNombre}". ¡Esta acción no se puede deshacer!`,
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Sí, eliminar",
+                cancelButtonText: "No, cancelar",
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Crear y enviar formulario para eliminar
+                    const form = document.createElement("form");
+                    form.method = "POST";
+                    form.action = `/Miembros/Delete/${miembroId}`;
+
+                    const antiForgeryInput = document.createElement("input");
+                    antiForgeryInput.type = "hidden";
+                    antiForgeryInput.name = "__RequestVerificationToken";
+                    antiForgeryInput.value = token;
+
+                    form.appendChild(antiForgeryInput);
+                    document.body.appendChild(form);
+                    form.submit();
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    swalWithBootstrapButtons.fire({
+                        title: "Cancelado",
+                        text: "La eliminación no se realizó.",
+                        icon: "error"
+                    });
+                }
+            });
+        }
     </script>
 }

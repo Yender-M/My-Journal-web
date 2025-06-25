@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using My_Journal.Models.Divisa;
 using My_Journal.Models.Miembros;
 using My_Journal.Models.Ofrenda;
@@ -9,6 +10,12 @@ namespace My_Journal.Controllers
 {
     public class MiembrosController : Controller
     {
+        private readonly CbnIglesiaContext _context;
+
+        public MiembrosController(CbnIglesiaContext context)
+        {
+            _context = context;
+        }
         public IActionResult Index(DateTime? startDate, DateTime? endDate)
         {
             try
@@ -157,39 +164,43 @@ namespace My_Journal.Controllers
         }
 
         // GET: Miembro/Edit que lo abre
-        public IActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
-            var viewModel = new MantMiembro().GetMiembro(id.Value);
-
-            
-            if (viewModel == null)
-            {
-                return NotFound();
-            }
-
-            return View(viewModel);
-        }
 
         // POST: Miembro/Edit que lo guarda
-        public ActionResult Editar(Miembro miembro)
+        [HttpPost]
+        public IActionResult Editar([FromBody] Miembro miembro)
         {
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(new { success = false, message = "Modelo no válido" });
+            //}
+
             try
             {
                 MantMiembro mant = new MantMiembro();
-                var miembros = mant.Editar(miembro);
+                mant.Editar(miembro);
 
-                return RedirectToAction("Index");
+                return Ok(new { success = true, message = "Miembro actualizado correctamente" });
             }
             catch (Exception ex)
             {
-                // Manejar la excepción según sea necesario
-                return View(miembro);
+                return StatusCode(500, new { success = false, message = ex.Message });
             }
         }
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var miembro = await _context.Miembros.FindAsync(id);
+            if (miembro != null)
+            {
+                _context.Miembros.Remove(miembro);
+            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+
     }
 }

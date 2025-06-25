@@ -88,6 +88,16 @@
                            data-estado="@item.Estado">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                         </a>
+
+          
+                        <button class="btn btn-launch"
+                                data-categoria-id="@item.IdCatOfrenda"
+                                data-categoria-nombre="@item.Nombre"
+                                onclick="confirmDelete(this)">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+
+                        </button>
+
                     </td>
                 </tr>
             }
@@ -188,21 +198,18 @@
         $(document).on('submit', '#formEditarCategoria', async function (e) {
             e.preventDefault();
 
-            const categoriaData = {
-                IdCatOfrenda: $("#EditIdCatOfrenda").val(),
-                Nombre: $("#EditNombre").val(),
-                Descripcion: $("#EditDescripcion").val(),
-                Estado: $("#estadoCheckCat").is(":checked")
-            };
+            const formData = new FormData(this);
+
+            // El checkbox puede no enviar valor si no está marcado,
+            // por eso agregamos explícitamente Estado:
+            formData.set("Estado", $("#estadoCheckCat").is(":checked"));
+
+            console.log(formData);
 
             try {
                 const response = await fetch("/OfrendasCategorias/Editar", {
                     method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val()
-                    },
-                    body: JSON.stringify(categoriaData)
+                    body: formData
                 });
 
                 const result = await response.json();
@@ -236,6 +243,50 @@
             }
         });
 
+        function confirmDelete(button) {
+            const categoriaId = button.getAttribute('data-categoria-id');
+            const categoriaNombre = button.getAttribute('data-categoria-nombre');
+            const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: "btn btn-success",
+                    cancelButton: "btn btn-danger"
+                },
+                buttonsStyling: false
+            });
+
+            swalWithBootstrapButtons.fire({
+                title: "¿Estás seguro?",
+                text: `Estás a punto de eliminar la categoría "${categoriaNombre}". ¡Esta acción no se puede deshacer!`,
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Sí, eliminar",
+                cancelButtonText: "No, cancelar",
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const form = document.createElement("form");
+                    form.method = "POST";
+                    form.action = `/OfrendasCategorias/Delete/${categoriaId}`;
+
+                    const antiForgeryInput = document.createElement("input");
+                    antiForgeryInput.type = "hidden";
+                    antiForgeryInput.name = "__RequestVerificationToken";
+                    antiForgeryInput.value = token;
+
+                    form.appendChild(antiForgeryInput);
+                    document.body.appendChild(form);
+                    form.submit();
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    swalWithBootstrapButtons.fire({
+                        title: "Cancelado",
+                        text: "La eliminación no se realizó.",
+                        icon: "error"
+                    });
+                }
+            });
+        }
 
 
     </script>

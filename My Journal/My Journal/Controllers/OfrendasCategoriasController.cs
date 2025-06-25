@@ -1,9 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using My_Journal.Models.OfrendaCategoria;
+using System.Text.Json;
 namespace My_Journal.Controllers
 {
     public class OfrendasCategoriasController : Controller
     {
+        private readonly CbnIglesiaContext _context;
+
+        public OfrendasCategoriasController(CbnIglesiaContext context)
+        {
+            _context = context;
+        }
         public IActionResult Index()
         {
             try
@@ -114,20 +122,25 @@ namespace My_Journal.Controllers
         //    }
         //}
         [HttpPost]
-        public IActionResult Editar([FromBody] OfrendasCategoria OfrendaCat)
+        [IgnoreAntiforgeryToken] // Si usas JSON puro sin token antiforgery
+        public async Task<IActionResult> Editar(OfrendasCategoria ofrendaCat)
         {
-            if (!ModelState.IsValid)
+            Console.WriteLine($"IdCatOfrenda: {ofrendaCat.IdCatOfrenda}");
+            Console.WriteLine($"Nombre: {ofrendaCat.Nombre}");
+            Console.WriteLine($"Descripcion: {ofrendaCat.Descripcion}");
+            Console.WriteLine($"Estado: {ofrendaCat.Estado}");
+            if (ofrendaCat == null)
             {
-                var errores = ModelState.Values
-                    .SelectMany(v => v.Errors.Select(b => b.ErrorMessage))
-                    .ToList();
-                return BadRequest(new { success = false, message = "Modelo no válido", errores });
+                return BadRequest(new { success = false, message = "El modelo no puede ser null" });
             }
 
             try
             {
                 MantOfrendaCategoria mant = new MantOfrendaCategoria();
-                var resultado = mant.Editar(OfrendaCat);
+
+                // Asumiendo que el método Editar puede ser async, 
+                // si no, puedes hacer que lo sea o usar Task.Run para no bloquear
+                var resultado = await Task.Run(() => mant.Editar(ofrendaCat));
 
                 if (string.IsNullOrEmpty(resultado) || resultado == "OK")
                 {
@@ -143,6 +156,22 @@ namespace My_Journal.Controllers
                 return StatusCode(500, new { success = false, message = "Error interno del servidor: " + ex.Message });
             }
         }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var categoria = await _context.OfrendasCategorias.FindAsync(id);
+            if (categoria != null)
+            {
+                _context.OfrendasCategorias.Remove(categoria);
+            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+
 
     }
 }
