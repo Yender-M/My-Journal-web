@@ -146,7 +146,10 @@
                                     <div class="d-flex justify-content-between"><small>Dirección</small><small>@item.Direccion</small></div>
                                     <div class="d-flex justify-content-between"><small>Usuario</small><small>@item.Usuario1</small></div>
                                     <div class="form-group mt-3">
-                                        <a style="color:white;" class="btn btn-danger" asp-action="Delete" asp-route-id="@item.IdUsuario">Sí, quiero eliminar</a>
+                                        <form method="POST" asp-action="Delete" asp-route-id="@item.IdUsuario" style="display:inline;">
+                                            @Html.AntiForgeryToken()
+                                            <button type="submit" class="btn btn-danger">Sí, quiero eliminar</button>
+                                        </form>
                                         <button class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                     </div>
                                 </div>
@@ -164,7 +167,8 @@
 <div class="modal fade" id="modalEditarUsuario" tabindex="-1" aria-labelledby="modalUsuarioLabel" aria-hidden="true">
     <div class="modal-dialog" style="max-width: 750px; width: 90vw;">
         <div class="modal-content">
-            <form asp-action="Edit" method="post" class="form" id="formEditarUsuario">
+            <form id="formEditarUsuario" class="form">
+                @Html.AntiForgeryToken()
                        <div class="modal-header">
                     <h5 class="modal-title">Editar - <span id="modalUsuarioNombre"></span></h5>
                     <button type="button" class="btn-close" data-dismiss="modal"></button>
@@ -273,6 +277,47 @@
                 estadoLabel.textContent = "No activo";
                 estadoLabel.style.color = "#394a56"; // Gris estándar
                 toggleContainer.style.backgroundColor = "#ecf0f3"; // Fondo estándar
+            }
+        });
+
+
+        $(document).on('submit', '#formEditarUsuario', async function (e) {
+            e.preventDefault();
+
+            // Crear el payload para enviar como JSON
+            const usuarioData = {
+                IdUsuario: $("#EditUsuarioId").val(),
+                Nombres: $("#EditNombres").val(),
+                Apellidos: $("#EditApellidos").val(),
+                Telefono: $("#EditTelefono").val(),
+                Direccion: $("#EditDireccion").val(),
+                Usuario1: $("#EditUsuario1").val(),
+                Clave: $("#EditClave").val(),
+                Estado: $("#estadoCheck").is(":checked") // True o False
+            };
+
+            try {
+                const response = await fetch("/Usuarios/Edit", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val()
+                    },
+                    body: JSON.stringify(usuarioData)
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    alert(result.message);
+                    $("#modalEditarUsuario").modal('hide');
+                    location.reload();
+                } else {
+                    alert(result.message || "Hubo un error al actualizar");
+                }
+            } catch (error) {
+                console.error(error);
+                alert("Error de comunicación con el servidor.");
             }
         });
     </script>

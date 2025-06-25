@@ -174,50 +174,22 @@ namespace My_Journal.Controllers
         }
 
         // GET: Ofrendas/Edit/5
-        public IActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var viewModel = new MantOfrenda().GetOfrenda(id.Value);
-
-            MantOfrendaCategoria mant = new MantOfrendaCategoria();
-            var categorias = mant.Getlistado();
-            var categoriasSelectList = new SelectList(categorias, "IdCatOfrenda", "Nombre", viewModel.Ofrenda.IdCatOfrenda); // Selecciona el valor actual
-
-            MantDivisa mantDivisa = new MantDivisa();
-            var divisa = mantDivisa.Getlistado();
-            var divisaSelectList = new SelectList(divisa, "IdDivisa", "CodDivisa", viewModel.Ofrenda.Divisa); // Selecciona el valor actual
-
-            ViewBag.ListadoOfrendasCategorias = categoriasSelectList;
-            ViewBag.ListadoDivisa = divisaSelectList;
-
-            if (viewModel == null)
-            {
-                return NotFound();
-            }
-
-            return View(viewModel);
-        }
-
-        // POST: Ofrendas/Edit/5
-        public ActionResult Editar(OfrendaViewModel viewModel)
+        [HttpPost]
+        public IActionResult Edit([FromBody] OfrendaViewModel viewModel)
         {
             try
             {
                 MantOfrenda mant = new MantOfrenda();
-                var ofrenda = mant.Editar(viewModel);
+                var ofrendaEditada = mant.Editar(viewModel);
 
-                return RedirectToAction("Index");
+                return Json(new { success = true, message = "Ofrenda actualizada correctamente" });
             }
             catch (Exception ex)
             {
-                // Manejar la excepción según sea necesario
-                return View(viewModel);
+                return Json(new { success = false, message = ex.Message });
             }
         }
+
 
         public ActionResult Anular(int id)
         {
