@@ -88,6 +88,16 @@
                            data-estado="@item.Estado">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                         </a>
+
+          
+                        <button class="btn btn-launch"
+                                data-categoria-id="@item.IdCatOfrenda"
+                                data-categoria-nombre="@item.Nombre"
+                                onclick="confirmDelete(this)">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+
+                        </button>
+
                     </td>
                 </tr>
             }
@@ -99,7 +109,9 @@
 <div class="modal fade" id="modalEditarCategoria" tabindex="-1" aria-labelledby="modalCategoriaLabel" aria-hidden="true">
     <div class="modal-dialog" style="max-width: 600px; width: 90vw;">
         <div class="modal-content">
-            <form asp-action="Edit" method="post" class="form" id="formEditarCategoria">
+            <form id="formEditarCategoria" class="form">
+                @Html.AntiForgeryToken()
+
                 <div class="modal-header">
                     <h5 class="modal-title">Editar - <span id="modalCategoriaNombre"></span></h5>
                     <button type="button" class="btn-close" data-dismiss="modal"></button>
@@ -180,5 +192,139 @@
                 toggleContainerCat.style.backgroundColor = "#ecf0f3"; // Fondo estándar
             }
         });
+
+        $(document).ready(function () {
+            $('#formEditarCategoria').submit(function (e) {
+                e.preventDefault();
+
+                var token = $('input[name="__RequestVerificationToken"]').val();
+
+                var data = {
+                    __RequestVerificationToken: token,
+                    IdCatOfrenda: $('#EditIdCatOfrenda').val(),
+                    Nombre: $('#EditNombre').val(),
+                    Descripcion: $('#EditDescripcion').val(),
+                    Estado: $('#estadoCheckCat').is(':checked') ? 1 : 0
+                };
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/OfrendasCategorias/Editar',
+                    data: data,
+                    success: function (response) {
+                        $('#modalEditarCategoria').modal('hide');
+
+                        Swal.fire({
+                            icon: 'success',
+                            title: '¡Guardado!',
+                            text: 'La categoría fue actualizada correctamente.',
+                            timer: 2000,
+                            showConfirmButton: true
+                        }).then(() => {
+                            location.reload(); // Espera a que se cierre el alert
+                        });
+                    },
+                    error: function (xhr, status, error) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error al guardar',
+                            text: 'Ocurrió un problema al intentar guardar la categoría.',
+                        });
+                    }
+                });
+            });
+        });
+
+
+        function confirmDelete(button) {
+            const categoriaId = button.getAttribute('data-categoria-id');
+            const categoriaNombre = button.getAttribute('data-categoria-nombre');
+            const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: "btn btn-success",
+                    cancelButton: "btn btn-danger"
+                },
+                buttonsStyling: false
+            });
+
+            swalWithBootstrapButtons.fire({
+                title: "¿Estás seguro?",
+                text: `Estás a punto de eliminar la categoría "${categoriaNombre}". ¡Esta acción no se puede deshacer!`,
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Sí, eliminar",
+                cancelButtonText: "No, cancelar",
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const form = document.createElement("form");
+                    form.method = "POST";
+                    form.action = `/OfrendasCategorias/Delete/${categoriaId}`;
+
+                    const antiForgeryInput = document.createElement("input");
+                    antiForgeryInput.type = "hidden";
+                    antiForgeryInput.name = "__RequestVerificationToken";
+                    antiForgeryInput.value = token;
+
+                    form.appendChild(antiForgeryInput);
+                    document.body.appendChild(form);
+                    form.submit();
+
+                    // Optional cleanup
+                    setTimeout(() => {
+                        document.body.removeChild(form);
+                    }, 1000);
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    swalWithBootstrapButtons.fire({
+                        title: "Cancelado",
+                        text: "La eliminación no se realizó.",
+                        icon: "error"
+                    });
+                }
+            });
+        }
+
+        @if (TempData["Error"] != null)
+        {
+            <text>
+                Swal.fire({
+                    icon: 'error',
+                    title: '¡Error!',
+                    text: '@TempData["Error"]'
+                });
+            </text>
+        }
+        else if (TempData["Success"] != null)
+        {
+            <text>
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Éxito!',
+                    text: '@TempData["Success"]'
+                });
+            </text>
+        }
+        else if (TempData["Warning"] != null)
+        {
+            <text>
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Advertencia',
+                    text: '@TempData["Warning"]'
+                });
+            </text>
+        }
+        else if (TempData["Info"] != null)
+        {
+            <text>
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Información',
+                    text: '@TempData["Info"]'
+                });
+            </text>
+        }
     </script>
 }

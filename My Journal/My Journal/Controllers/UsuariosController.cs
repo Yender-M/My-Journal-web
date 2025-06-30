@@ -63,37 +63,32 @@ namespace My_Journal.Controllers
             }
             return View(usuario);
         }
+      [HttpPost]
+public async Task<IActionResult> Edit([FromBody] Usuario usuario) // Ahora recibimos JSON
+{
+    if (!ModelState.IsValid)
+    {
+        return BadRequest(new { success = false, message = "Modelo no válido" });
+    }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit([Bind("IdUsuario,Nombres,Apellidos,Telefono,Direccion,Usuario1,Clave,Estado")] Usuario usuario)
+    try
+    {
+        _context.Update(usuario);
+        await _context.SaveChangesAsync();
+        return Json(new { success = true, message = "Usuario actualizado correctamente" }); // ✅ Respuesta para AJAX
+    }
+    catch (DbUpdateConcurrencyException)
+    {
+        if (!UsuarioExists(usuario.IdUsuario))
         {
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(usuario);
-                    await _context.SaveChangesAsync();
-                    TempData["Success"] = "Usuario actualizado correctamente.";
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!UsuarioExists(usuario.IdUsuario))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-
-            TempData["Error"] = "Error al actualizar el usuario.";
-            return RedirectToAction(nameof(Index));
+            return NotFound(new { success = false, message = "Usuario no encontrado" }); // ❌
         }
-
+        else
+        {
+            return StatusCode(500, new { success = false, message = "Error de concurrencia" }); // ⚡️
+        }
+    }
+}
 
         // GET: Usuarios/Delete/5
         public async Task<IActionResult> Delete(int? id)
@@ -113,7 +108,6 @@ namespace My_Journal.Controllers
             return View(usuario);
         }
 
-        // POST: Usuarios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

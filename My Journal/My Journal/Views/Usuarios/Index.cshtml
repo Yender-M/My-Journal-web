@@ -6,6 +6,9 @@
 <link href="/theme-assets/css/index_style.css" rel="stylesheet" />
 
 <style>
+    /* ==========================
+           ESTILOS GENERALES (no cambiar)
+           ========================== */
     .label {
         display: inline-flex;
         align-items: center;
@@ -47,7 +50,11 @@
         transform: translate3d(25%, 0, 0);
         background-color: #006400;
     }
-    .modal-content {
+
+    /* ==========================
+           ESTILOS PARA OTRO MODAL (#modalEditarUsuario)
+           ========================== */
+    #modalEditarUsuario .modal-content {
         border-radius: 10px;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     }
@@ -58,25 +65,30 @@
         margin-right: 20%;
     }
 
-    .modal-header {
+    #modalEditarUsuario .modal-header {
         border-bottom: none;
         padding: 20px;
     }
 
-    .modal-title {
+    #modalEditarUsuario .modal-title {
         font-weight: bold;
         color: #343a40;
     }
 
-    .modal-body {
+    #modalEditarUsuario .modal-body {
         padding: 20px;
     }
 
-    .modal-footer {
+    #modalEditarUsuario .modal-footer {
         border-top: none;
         padding: 20px;
     }
+
+    .swal2-actions .btn {
+        margin: 0 0.25rem; /* Ajusta el margen horizontal entre botones */
+    }
 </style>
+
 
 <a href="/UsuariosCreate" title="" class="btn btn-lg box-shadow--4dp">Crear Registro</a>
 <br />
@@ -120,15 +132,29 @@
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                         </a>
 
-                        <!-- Delete Button -->
+            @*             <!-- Delete Button -->
                         <a class="btn launch" data-toggle="modal" data-target="#staticBackdrop-@item.IdUsuario">
                             <i class="fa fa-trash" aria-hidden="true"></i>
-                        </a>
+                        </a> *@
+
+                        <button class="btn launch"
+                                title="Eliminar usuario"
+                                data-usuario-id="@item.IdUsuario"
+                                data-usuario-nombre="@item.Nombres @item.Apellidos"
+                                onClick="confirmDelete(this)">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </button>
+
+
                     </td>
                 </tr>
 
+
+
+
+
                 <!-- Modal Eliminar Usuario -->
-                <div class="modal fade" id="staticBackdrop-@item.IdUsuario" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                @* <div class="modal fade" id="staticBackdrop-@item.IdUsuario" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-body">
@@ -146,14 +172,56 @@
                                     <div class="d-flex justify-content-between"><small>Dirección</small><small>@item.Direccion</small></div>
                                     <div class="d-flex justify-content-between"><small>Usuario</small><small>@item.Usuario1</small></div>
                                     <div class="form-group mt-3">
-                                        <a style="color:white;" class="btn btn-danger" asp-action="Delete" asp-route-id="@item.IdUsuario">Sí, quiero eliminar</a>
+                                        <form method="POST" asp-action="Delete" asp-route-id="@item.IdUsuario" style="display:inline;">
+                                            @Html.AntiForgeryToken()
+                                            <button type="submit" class="btn btn-danger">Sí, quiero eliminar</button>
+                                        </form>
                                         <button class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> *@
+
+                <!-- Modal Eliminar Usuario -->
+               @*  <div class="modal fade delete-modal" id="staticBackdrop-@item.IdUsuario" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="confirmModalLabel-@item.IdUsuario" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="confirmModalLabel-@item.IdUsuario">Confirmar eliminación</h5>
+                                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Cerrar"></button>
+                            </div>
+
+                            <div class="modal-body text-center">
+                                <i class="fas fa-exclamation-triangle warning-icon"></i>
+                                <p>¿Estás seguro que deseas eliminar a este usuario?<br>Esta acción no se puede deshacer.</p>
+
+                                <div class="mb-3"><hr class="new1"></div>
+                                <div class="d-flex justify-content-between"><small>Nombres</small><small>@item.Nombres</small></div>
+                                <div class="d-flex justify-content-between"><small>Apellidos</small><small>@item.Apellidos</small></div>
+                                <div class="d-flex justify-content-between"><small>Teléfono</small><small>@item.Telefono</small></div>
+                                <div class="d-flex justify-content-between"><small>Dirección</small><small>@item.Direccion</small></div>
+                                <div class="d-flex justify-content-between"><small>Usuario</small><small>@item.Usuario1</small></div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <form method="POST" asp-action="Delete" asp-route-id="@item.IdUsuario" style="display:inline;">
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit" class="btn btn-danger">
+                                        <i class="fas fa-trash-alt me-2"></i>Eliminar
+                                    </button>
+                                </form>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                    <i class="fas fa-times me-2"></i>Cancelar
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div> *@
+
             }
         </tbody>
     </table>
@@ -164,7 +232,8 @@
 <div class="modal fade" id="modalEditarUsuario" tabindex="-1" aria-labelledby="modalUsuarioLabel" aria-hidden="true">
     <div class="modal-dialog" style="max-width: 750px; width: 90vw;">
         <div class="modal-content">
-            <form asp-action="Edit" method="post" class="form" id="formEditarUsuario">
+            <form id="formEditarUsuario" class="form">
+                @Html.AntiForgeryToken()
                        <div class="modal-header">
                     <h5 class="modal-title">Editar - <span id="modalUsuarioNombre"></span></h5>
                     <button type="button" class="btn-close" data-dismiss="modal"></button>
@@ -230,6 +299,10 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
     <script src="/theme-assets/js/Datatable.js"></script>
+
+    <!-- Añadir esta línea en tu layout si aún no la tienes -->
+
+
     <script>
         const estadoCheck = document.getElementById("estadoCheck");
         const estadoLabel = document.getElementById("estadoLabel");
@@ -275,8 +348,107 @@
                 toggleContainer.style.backgroundColor = "#ecf0f3"; // Fondo estándar
             }
         });
+
+
+        $(document).on('submit', '#formEditarUsuario', async function (e) {
+            e.preventDefault();
+
+            const usuarioData = {
+                IdUsuario: $("#EditUsuarioId").val(),
+                Nombres: $("#EditNombres").val(),
+                Apellidos: $("#EditApellidos").val(),
+                Telefono: $("#EditTelefono").val(),
+                Direccion: $("#EditDireccion").val(),
+                Usuario1: $("#EditUsuario1").val(),
+                Clave: $("#EditClave").val(),
+                Estado: $("#estadoCheck").is(":checked") // True o False
+            };
+            try {
+                const response = await fetch("/Usuarios/Edit", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val()
+                    },
+                    body: JSON.stringify(usuarioData)
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Usuario actualizado',
+                        text: result.message,
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        $("#modalEditarUsuario").modal('hide');
+                        location.reload();
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: result.message || 'Hubo un error al actualizar',
+                        confirmButtonText: 'OK'
+                    });
+                }
+            } catch (error) {
+                console.error(error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error de comunicación',
+                    text: 'Hubo un error al conectar con el servidor',
+                    confirmButtonText: 'OK'
+                });
+            }
+        });
+
+        function confirmDelete(button) {
+            const userId = button.getAttribute('data-usuario-id');
+            const userName = button.getAttribute('data-usuario-nombre');
+            const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: "btn btn-success",
+                    cancelButton: "btn btn-danger"
+                },
+                buttonsStyling: false
+            });
+
+            swalWithBootstrapButtons.fire({
+                title: "¿Estás seguro?",
+                text: `Estás a punto de eliminar al usuario "${userName}". ¡Esta acción no se puede deshacer!`,
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Sí, eliminar",
+                cancelButtonText: "No, cancelar",
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Crear y enviar formulario para eliminar
+                    const form = document.createElement("form");
+                    form.method = "POST";
+                    form.action = `/Usuarios/Delete/${userId}`;
+
+                    const antiForgeryInput = document.createElement("input");
+                    antiForgeryInput.type = "hidden";
+                    antiForgeryInput.name = "__RequestVerificationToken";
+                    antiForgeryInput.value = token;
+
+                    form.appendChild(antiForgeryInput);
+                    document.body.appendChild(form);
+                    form.submit();
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    swalWithBootstrapButtons.fire({
+                        title: "Cancelado",
+                        text: "La eliminación no se realizó.",
+                        icon: "error"
+                    });
+                }
+            });
+        }
     </script>
 
 }
-@* @await Html.PartialAsync("../UsuariosEdit/_Index.cshtml")
- *@

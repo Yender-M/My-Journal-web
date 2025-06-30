@@ -1010,33 +1010,6 @@ C:\Users\cinth\Source\Repos\My-Journal-web\My Journal\My Journal\obj\Debug\net8.
 C:\Users\cinth\Source\Repos\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\My Journal.dll
 C:\Users\cinth\Source\Repos\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\refint\My Journal.dll
 C:\Users\cinth\Source\Repos\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\My Journal.pdb
-C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\My Journal.csproj.AssemblyReference.cache
-C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\My_Journal.Properties.Resources.resources
-C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\My Journal.csproj.GenerateResource.cache
-C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\My Journal.GeneratedMSBuildEditorConfig.editorconfig
-C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\My Journal.AssemblyInfoInputs.cache
-C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\My Journal.AssemblyInfo.cs
-C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\My Journal.csproj.CoreCompileInputs.cache
-C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\My Journal.MvcApplicationPartsAssemblyInfo.cache
-C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\My Journal.RazorAssemblyInfo.cache
-C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\My Journal.RazorAssemblyInfo.cs
-C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\My Journal.sourcelink.json
-C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\staticwebassets.build.json
-C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\staticwebassets.development.json
-C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\staticwebassets\msbuild.My Journal.Microsoft.AspNetCore.StaticWebAssets.props
-C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\staticwebassets\msbuild.build.My Journal.props
-C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.My Journal.props
-C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.My Journal.props
-C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\staticwebassets.pack.json
-C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
-C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\scopedcss\bundle\My Journal.styles.css
-C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\scopedcss\projectbundle\My Journal.bundle.scp.css
-C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\My Journal.csproj.Up2Date
-C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\My Journal.dll
-C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\refint\My Journal.dll
-C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\My Journal.pdb
-C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\My Journal.genruntimeconfig.cache
-C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\ref\My Journal.dll
 C:\Users\MYender\Desktop\My Journal web\My Journal\My Journal\obj\Debug\net8.0\My Journal.csproj.AssemblyReference.cache
 C:\Users\MYender\Desktop\My Journal web\My Journal\My Journal\obj\Debug\net8.0\My_Journal.Properties.Resources.resources
 C:\Users\MYender\Desktop\My Journal web\My Journal\My Journal\obj\Debug\net8.0\My Journal.csproj.GenerateResource.cache
@@ -1149,6 +1122,35 @@ C:\Users\Usuario\Desktop\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\r
 C:\Users\Usuario\Desktop\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\My Journal.pdb
 C:\Users\Usuario\Desktop\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\My Journal.genruntimeconfig.cache
 C:\Users\Usuario\Desktop\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\ref\My Journal.dll
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.csproj.AssemblyReference.cache
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My_Journal.Properties.Resources.resources
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.csproj.GenerateResource.cache
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.AssemblyInfoInputs.cache
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.AssemblyInfo.cs
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.csproj.CoreCompileInputs.cache
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.RazorAssemblyInfo.cache
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.RazorAssemblyInfo.cs
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.sourcelink.json
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\staticwebassets\msbuild.My Journal.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\staticwebassets\msbuild.build.My Journal.props
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.My Journal.props
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.My Journal.props
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\scopedcss\bundle\My Journal.styles.css
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\scopedcss\projectbundle\My Journal.bundle.scp.css
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.csproj.Up2Date
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.dll
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\refint\My Journal.dll
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.pdb
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.genruntimeconfig.cache
+C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\ref\My Journal.dll
+C:\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\My Journal.MvcApplicationPartsAssemblyInfo.cs
 C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\appsettings.Development.json
 C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\appsettings.json
 C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\My Journal.staticwebassets.runtime.json
@@ -1455,35 +1457,6 @@ C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Xml.XmlSerializ
 C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Xml.XPath.dll
 C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\System.Xml.XPath.XDocument.dll
 C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\refs\WindowsBase.dll
-C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.csproj.AssemblyReference.cache
-C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My_Journal.Properties.Resources.resources
-C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.csproj.GenerateResource.cache
-C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.AssemblyInfoInputs.cache
-C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.AssemblyInfo.cs
-C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.csproj.CoreCompileInputs.cache
-C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.RazorAssemblyInfo.cache
-C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.RazorAssemblyInfo.cs
-C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.sourcelink.json
-C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\staticwebassets.build.json
-C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\staticwebassets.development.json
-C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\staticwebassets\msbuild.My Journal.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\staticwebassets\msbuild.build.My Journal.props
-C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.My Journal.props
-C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.My Journal.props
-C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
-C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\scopedcss\bundle\My Journal.styles.css
-C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\scopedcss\projectbundle\My Journal.bundle.scp.css
-C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.csproj.Up2Date
-C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.dll
-C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\refint\My Journal.dll
-C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.pdb
-C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\My Journal.genruntimeconfig.cache
-C:\Users\MYender\Desktop\My Jounal\My Journal\My Journal\obj\Debug\net8.0\ref\My Journal.dll
-C:\My-Journal-web\My Journal\My Journal\obj\Debug\net8.0\My Journal.MvcApplicationPartsAssemblyInfo.cs
 C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\AspNetCore.Reporting.dll
 C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\AspNetCore.ReportingServices.dll
 C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\Azure.Core.dll
@@ -1513,6 +1486,8 @@ C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\Microsoft.EntityFrameworkCo
 C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
 C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\Microsoft.Identity.Client.dll
 C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
@@ -1559,6 +1534,7 @@ C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\System.Composition.TypedPar
 C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
 C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\System.Data.SqlClient.dll
 C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\System.Drawing.Common.dll
+C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\System.Formats.Asn1.dll
 C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
 C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\System.Memory.Data.dll
 C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\System.Reflection.MetadataLoadContext.dll
@@ -1786,7 +1762,31 @@ C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\runtimes\win\lib\netstandar
 C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
+C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\My Journal.csproj.AssemblyReference.cache
+C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\My_Journal.Properties.Resources.resources
+C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\My Journal.csproj.GenerateResource.cache
+C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\My Journal.GeneratedMSBuildEditorConfig.editorconfig
+C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\My Journal.AssemblyInfoInputs.cache
+C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\My Journal.AssemblyInfo.cs
+C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\My Journal.csproj.CoreCompileInputs.cache
 C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\My Journal.MvcApplicationPartsAssemblyInfo.cs
-C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
-C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-C:\My-Journal\My Journal\My Journal\bin\Debug\net8.0\System.Formats.Asn1.dll
+C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\My Journal.MvcApplicationPartsAssemblyInfo.cache
+C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\My Journal.RazorAssemblyInfo.cache
+C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\My Journal.RazorAssemblyInfo.cs
+C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\My Journal.sourcelink.json
+C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\staticwebassets.build.json
+C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\staticwebassets.development.json
+C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\staticwebassets\msbuild.My Journal.Microsoft.AspNetCore.StaticWebAssets.props
+C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\staticwebassets\msbuild.build.My Journal.props
+C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.My Journal.props
+C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.My Journal.props
+C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\staticwebassets.pack.json
+C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\scopedcss\bundle\My Journal.styles.css
+C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\scopedcss\projectbundle\My Journal.bundle.scp.css
+C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\My Journal.csproj.Up2Date
+C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\My Journal.dll
+C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\refint\My Journal.dll
+C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\My Journal.pdb
+C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\My Journal.genruntimeconfig.cache
+C:\My-Journal\My Journal\My Journal\obj\Debug\net8.0\ref\My Journal.dll

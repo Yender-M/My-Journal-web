@@ -11,7 +11,7 @@ using My_Journal.Models.OfrendaCategoria;
 using My_Journal.Models.Pagos;
 using My_Journal.Models.PagosCategoria;
 using My_Journal.Models.Usuario;
-
+using My_Journal.Models.EgresosCategoria;
 namespace My_Journal;
 
 public partial class CbnIglesiaContext : DbContext
@@ -35,7 +35,7 @@ public partial class CbnIglesiaContext : DbContext
 
     public virtual DbSet<IngresosVario> IngresosVarios { get; set; }
 
-
+    public virtual DbSet<EgresoCategoria> EgresosCategorias { get; set; }
     public virtual DbSet<Miembro> Miembros { get; set; }
 
     public virtual DbSet<Ofrenda> Ofrendas { get; set; }
@@ -54,6 +54,27 @@ public partial class CbnIglesiaContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<EgresoCategoria>(entity =>
+        {
+            entity.HasKey(e => e.IdCatEgreso).HasName("PK__EgresosCategoria__IdCatEgreso");
+
+            entity.ToTable("EgresosCategoria", "IGLESIA"); // Asegúrate que el esquema y nombre coincidan con tu tabla real
+
+            entity.Property(e => e.Nombre)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            entity.Property(e => e.Descripcion)
+                .HasMaxLength(500);
+
+            entity.Property(e => e.Estado);
+
+            entity.Property(e => e.FechaCreacion).HasColumnType("datetime");
+            entity.Property(e => e.FechaModifica).HasColumnType("datetime");
+
+        });
+
+
         modelBuilder.Entity<OfrendasCategoria>(entity =>
         {
             entity.HasKey(e => e.IdCatOfrenda).HasName("PK__OfrendasCategoria__3BB07412B1FBF2D1");

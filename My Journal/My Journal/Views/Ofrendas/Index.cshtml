@@ -1,15 +1,94 @@
-﻿@model IEnumerable<My_Journal.Models.EgresosVarios.EgresosVariosViewModel>
+﻿
+
+
+@model IEnumerable<My_Journal.Models.Ofrenda.OfrendaViewModel>
 
 @{
-    ViewData["Title"] = "Egresos Varios";
+    ViewData["Title"] = "Ofrendas";
 }
 
+<!-- Styles -->
 <link href="/theme-assets/css/index_style.css" rel="stylesheet" />
 
-<a asp-controller="EgresosVariosCreate" asp-action="Index" class="btn btn-lg btn-primary box-shadow--4dp">Crear registro</a>
+<style>
+    .label {
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+        color: #394a56;
+    }
 
+    .label-text {
+        margin-left: 16px;
+        font-weight: 600;
+        transition: color 0.3s ease;
+    }
+
+    .toggle {
+        isolation: isolate;
+        position: relative;
+        height: 30px;
+        width: 60px;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: -8px -4px 8px 0px #ffffff, 8px 4px 12px 0px #d1d9e6, 4px 4px 4px 0px #d1d9e6 inset, -4px -4px 4px 0px #ffffff inset;
+    }
+
+    .toggle-state {
+        display: none;
+    }
+
+    .indicator {
+        height: 100%;
+        width: 200%;
+        background: #ecf0f3;
+        border-radius: 15px;
+        transform: translate3d(-75%, 0, 0);
+        transition: transform 0.4s cubic-bezier(0.85, 0.05, 0.18, 1.35), background-color 0.3s ease;
+        box-shadow: -8px -4px 8px 0px #ffffff, 8px 4px 12px 0px #d1d9e6;
+    }
+
+    .toggle-state:checked ~ .indicator {
+        transform: translate3d(25%, 0, 0);
+        background-color: #006400;
+    }
+
+    .modal-content {
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    #modalEditarUsuario .modal-dialog {
+        max-width: 75%;
+        width: 100%;
+        margin-right: 20%;
+    }
+
+    .modal-header {
+        border-bottom: none;
+        padding: 20px;
+    }
+
+    .modal-title {
+        font-weight: bold;
+        color: #343a40;
+    }
+
+    .modal-body {
+        padding: 20px;
+    }
+
+    .modal-footer {
+        border-top: none;
+        padding: 20px;
+    }
+</style>
+<!-- Botón para crear registro -->
+<a asp-controller="OfrendasCreate" asp-action="Index" title="" class="btn btn-lg btn-primary box-shadow--4dp">Crear registro</a>
+
+<!-- Filtros de fecha -->
 <div class="container" style="margin-top: 30px;">
-    <form id="filterForm" asp-controller="EgresosVarios" asp-action="Index" method="get">
+    <form id="filterForm" asp-controller="Ofrendas" asp-action="Index" method="get">
         <div class="row">
             <div class="col-lg-3">
                 <div class="form-group">
@@ -33,112 +112,163 @@
     </form>
 </div>
 
+<!-- Tabla de Ofrendas -->
 <table id="example" class="table table-striped table-bordered" style="width:100%">
     <thead>
         <tr>
             <th>Categoría</th>
-            <th>Ministerio</th>
-            <th>@Html.DisplayNameFor(model => model.EgresosVario.Descripcion)</th>
-            <th>@Html.DisplayNameFor(model => model.EgresosVario.Cantidad)</th>
+            <th>@Html.DisplayNameFor(model => model.Ofrenda.Descripcion)</th>
+            <th>@Html.DisplayNameFor(model => model.Ofrenda.Cantidad)</th>
             <th>Divisa</th>
             <th>Tasa de Cambio</th>
-            <th>@Html.DisplayNameFor(model => model.EgresosVario.FechaEgreso)</th>
+            <th>@Html.DisplayNameFor(model => model.Ofrenda.Fecha)</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-            var rowClass = item.EgresosVario.Estado == 0 ? "anulado" : "";
+            var rowClass = item.Ofrenda.Estado == 0 ? "anulado" : "";
             <tr class="@rowClass">
-                <td>@Html.DisplayFor(modelItem => item.EgresoCategoria.Nombre)</td>
-                <td>@Html.DisplayFor(modelItem => item.Ministerios.Nombre)</td>
-                <td>@Html.DisplayFor(modelItem => item.EgresosVario.Descripcion)</td>
-                <td>@Html.DisplayFor(modelItem => item.EgresosVario.Cantidad)</td>
+                <td>@Html.DisplayFor(modelItem => item.OfrendaCategoria.Nombre)</td>
+                <td>@Html.DisplayFor(modelItem => item.Ofrenda.Descripcion)</td>
+                <td>@Html.DisplayFor(modelItem => item.Ofrenda.Cantidad)</td>
                 <td>@Html.DisplayFor(modelItem => item.Divisa.CodDivisa)</td>
-                <td>@Html.DisplayFor(modelItem => item.EgresosVario.TasaCambio)</td>
-                <td>@item.EgresosVario.FechaEgreso.ToString("dd/MM/yyyy")</td>
+                <td>@Html.DisplayFor(modelItem => item.Ofrenda.TasaCambio)</td>
+                <td>@item.Ofrenda.Fecha.ToString("dd/MM/yyyy")</td>
                 <td>
-                    @if (item.EgresosVario.Estado == 0)
+                    @if (item.Ofrenda.Estado == 0)
                     {
                         <span>Anulado</span>
                     }
                     else
                     {
-                        <a class="btn launch btnEditarEgresoVario"
+                        <a class="btn launch btnEditarOfrenda"
                            data-toggle="modal"
-                           data-target="#modalEditarEgresoVario"
-                           data-id="@item.EgresosVario.IdEgreVarios"
-                           data-categoria="@item.EgresoCategoria.Nombre"
-                           data-ministerio="@item.Ministerios.Nombre"
-                           data-descripcion="@item.EgresosVario.Descripcion"
-                           data-cantidad="@item.EgresosVario.Cantidad"
+                           data-target="#modalEditarOfrenda"
+                           data-id="@item.Ofrenda.IdOfrenda"
+                           data-categoria="@item.OfrendaCategoria.Nombre"
+                           data-descripcion="@item.Ofrenda.Descripcion"
+                           data-cantidad="@item.Ofrenda.Cantidad"
                            data-divisa="@item.Divisa.CodDivisa"
-                           data-tasa="@item.EgresosVario.TasaCambio"
-                           data-fecha="@item.EgresosVario.FechaEgreso.ToString("yyyy-MM-dd")"
-                           data-estado="@item.EgresosVario.Estado">
+                           data-tasacambio="@item.Ofrenda.TasaCambio"
+                           data-fecha="@item.Ofrenda.Fecha.ToString("yyyy-MM-dd")"
+                           data-estado="@item.Ofrenda.Estado">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        </a>
+                        <a class="btn launch" data-toggle="modal" data-target="#staticBackdrop-@item.Ofrenda.IdOfrenda">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
                         </a>
                     }
                 </td>
             </tr>
+
+            @if (item.Ofrenda.Estado != 0)
+            {
+                <!-- MODAL DE ANULACIÓN PARA OFRENDA -->
+                <div class="modal fade" id="staticBackdrop-@item.Ofrenda.IdOfrenda" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="text-right">
+                                    <i class="fa fa-close close" data-dismiss="modal"></i>
+                                </div>
+                                <div class="px-2 py-3">
+                                    <h4 class="mt-5 theme-color mb-5">Estás a punto de Anular esta Ofrenda!</h4>
+                                    <span class="theme-color">Resumen</span>
+                                    <div class="mb-3"><hr class="new1"></div>
+                                    <div class="d-flex justify-content-between">
+                                        <small>Categoría</small><small>@Html.DisplayFor(modelItem => item.OfrendaCategoria.Nombre)</small>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <small>Descripción</small><small>@Html.DisplayFor(modelItem => item.Ofrenda.Descripcion)</small>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <small>Cantidad</small><small>@Html.DisplayFor(modelItem => item.Ofrenda.Cantidad)</small>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <small>Divisa</small><small>@Html.DisplayFor(modelItem => item.Divisa.CodDivisa)</small>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <small>Tasa Cambio</small><small>@Html.DisplayFor(modelItem => item.Ofrenda.TasaCambio)</small>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <small>Fecha</small><small>@item.Ofrenda.Fecha.ToString("dd/MM/yyyy")</small>
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <button class="btn btn-danger">
+                                            <a style="color:white;" asp-action="Anular" asp-route-id="@item.Ofrenda.IdOfrenda">Sí, quiero Anular</a>
+                                        </button>
+                                        <button class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- Fin Modal de Anular -->
+            }
         }
     </tbody>
 </table>
 
-<!-- MODAL DE EDICIÓN PARA EGRESOS VARIOS -->
-<div class="modal fade" id="modalEditarEgresoVario" tabindex="-1" aria-labelledby="modalEgresoVarioLabel" aria-hidden="true">
+<!-- MODAL DE EDICIÓN PARA OFRENDA -->
+<div class="modal fade" id="modalEditarOfrenda" tabindex="-1" aria-labelledby="modalOfrendaLabel" aria-hidden="true">
     <div class="modal-dialog" style="max-width: 600px; width: 90vw;">
         <div class="modal-content">
-            <form asp-action="Edit" method="post" id="formEditarEgresoVario">
+            <form asp-action="Editar" method="post" id="formEditarOfrenda" class="form">
+                @Html.AntiForgeryToken()
                 <div class="modal-header">
-                    <h5 class="modal-title">Editar - <span id="modalEgresoVarioDescripcion"></span></h5>
+                    <h5 class="modal-title">Editar Ofrenda - <span id="modalOfrendaCategoria"></span></h5>
                     <button type="button" class="btn-close" data-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
 
-                    <input type="hidden" id="EditIdEgreVarios" name="IdEgreVarios" />
+                    <input type="hidden" id="EditIdOfrenda" name="IdOfrenda" />
+
                     <div class="form-group">
                         <label>Categoría</label>
-                        <input id="EditCategoriaEgre" name="Categoria" class="form-control" readonly />
-                    </div>
-                    <div class="form-group mt-3">
-                        <label>Ministerio</label>
-                        <input id="EditMinisterioEgre" name="Ministerio" class="form-control" readonly />
-                    </div>
-                    <div class="form-group mt-3">
-                        <label>Descripción</label>
-                        <input id="EditDescripcionEgre" name="Descripcion" class="form-control" />
-                    </div>
-                    <div class="form-group mt-3">
-                        <label>Cantidad</label>
-                        <input id="EditCantidadEgre" name="Cantidad" class="form-control" />
-                    </div>
-                    <div class="form-group mt-3">
-                        <label>Divisa</label>
-                        <input id="EditDivisaEgre" name="Divisa" class="form-control" readonly />
-                    </div>
-                    <div class="form-group mt-3">
-                        <label>Tasa de Cambio</label>
-                        <input id="EditTasaEgre" name="TasaCambio" class="form-control" />
-                    </div>
-                    <div class="form-group mt-3">
-                        <label>Fecha</label>
-                        <input id="EditFechaEgre" name="FechaEgreso" class="form-control" type="date" />
+                        <input type="text" id="EditCategoriaOfrenda" class="form-control" disabled />
                     </div>
 
-                    <!-- TOGGLE DE ESTADO PARA EGRESOS VARIOS -->
+                    <div class="form-group mt-3">
+                        <label>Descripción</label>
+                        <input type="text" id="EditDescripcionOfrenda" name="Descripcion" class="form-control" />
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <label>Cantidad</label>
+                        <input type="number" step="0.01" id="EditCantidadOfrenda" name="Cantidad" class="form-control" />
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <label>Divisa</label>
+                        <input type="text" id="EditDivisaOfrenda" class="form-control" disabled />
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <label>Tasa de Cambio</label>
+                        <input type="number" step="0.0001" id="EditTasaCambioOfrenda" name="TasaCambio" class="form-control" />
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <label>Fecha</label>
+                        <input type="date" id="EditFechaOfrenda" name="Fecha" class="form-control" />
+                    </div>
+
+                    <!-- TOGGLE DE ESTADO PARA OFRENDA -->
                     <label class="label mt-3">
                         <div class="toggle">
-                            <input class="toggle-state" id="estadoCheckEgresoVario" name="Estado" type="checkbox" />
+                            <input class="toggle-state" id="estadoCheckOfrenda" name="Estado" type="checkbox" />
                             <div class="indicator"></div>
                         </div>
-                        <div class="label-text" id="estadoLabelEgresoVario">No activo</div>
+                        <div class="label-text" id="estadoLabelOfrenda">No activo</div>
                     </label>
+
                 </div>
+
                 <div class="modal-footer">
-                    <button class="btn btn-success" type="submit">Guardar</button>
-                    <button class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-success">Guardar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                 </div>
             </form>
         </div>
@@ -146,56 +276,116 @@
 </div>
 
 @section Scripts {
-    @await Html.RenderPartialAsync("_ValidationScriptsPartial")
-
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
     <script src="/theme-assets/js/Datatable.js"></script>
-
     <script>
         $(document).ready(function () {
-            $('#example').DataTable();
+            $("#example").DataTable();
+
+            const estadoCheck = document.getElementById("estadoCheckOfrenda");
+            const estadoLabel = document.getElementById("estadoLabelOfrenda");
+            const toggleContainer = document.querySelector('#modalEditarOfrenda .toggle');
+
+            // Al hacer clic en Editar
+            $(document).on('click', '.btnEditarOfrenda', function () {
+                var btn = $(this);
+
+                $("#EditIdOfrenda").val(btn.data("id"));
+                $("#EditCategoriaOfrenda").val(btn.data("categoria"));
+                $("#modalOfrendaCategoria").text(btn.data("categoria"));
+                $("#EditDescripcionOfrenda").val(btn.data("descripcion"));
+                $("#EditCantidadOfrenda").val(btn.data("cantidad"));
+                $("#EditDivisaOfrenda").val(btn.data("divisa"));
+                $("#EditTasaCambioOfrenda").val(btn.data("tasacambio"));
+                $("#EditFechaOfrenda").val(btn.data("fecha"));
+                const estado = btn.data("estado");
+                const isActive = estado === true || estado === "True" || estado === "true" || estado == 1;
+
+                $("#estadoCheckOfrenda").prop("checked", isActive);
+                if (isActive) {
+                    estadoLabel.textContent = "Activo";
+                    estadoLabel.style.color = "#006400";
+                } else {
+                    estadoLabel.textContent = "No activo";
+                    estadoLabel.style.color = "#394a56";
+                    toggleContainer.style.backgroundColor = "#ecf0f3";
+                }
+            });
+
+            // Al cambiar el estado
+            estadoCheck.addEventListener("change", function () {
+                if (estadoCheck.checked) {
+                    estadoLabel.textContent = "Activo";
+                    estadoLabel.style.color = "#006400";
+                    toggleContainer.style.backgroundColor = "#00640033";
+                } else {
+                    estadoLabel.textContent = "No activo";
+                    estadoLabel.style.color = "#394a56";
+                    toggleContainer.style.backgroundColor = "#ecf0f3";
+                }
+            });
+
+            // Enviar formulario por AJAX
         });
 
-        // Variables del toggle y label
-        const estadoCheckEgresoVario = document.getElementById("estadoCheckEgresoVario");
-        const estadoLabelEgresoVario = document.getElementById("estadoLabelEgresoVario");
-        const toggleContainerEgresoVario = document.querySelector('#modalEditarEgresoVario .toggle');
 
-        $(document).on('click', '.btnEditarEgresoVario', function () {
-            var btn = $(this);
-            $("#EditIdEgreVarios").val(btn.data("id"));
-            $("#EditCategoriaEgre").val(btn.data("categoria"));
-            $("#EditMinisterioEgre").val(btn.data("ministerio"));
-            $("#EditDescripcionEgre").val(btn.data("descripcion"));
-            $("#EditCantidadEgre").val(btn.data("cantidad"));
-            $("#EditDivisaEgre").val(btn.data("divisa"));
-            $("#EditTasaEgre").val(btn.data("tasa"));
-            $("#EditFechaEgre").val(btn.data("fecha"));
-            $("#modalEgresoVarioDescripcion").text(btn.data("descripcion"));
+        $(document).ready(function () {
+            $('#formEditarOfrenda').submit(function (e) {
+                e.preventDefault();
 
-            var estado = btn.data("estado");
-            const isActive = estado === true || estado === "True" || estado === "true" || estado == 1;
+                const token = $('input[name="__RequestVerificationToken"]').val();
 
-            $("#estadoCheckEgresoVario").prop("checked", isActive);
+                const data = {
+                    __RequestVerificationToken: token,
+                    IdOfrenda: $('#EditIdOfrenda').val(),
+                    Descripcion: $('#EditDescripcionOfrenda').val(),
+                    Cantidad: $('#EditCantidadOfrenda').val(),
+                    TasaCambio: $('#EditTasaCambioOfrenda').val(),
+                    Fecha: $('#EditFechaOfrenda').val(),
+                    Estado: $('#estadoCheckOfrenda').is(':checked') ? 1 : 0
+                };
 
-            if (isActive) {
-                estadoLabelEgresoVario.textContent = "Activo";
-                estadoLabelEgresoVario.style.color = "#006400"; // Verde
-            } else {
-                estadoLabelEgresoVario.textContent = "No activo";
-                estadoLabelEgresoVario.style.color = "#394a56"; // Gris estándar
-                toggleContainerEgresoVario.style.backgroundColor = "#ecf0f3"; // Fondo estándar
-            }
+                $.ajax({
+                    type: 'POST',
+                    url: '/Ofrendas/Editar',
+                    data: data,
+                    success: function (response) {
+                        if (response.success) {
+                            $('#modalEditarOfrenda').modal('hide');
+                            Swal.fire({
+                                icon: 'success',
+                                title: '¡Guardado!',
+                                text: response.message,
+                                timer: 2000,
+                                showConfirmButton: true
+                            }).then(() => {
+                                location.reload();
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: response.message
+                            });
+                        }
+                    },
+                    error: function (xhr) {
+                        let msg = "Ocurrió un error inesperado.";
+                        if (xhr.responseJSON && xhr.responseJSON.message) {
+                            msg = xhr.responseJSON.message;
+                        }
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: msg
+                        });
+                    }
+                });
+            });
         });
 
-        estadoCheckEgresoVario.addEventListener("change", function () {
-            if (estadoCheckEgresoVario.checked) {
-                estadoLabelEgresoVario.textContent = "Activo";
-                estadoLabelEgresoVario.style.color = "#006400"; // Verde
-            } else {
-                estadoLabelEgresoVario.textContent = "No activo";
-                estadoLabelEgresoVario.style.color = "#394a56"; // Gris estándar
-                toggleContainerEgresoVario.style.backgroundColor = "#ecf0f3"; // Fondo estándar
-            }
-        });
     </script>
 }
+

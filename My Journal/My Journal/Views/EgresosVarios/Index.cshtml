@@ -1,15 +1,15 @@
-﻿@model IEnumerable<My_Journal.Models.Pagos.PagosViewModel>
+﻿ @model IEnumerable<My_Journal.Models.EgresosVarios.EgresosVariosViewModel>
 
 @{
-    ViewData["Title"] = "Pagos";
+    ViewData["Title"] = "Egresos Varios";
 }
 
 <link href="/theme-assets/css/index_style.css" rel="stylesheet" />
 
-<a asp-controller="PagoesCreate" asp-action="Index" title="" class="btn btn-lg btn-primary box-shadow--4dp">Crear registro</a>
+<a asp-controller="EgresosVariosCreate" asp-action="Index" class="btn btn-lg btn-primary box-shadow--4dp">Crear registro</a>
 
 <div class="container" style="margin-top: 30px;">
-    <form id="filterForm" asp-controller="Pagoes" asp-action="Index" method="get">
+    <form id="filterForm" asp-controller="EgresosVarios" asp-action="Index" method="get">
         <div class="row">
             <div class="col-lg-3">
                 <div class="form-group">
@@ -37,166 +37,108 @@
     <thead>
         <tr>
             <th>Categoría</th>
-            <th>@Html.DisplayNameFor(model => model.Pagos.Descripcion)</th>
-            <th>@Html.DisplayNameFor(model => model.Pagos.Cantidad)</th>
+            <th>Ministerio</th>
+            <th>@Html.DisplayNameFor(model => model.EgresosVario.Descripcion)</th>
+            <th>@Html.DisplayNameFor(model => model.EgresosVario.Cantidad)</th>
             <th>Divisa</th>
             <th>Tasa de Cambio</th>
-            <th>Fecha Pago</th>
+            <th>@Html.DisplayNameFor(model => model.EgresosVario.FechaEgreso)</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-            var rowClass = item.Pagos.Estado == 0 ? "anulado" : "";
+            var rowClass = item.EgresosVario.Estado == 0 ? "anulado" : "";
             <tr class="@rowClass">
-                <td>@Html.DisplayFor(modelItem => item.PagosCategoria.Nombre)</td>
-                <td>@Html.DisplayFor(modelItem => item.Pagos.Descripcion)</td>
-                <td>@Html.DisplayFor(modelItem => item.Pagos.Cantidad)</td>
+                <td>@Html.DisplayFor(modelItem => item.EgresoCategoria.Nombre)</td>
+                <td>@Html.DisplayFor(modelItem => item.Ministerios.Nombre)</td>
+                <td>@Html.DisplayFor(modelItem => item.EgresosVario.Descripcion)</td>
+                <td>@Html.DisplayFor(modelItem => item.EgresosVario.Cantidad)</td>
                 <td>@Html.DisplayFor(modelItem => item.Divisa.CodDivisa)</td>
-                <td>@Html.DisplayFor(modelItem => item.Pagos.TasaCambio)</td>
-                <td>@item.Pagos.FechaPago.ToString("dd/MM/yyyy")</td>
+                <td>@Html.DisplayFor(modelItem => item.EgresosVario.TasaCambio)</td>
+                <td>@item.EgresosVario.FechaEgreso.ToString("dd/MM/yyyy")</td>
                 <td>
-                    @if (item.Pagos.Estado == 0)
+                    @if (item.EgresosVario.Estado == 0)
                     {
                         <span>Anulado</span>
                     }
                     else
                     {
-                        <a class="btn launch btnEditarPago"
+                        <a class="btn launch btnEditarEgresoVario"
                            data-toggle="modal"
-                           data-target="#modalEditarPago"
-                           data-id="@item.Pagos.IdPago"
-                           data-categoria="@item.PagosCategoria.Nombre"
-                           data-descripcion="@item.Pagos.Descripcion"
-                           data-cantidad="@item.Pagos.Cantidad"
+                           data-target="#modalEditarEgresoVario"
+                           data-id="@item.EgresosVario.IdEgreVarios"
+                           data-categoria="@item.EgresoCategoria.Nombre"
+                           data-ministerio="@item.Ministerios.Nombre"
+                           data-descripcion="@item.EgresosVario.Descripcion"
+                           data-cantidad="@item.EgresosVario.Cantidad"
                            data-divisa="@item.Divisa.CodDivisa"
-                           data-tasacambio="@item.Pagos.TasaCambio"
-                           data-fechapago="@item.Pagos.FechaPago.ToString("yyyy-MM-dd")"
-                           data-estado="@item.Pagos.Estado">
+                           data-tasa="@item.EgresosVario.TasaCambio"
+                           data-fecha="@item.EgresosVario.FechaEgreso.ToString("yyyy-MM-dd")"
+                           data-estado="@item.EgresosVario.Estado">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                        </a>
-                        <a class="btn launch" data-toggle="modal" data-target="#staticBackdrop-@item.Pagos.IdPago">
-                            <i class="fa fa-trash" aria-hidden="true"></i>
                         </a>
                     }
                 </td>
             </tr>
-
-            @if (item.Pagos.Estado != 0)
-            {
-                <div class="modal fade" id="staticBackdrop-@item.Pagos.IdPago" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <div class="text-right">
-                                    <i class="fa fa-close close" data-dismiss="modal"></i>
-                                </div>
-                                <div class="px-2 py-3">
-                                    <h4 class="mt-5 theme-color mb-5">Estás a punto de Anular este Pago!</h4>
-                                    <span class="theme-color">Resumen</span>
-                                    <div class="mb-3">
-                                        <hr class="new1" />
-                                    </div>
-                                    <div class="d-flex justify-content-between">
-                                        <small>Categoría</small>
-                                        <small>@Html.DisplayFor(modelItem => item.PagosCategoria.Nombre)</small>
-                                    </div>
-                                    <div class="d-flex justify-content-between">
-                                        <small>Descripción</small>
-                                        <small>@Html.DisplayFor(modelItem => item.Pagos.Descripcion)</small>
-                                    </div>
-                                    <div class="d-flex justify-content-between">
-                                        <small>Cantidad</small>
-                                        <small>@Html.DisplayFor(modelItem => item.Pagos.Cantidad)</small>
-                                    </div>
-                                    <div class="d-flex justify-content-between">
-                                        <small>Divisa</small>
-                                        <small>@Html.DisplayFor(modelItem => item.Divisa.CodDivisa)</small>
-                                    </div>
-                                    <div class="d-flex justify-content-between">
-                                        <small>Tasa Cambio</small>
-                                        <small>@Html.DisplayFor(modelItem => item.Pagos.TasaCambio)</small>
-                                    </div>
-                                    <div class="d-flex justify-content-between">
-                                        <small>Fecha</small>
-                                        <small>@item.Pagos.FechaPago.ToString("dd/MM/yyyy")</small>
-                                    </div>
-                                    <div class="form-group">
-                                        <button class="btn btn-danger">
-                                            <a style="color:white;" asp-action="Anular" asp-route-id="@item.Pagos.IdPago">Sí, quiero Anular</a>
-                                        </button>
-                                        <button class="btn btn-secondary" data-dismiss="modal">
-                                            Cancelar
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            }
         }
     </tbody>
 </table>
 
-<!-- MODAL DE EDICIÓN PARA PAGOS -->
-<div class="modal fade" id="modalEditarPago" tabindex="-1" aria-labelledby="modalPagoLabel" aria-hidden="true">
+<!-- MODAL DE EDICIÓN PARA EGRESOS VARIOS -->
+<div class="modal fade" id="modalEditarEgresoVario" tabindex="-1" aria-labelledby="modalEgresoVarioLabel" aria-hidden="true">
     <div class="modal-dialog" style="max-width: 600px; width: 90vw;">
         <div class="modal-content">
-            <form asp-action="Edit" method="post" id="formEditarPago" class="form">
+            <form asp-action="Edit" method="post" id="formEditarEgresoVario">
                 <div class="modal-header">
-                    <h5 class="modal-title">Editar Pago - <span id="modalPagoCategoria"></span></h5>
+                    <h5 class="modal-title">Editar - <span id="modalEgresoVarioDescripcion"></span></h5>
                     <button type="button" class="btn-close" data-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
 
-                    <input type="hidden" id="EditIdPago" name="IdPago" />
-
+                    <input type="hidden" id="EditIdEgreVarios" name="IdEgreVarios" />
                     <div class="form-group">
                         <label>Categoría</label>
-                        <input type="text" id="EditCategoriaPago" class="form-control" disabled />
+                        <input id="EditCategoriaEgre" name="Categoria" class="form-control" readonly />
                     </div>
-
+                    <div class="form-group mt-3">
+                        <label>Ministerio</label>
+                        <input id="EditMinisterioEgre" name="Ministerio" class="form-control" readonly />
+                    </div>
                     <div class="form-group mt-3">
                         <label>Descripción</label>
-                        <input type="text" id="EditDescripcionPago" name="Descripcion" class="form-control" />
+                        <input id="EditDescripcionEgre" name="Descripcion" class="form-control" />
                     </div>
-
                     <div class="form-group mt-3">
                         <label>Cantidad</label>
-                        <input type="number" step="0.01" id="EditCantidadPago" name="Cantidad" class="form-control" />
+                        <input id="EditCantidadEgre" name="Cantidad" class="form-control" />
                     </div>
-
                     <div class="form-group mt-3">
                         <label>Divisa</label>
-                        <input type="text" id="EditDivisaPago" class="form-control" disabled />
+                        <input id="EditDivisaEgre" name="Divisa" class="form-control" readonly />
                     </div>
-
                     <div class="form-group mt-3">
                         <label>Tasa de Cambio</label>
-                        <input type="number" step="0.0001" id="EditTasaCambioPago" name="TasaCambio" class="form-control" />
+                        <input id="EditTasaEgre" name="TasaCambio" class="form-control" />
                     </div>
-
                     <div class="form-group mt-3">
-                        <label>Fecha de Pago</label>
-                        <input type="date" id="EditFechaPago" name="FechaPago" class="form-control" />
+                        <label>Fecha</label>
+                        <input id="EditFechaEgre" name="FechaEgreso" class="form-control" type="date" />
                     </div>
 
-                    <!-- TOGGLE DE ESTADO PARA PAGOS -->
+                    <!-- TOGGLE DE ESTADO PARA EGRESOS VARIOS -->
                     <label class="label mt-3">
                         <div class="toggle">
-                            <input class="toggle-state" id="estadoCheckPago" name="Estado" type="checkbox" />
+                            <input class="toggle-state" id="estadoCheckEgresoVario" name="Estado" type="checkbox" />
                             <div class="indicator"></div>
                         </div>
-                        <div class="label-text" id="estadoLabelPago">No activo</div>
+                        <div class="label-text" id="estadoLabelEgresoVario">No activo</div>
                     </label>
-
                 </div>
-
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success">Guardar</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button class="btn btn-success" type="submit">Guardar</button>
+                    <button class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                 </div>
             </form>
         </div>
@@ -211,62 +153,50 @@
 
     <script>
         $(document).ready(function () {
-            // Cargar las fechas de la sesión
-            var startDate = '@ViewBag.StartDate';
-            var endDate = '@ViewBag.EndDate';
-
-            $('#startDate').val(startDate);
-            $('#endDate').val(endDate);
-
-            // Inicializar DataTable
             $('#example').DataTable();
+        });
 
-            // Variables para toggle de estado
-            const estadoCheck = document.getElementById("estadoCheckPago");
-            const estadoLabel = document.getElementById("estadoLabelPago");
-            const toggleContainer = document.querySelector('#modalEditarPago .toggle');
+        // Variables del toggle y label
+        const estadoCheckEgresoVario = document.getElementById("estadoCheckEgresoVario");
+        const estadoLabelEgresoVario = document.getElementById("estadoLabelEgresoVario");
+        const toggleContainerEgresoVario = document.querySelector('#modalEditarEgresoVario .toggle');
 
-            // Abrir modal y llenar campos
-            $(document).on('click', '.btnEditarPago', function () {
-                var btn = $(this);
+        $(document).on('click', '.btnEditarEgresoVario', function () {
+            var btn = $(this);
+            $("#EditIdEgreVarios").val(btn.data("id"));
+            $("#EditCategoriaEgre").val(btn.data("categoria"));
+            $("#EditMinisterioEgre").val(btn.data("ministerio"));
+            $("#EditDescripcionEgre").val(btn.data("descripcion"));
+            $("#EditCantidadEgre").val(btn.data("cantidad"));
+            $("#EditDivisaEgre").val(btn.data("divisa"));
+            $("#EditTasaEgre").val(btn.data("tasa"));
+            $("#EditFechaEgre").val(btn.data("fecha"));
+            $("#modalEgresoVarioDescripcion").text(btn.data("descripcion"));
 
-                $("#EditIdPago").val(btn.data("id"));
-                $("#EditCategoriaPago").val(btn.data("categoria"));
-                $("#modalPagoCategoria").text(btn.data("categoria"));
-                $("#EditDescripcionPago").val(btn.data("descripcion"));
-                $("#EditCantidadPago").val(btn.data("cantidad"));
-                $("#EditDivisaPago").val(btn.data("divisa"));
-                $("#EditTasaCambioPago").val(btn.data("tasacambio"));
-                $("#EditFechaPago").val(btn.data("fechapago"));
+            var estado = btn.data("estado");
+            const isActive = estado === true || estado === "True" || estado === "true" || estado == 1;
 
-                var estado = btn.data("estado");
-                const isActive = estado === true || estado === "True" || estado === "true" || estado == 1;
+            $("#estadoCheckEgresoVario").prop("checked", isActive);
 
-                $("#estadoCheckPago").prop("checked", isActive);
+            if (isActive) {
+                estadoLabelEgresoVario.textContent = "Activo";
+                estadoLabelEgresoVario.style.color = "#006400"; // Verde
+            } else {
+                estadoLabelEgresoVario.textContent = "No activo";
+                estadoLabelEgresoVario.style.color = "#394a56"; // Gris estándar
+                toggleContainerEgresoVario.style.backgroundColor = "#ecf0f3"; // Fondo estándar
+            }
+        });
 
-                if (isActive) {
-                    estadoLabel.textContent = "Activo";
-                    estadoLabel.style.color = "#006400"; // Verde
-                    toggleContainer.style.backgroundColor = "#00640033"; // Fondo verde claro
-                } else {
-                    estadoLabel.textContent = "No activo";
-                    estadoLabel.style.color = "#394a56"; // Gris estándar
-                    toggleContainer.style.backgroundColor = "#ecf0f3"; // Fondo estándar
-                }
-            });
-
-            // Cambiar texto y color cuando cambia el toggle
-            estadoCheck.addEventListener("change", function () {
-                if (estadoCheck.checked) {
-                    estadoLabel.textContent = "Activo";
-                    estadoLabel.style.color = "#006400"; // Verde
-                    toggleContainer.style.backgroundColor = "#00640033"; // Fondo verde claro
-                } else {
-                    estadoLabel.textContent = "No activo";
-                    estadoLabel.style.color = "#394a56"; // Gris estándar
-                    toggleContainer.style.backgroundColor = "#ecf0f3"; // Fondo estándar
-                }
-            });
+        estadoCheckEgresoVario.addEventListener("change", function () {
+            if (estadoCheckEgresoVario.checked) {
+                estadoLabelEgresoVario.textContent = "Activo";
+                estadoLabelEgresoVario.style.color = "#006400"; // Verde
+            } else {
+                estadoLabelEgresoVario.textContent = "No activo";
+                estadoLabelEgresoVario.style.color = "#394a56"; // Gris estándar
+                toggleContainerEgresoVario.style.backgroundColor = "#ecf0f3"; // Fondo estándar
+            }
         });
     </script>
 }
