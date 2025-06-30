@@ -3,26 +3,56 @@
 @{
     ViewData["Title"] = "Ingresos Categorias";
 }
-
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css">
-<!-- Font Awesome CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <link href="/theme-assets/css/index_style.css" rel="stylesheet" />
 
-<a asp-controller="IngresosCategorias" asp-action="Create" title="" class="btn btn-lg btn-primary box-shadow--4dp">Crear registro</a>
-<br />
-<div class="container" style="margin-top:30px;">
-    <div class="form-group row">
+<style>
+    .label {
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+        color: #394a56;
+    }
 
-        <div class="form-group col-lg-2">
-            <input type="hidden" id="startDate" name="startDate" class="form-control" />
-        </div>
-        <div class="form-group col-lg-2">
-            <input type="hidden" id="endDate" name="endDate" class="form-control" />
-        </div>
-    </div>
-</div>
-<div class="container" style="margin-top:10px;">
+    .label-text {
+        margin-left: 16px;
+        font-weight: 600;
+        transition: color 0.3s ease;
+    }
+
+    .toggle {
+        isolation: isolate;
+        position: relative;
+        height: 30px;
+        width: 60px;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: -8px -4px 8px 0px #ffffff, 8px 4px 12px 0px #d1d9e6, 4px 4px 4px 0px #d1d9e6 inset, -4px -4px 4px 0px #ffffff inset;
+    }
+
+    .toggle-state {
+        display: none;
+    }
+
+    .indicator {
+        height: 100%;
+        width: 200%;
+        background: #ecf0f3;
+        border-radius: 15px;
+        transform: translate3d(-75%, 0, 0);
+        transition: transform 0.4s cubic-bezier(0.85, 0.05, 0.18, 1.35), background-color 0.3s ease;
+        box-shadow: -8px -4px 8px 0px #ffffff, 8px 4px 12px 0px #d1d9e6;
+    }
+
+    .toggle-state:checked ~ .indicator {
+        transform: translate3d(25%, 0, 0);
+        background-color: #006400;
+    }
+</style>
+
+<a asp-controller="IngresosCategoriasCreate" asp-action="Index" title="" class="btn btn-lg btn-primary box-shadow--4dp">Crear registro</a>
+<br />
+
+<div class="container" style="margin-top:30px;">
     <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
@@ -35,9 +65,7 @@
         <tbody>
             @foreach (var item in Model)
             {
-                // Determinar si la fila debe ser anulada
-                var rowClass = item.Estado == 0 ? "" : "";
-                <tr class="@rowClass">
+                <tr>
                     <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
                     <td>@Html.DisplayFor(modelItem => item.Descripcion)</td>
                     <td>
@@ -51,22 +79,191 @@
                         }
                     </td>
                     <td>
-                        <a class="btn launch" asp-action="Edit" asp-route-id="@item.IdCatIngreso">
+                        <a class="btn launch btnEditar"
+                           data-toggle="modal"
+                           data-target="#modalEditarIngreso"
+                           data-id="@item.IdCatIngreso"
+                           data-nombre="@item.Nombre"
+                           data-descripcion="@item.Descripcion"
+                           data-estado="@item.Estado">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                         </a>
+                    <td>
+                        <button class="btn btn-danger btn-sm"
+                                onclick="confirmDeleteIngreso(@item.IdCatIngreso, '@item.Nombre')">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </td>
+
                     </td>
                 </tr>
             }
         </tbody>
     </table>
 </div>
-<br />
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-<!-- Data Table JS -->
-<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
-<!-- Script JS -->
-<script src="/theme-assets/js/Datatable.js"></script>
 
+<!-- MODAL DE EDICIÓN PARA INGRESOS CATEGORIAS -->
+<div class="modal fade" id="modalEditarIngreso" tabindex="-1" aria-labelledby="modalIngresoLabel" aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 600px; width: 90vw;">
+        <div class="modal-content">
+            <form asp-action="Editar" method="post" class="form" id="formEditarIngreso">
+                @Html.AntiForgeryToken()
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar - <span id="modalIngresoNombre"></span></h5>
+                    <button type="button" class="btn-close" data-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+
+                    <input type="hidden" id="EditIdCatIngreso" name="IdCatIngreso" />
+
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input id="EditNombre" name="Nombre" class="form-control" />
+                    </div>
+                    <div class="form-group mt-3">
+                        <label>Descripción</label>
+                        <input id="EditDescripcion" name="Descripcion" class="form-control" />
+                    </div>
+
+                    <!-- TOGGLE DE ESTADO PARA INGRESOS CATEGORIAS -->
+                    <label class="label mt-3">
+                        <div class="toggle">
+                            <input class="toggle-state" id="estadoCheckIngreso" name="Estado" type="checkbox" />
+                            <div class="indicator"></div>
+                        </div>
+                        <div class="label-text" id="estadoLabelIngreso">No activo</div>
+                    </label>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Guardar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="/theme-assets/js/Datatable.js"></script>
+    <script>
+        const estadoCheckIngreso = document.getElementById("estadoCheckIngreso");
+        const estadoLabelIngreso = document.getElementById("estadoLabelIngreso");
+        const toggleContainerIngreso = document.querySelector('#modalEditarIngreso .toggle');
+
+        $(document).on('click', '.btnEditar', function () {
+            var btn = $(this);
+            $("#EditIdCatIngreso").val(btn.data("id"));
+            $("#EditNombre").val(btn.data("nombre"));
+            $("#EditDescripcion").val(btn.data("descripcion"));
+            $("#modalIngresoNombre").text(btn.data("nombre"));
+
+            var estado = btn.data("estado");
+            const isActive = estado === true || estado === "True" || estado === "true" || estado == 1;
+
+            $("#estadoCheckIngreso").prop("checked", isActive);
+
+            if (isActive) {
+                estadoLabelIngreso.textContent = "Activo";
+                estadoLabelIngreso.style.color = "#006400"; // Verde
+            } else {
+                estadoLabelIngreso.textContent = "No activo";
+                estadoLabelIngreso.style.color = "#394a56"; // Gris estándar
+                toggleContainerIngreso.style.backgroundColor = "#ecf0f3"; // Fondo estándar
+            }
+        });
+
+        estadoCheckIngreso.addEventListener("change", function () {
+            if (estadoCheckIngreso.checked) {
+                estadoLabelIngreso.textContent = "Activo";
+                estadoLabelIngreso.style.color = "#006400"; // Verde
+            } else {
+                estadoLabelIngreso.textContent = "No activo";
+                estadoLabelIngreso.style.color = "#394a56"; // Gris estándar
+                toggleContainerIngreso.style.backgroundColor = "#ecf0f3"; // Fondo estándar
+            }
+        });
+        $(document).ready(function () {
+ 
+                // AJAX POST on form submit
+                $('#formEditarIngreso').submit(function (e) {
+                    e.preventDefault();
+
+                    const token = $('input[name="__RequestVerificationToken"]').val();
+
+                    const data = {
+                        __RequestVerificationToken: token,
+                        IdCatIngreso: $('#EditIdCatIngreso').val(),
+                        Nombre: $('#EditNombre').val(),
+                        Descripcion: $('#EditDescripcion').val(),
+                        Estado: $('#estadoCheckIngreso').is(':checked') ? 1 : 0
+                    };
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '/IngresosCategorias/Editar', // Asegúrate que el controlador y ruta coincidan
+                        data: data,
+                        success: function (response) {
+                            $('#modalEditarIngreso').modal('hide');
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Guardado',
+                                text: 'Categoría de ingreso actualizada correctamente.',
+                                timer: 2000,
+                                showConfirmButton: true
+                            }).then(() => location.reload());
+                        },
+                        error: function (xhr) {
+                            let msg = "Ocurrió un error al guardar.";
+                            if (xhr.responseJSON && xhr.responseJSON.message) {
+                                msg = xhr.responseJSON.message;
+                            }
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: msg
+                            });
+                        }
+                    });
+                });
+            });
+
+            function confirmDeleteIngreso(id, nombre) {
+                const token = $('input[name="__RequestVerificationToken"]').val();
+
+                Swal.fire({
+                    title: '¿Estás seguro?',
+                    text: `Eliminar la categoría "${nombre}" no se puede deshacer.`,
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Sí, eliminar',
+                    cancelButtonText: 'Cancelar',
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        const form = document.createElement('form');
+                        form.method = 'POST';
+                        form.action = `/IngresosCategorias/Delete/${id}`;
+
+                        const input = document.createElement('input');
+                        input.type = 'hidden';
+                        input.name = '__RequestVerificationToken';
+                        input.value = token;
+
+                        form.appendChild(input);
+                        document.body.appendChild(form);
+                        form.submit();
+                    } else if (result.dismiss === Swal.DismissReason.cancel) {
+                        Swal.fire('Cancelado', 'La categoría no fue eliminada.', 'info');
+                    }
+                });
+            }
+
+    
+    </script>
+}

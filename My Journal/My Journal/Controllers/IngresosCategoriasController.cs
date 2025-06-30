@@ -1,10 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using My_Journal.Models.IngresosCategoria;
 
 namespace My_Journal.Controllers
 {
     public class IngresosCategoriasController : Controller
     {
+        private readonly CbnIglesiaContext _context;
+
+        public IngresosCategoriasController(CbnIglesiaContext context)
+        {
+            _context = context;
+        }
         public IActionResult Index()
         {
             try
@@ -22,105 +29,62 @@ namespace My_Journal.Controllers
             }
         }
 
-        // GET: OfrendasCat/Create
-        public IActionResult Create()
-        {
-            try
-            {
-                var model = new IngresoCategoria
-                {
-                    ingresoCategoria = new IngresoCategoria()
-                };
 
-                return View(model);
-            }
-            catch (Exception ex)
-            {
-                // Manejar la excepción según sea necesario
-                return View(new IngresoCategoria());
-            }
-        }
+
+
 
         [HttpPost]
-        public ActionResult Create(List<string> Nombre, List<string> Descripcion)
+        [ValidateAntiForgeryToken]
+        public IActionResult Editar(IngresoCategoria ingresoCat)
         {
+            if (ingresoCat == null)
+            {
+                return BadRequest(new { success = false, message = "El modelo recibido es inválido." });
+            }
+
             try
             {
-                // Validar que todas las listas tengan la misma longitud
-                if (Nombre.Count == Descripcion.Count)
+                var result = new MantIngresoCategoria().Editar(ingresoCat);
+                if (!string.IsNullOrEmpty(result) && result != "OK")
                 {
-                    // Crear una lista para almacenar las Ofrendas Categorias
-                    var IngresoCat = new List<IngresoCategoria>();
-
-                    // Iterar sobre las listas y crear objetos Ofrendas Categorias
-                    for (int i = 0; i < Nombre.Count; i++)
-                    {
-                        var ingresocat = new IngresoCategoria
-                        {
-                            Nombre = Nombre[i],
-                            Descripcion = Descripcion[i],
-                        };
-                        IngresoCat.Add(ingresocat);
-                    }
-
-                    // Insertar las Ofrendas Cat en la base de datos
-                    MantIngresoCategoria mantIngreCat = new MantIngresoCategoria();
-                    foreach (var ingresocat in IngresoCat)
-                    {
-                        mantIngreCat.Insertar(ingresocat);
-                    }
-
-                    // Redirigir a la acción Index después de la inserción
-                    return RedirectToAction("Index");
+                    return BadRequest(new { success = false, message = result });
                 }
-                else
-                {
-                    throw new InvalidOperationException("Las listas proporcionadas tienen diferentes longitudes.");
-                }
+
+                return Json(new { success = true, message = "Categoría actualizada exitosamente." });
             }
             catch (Exception ex)
             {
-                // Manejar la excepción según sea necesario
-                // Devolver la vista con los datos ingresados y el mensaje de error
-                ModelState.AddModelError("", "Ocurrió un error al guardar los datos: " + ex.Message);
-                return View();
+                return StatusCode(500, new { success = false, message = "Error inesperado: " + ex.Message });
             }
         }
 
-        // GET: Ofrenda Cat/Edit que lo abre
-        public IActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
-            var viewModel = new MantIngresoCategoria().GetOIngresoCategoria(id.Value);
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> DeleteConfirmed(int id)
+        //{
+        //    var categoria = await _context.IngresosCategorias
+        //        .Include(c => c.Ingresos) // Solo si hay relación 1:N
+        //        .FirstOrDefaultAsync(c => c.IdCatIngreso == id);
 
+        //    if (categoria == null)
+        //    {
+        //        TempData["Error"] = "La categoría no fue encontrada.";
+        //        return RedirectToAction(nameof(Index));
+        //    }
 
-            if (viewModel == null)
-            {
-                return NotFound();
-            }
+        //    if (categoria.Ingresos != null && categoria.Ingresos.Any())
+        //    {
+        //        TempData["Error"] = "No se puede eliminar porque tiene ingresos asociados.";
+        //        return RedirectToAction(nameof(Index));
+        //    }
 
-            return View(viewModel);
-        }
+        //    _context.IngresosCategorias.Remove(categoria);
+        //    await _context.SaveChangesAsync();
 
-        // POST: Ofrenda Cat/Edit que lo guarda
-        public ActionResult Editar(IngresoCategoria IngresoCat)
-        {
-            try
-            {
-                MantIngresoCategoria mant = new MantIngresoCategoria();
-                var ingresoCat = mant.Editar(IngresoCat);
+        //    TempData["Success"] = "Categoría eliminada exitosamente.";
+        //    return RedirectToAction(nameof(Index));
+        //}
 
-                return RedirectToAction("Index");
-            }
-            catch (Exception ex)
-            {
-                // Manejar la excepción según sea necesario
-                return View(IngresoCat);
-            }
-        }
     }
 }

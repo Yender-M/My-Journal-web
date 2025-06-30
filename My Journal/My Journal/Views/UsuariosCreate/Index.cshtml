@@ -1,0 +1,132 @@
+﻿@model My_Journal.Models.Usuario.Usuario
+@{
+    ViewData["Title"] = "Crear Usuario";
+}
+@*#696cff*@
+<style>
+
+
+    .label {
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+        color: #394a56;
+    }
+
+    .label-text {
+        margin-left: 16px;
+        font-weight: 600;
+        transition: color 0.3s ease;
+    }
+
+    .toggle {
+        isolation: isolate;
+        position: relative;
+        height: 30px;
+        width: 60px;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: -8px -4px 8px 0px #ffffff, 8px 4px 12px 0px #d1d9e6, 4px 4px 4px 0px #d1d9e6 inset, -4px -4px 4px 0px #ffffff inset;
+    }
+
+    .toggle-state {
+        display: none;
+    }
+
+    .indicator {
+        height: 100%;
+        width: 200%;
+        background: #ecf0f3;
+        border-radius: 15px;
+        transform: translate3d(-75%, 0, 0);
+        transition: transform 0.4s cubic-bezier(0.85, 0.05, 0.18, 1.35), background-color 0.3s ease;
+        box-shadow: -8px -4px 8px 0px #ffffff, 8px 4px 12px 0px #d1d9e6;
+    }
+
+    .toggle-state:checked ~ .indicator {
+        transform: translate3d(25%, 0, 0);
+        background-color: #006400;
+    }
+
+</style>
+
+<form class="form" asp-action="Index" method="post">
+    <div class="card-body">
+        <div class="form-group row">
+            <div class="col-lg-5">
+                <label>Nombres</label>
+                <input asp-for="Nombres" type="text" class="form-control" placeholder="Ingrese sus nombres" />
+            </div>
+            <div class="col-lg-5">
+                <label>Apellidos</label>
+                <input asp-for="Apellidos" type="text" class="form-control" placeholder="Ingrese sus apellidos" />
+            </div>
+            <div class="col-lg-6">
+                <label>Dirección</label>
+                <div class="input-group">
+                    <input asp-for="Direccion" type="text" class="form-control" placeholder="Ingrese su dirección" />
+                    <div class="input-group-append"><span class="input-group-text"><i class="la la-map-marker"></i></span></div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <label>Teléfono</label>
+                <div class="input-group">
+                    <input asp-for="Telefono" type="tel" class="form-control" placeholder="Provea un número de contacto" />
+                    <div class="input-group-append"><span class="input-group-text"><i class="la la-phone"></i></span></div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-lg-4">
+                <label>Usuario</label>
+                <div class="input-group">
+                    <input asp-for="Usuario1" type="text" class="form-control" placeholder="Cree un nombre de usuario" />
+                    <div class="input-group-append"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <label>Contraseña</label>
+                <div class="input-group">
+                    <input asp-for="Clave" type="password" class="form-control" placeholder="Cree una contraseña" />
+                    <div class="input-group-append"><span class="input-group-text"><i class="la la-key"></i></span></div>
+                </div>
+            </div>
+        </div>
+
+        <label class="label">
+            <div class="toggle">
+                <input asp-for="Estado" class="toggle-state" id="estadoCheck" type="checkbox" name="Estado" />
+                <div class="indicator"></div>
+            </div>
+            <div class="label-text" id="estadoLabel">No activo</div>
+        </label>
+
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-lg-6">
+                    <button type="submit" class="btn btn-success mr-2">Guardar</button>
+                    <button asp-action="Index" class="btn btn-secondary">Cancelar</button>
+                </div>
+            </div>
+        </div>
+</form>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+    const estadoCheck = document.getElementById("estadoCheck");
+    const estadoLabel = document.getElementById("estadoLabel");
+
+    estadoCheck.addEventListener("change", function() {
+        if (estadoCheck.checked) {
+            estadoLabel.textContent = "Activo";
+        } else {
+            estadoLabel.textContent = "No activo";
+            estadoLabel.style.color = "#394a56"; // Gris estándar
+        }
+    });
+</script>
+
+}
+

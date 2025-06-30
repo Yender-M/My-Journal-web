@@ -1,10 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using My_Journal.Models.OfrendaCategoria;
-
+using System.Text.Json;
 namespace My_Journal.Controllers
 {
     public class OfrendasCategoriasController : Controller
     {
+        private readonly CbnIglesiaContext _context;
+
+        public OfrendasCategoriasController(CbnIglesiaContext context)
+        {
+            _context = context;
+        }
         public IActionResult Index()
         {
             try
@@ -87,40 +94,77 @@ namespace My_Journal.Controllers
             }
         }
 
-        // GET: Ofrenda Cat/Edit que lo abre
-        public IActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        //[HttpPost]
+        //public IActionResult Editar([FromBody] OfrendasCategoria ofrendaCat)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(new { success = false, message = "Modelo no válido" });
+        //    }
 
-            var viewModel = new MantOfrendaCategoria().GetOfrendaCategoria(id.Value);
+        //    try
+        //    {
+        //        MantOfrendaCategoria mant = new MantOfrendaCategoria();
+        //        var resultado = mant.Editar(ofrendaCat);
 
-
-            if (viewModel == null)
-            {
-                return NotFound();
-            }
-
-            return View(viewModel);
-        }
-
-        // POST: Ofrenda Cat/Edit que lo guarda
-        public ActionResult Editar(OfrendasCategoria OfrenfaCat)
+        //        if (resultado == "OK")
+        //        {
+        //            return Json(new { success = true, message = "Categoría actualizada correctamente" });
+        //        }
+        //        else
+        //        {
+        //            return BadRequest(new { success = false, message = "Error al actualizar la categoría" });
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return StatusCode(500, new { success = false, message = "Error interno del servidor" });
+        //    }
+        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Editar(OfrendasCategoria OfrenfaCat)
         {
             try
             {
                 MantOfrendaCategoria mant = new MantOfrendaCategoria();
-                var ofrendaCat = mant.Editar(OfrenfaCat);
+                var result = mant.Editar(OfrenfaCat);
 
-                return RedirectToAction("Index");
+                // You could return JSON for more flexibility
+                return Json(new { success = true, message = "Categoría editada con éxito" });
             }
             catch (Exception ex)
             {
-                // Manejar la excepción según sea necesario
-                return View(OfrenfaCat);
+                // Log the error as needed
+                return Json(new { success = false, message = "Error al editar la categoría", error = ex.Message });
             }
         }
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var categoria = await _context.OfrendasCategorias.FindAsync(id);
+            if (categoria == null)
+            {
+                TempData["Error"] = "La categoria no fue encontrada.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            // Check for related ofrendas
+            bool hasOfrendas = await _context.Ofrendas.AnyAsync(o => o.IdCatOfrenda == id);
+            if (hasOfrendas)
+            {
+                TempData["Error"] = "No se puede eliminar esta categoria porque tiene ofrendas asociadas.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            _context.OfrendasCategorias.Remove(categoria);
+            await _context.SaveChangesAsync();
+
+            TempData["Success"] = "Categoria eliminada exitosamente.";
+            return RedirectToAction(nameof(Index));
+        }
+
+
     }
 }

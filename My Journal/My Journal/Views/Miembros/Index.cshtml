@@ -4,12 +4,92 @@
     ViewData["Title"] = "Miembros";
 }
 
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css">
-<!-- Font Awesome CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <link href="/theme-assets/css/index_style.css" rel="stylesheet" />
+<style>
+    /* ==========================
+               ESTILOS GENERALES (no cambiar)
+               ========================== */
+    .label {
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+        color: #394a56;
+    }
 
-<a asp-controller="Miembros" asp-action="Create" title="" class="btn btn-lg btn-primary box-shadow--4dp">Crear registro</a>
+    .label-text {
+        margin-left: 16px;
+        font-weight: 600;
+        transition: color 0.3s ease;
+    }
+
+    .toggle {
+        isolation: isolate;
+        position: relative;
+        height: 30px;
+        width: 60px;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: -8px -4px 8px 0px #ffffff, 8px 4px 12px 0px #d1d9e6, 4px 4px 4px 0px #d1d9e6 inset, -4px -4px 4px 0px #ffffff inset;
+    }
+
+    .toggle-state {
+        display: none;
+    }
+
+    .indicator {
+        height: 100%;
+        width: 200%;
+        background: #ecf0f3;
+        border-radius: 15px;
+        transform: translate3d(-75%, 0, 0);
+        transition: transform 0.4s cubic-bezier(0.85, 0.05, 0.18, 1.35), background-color 0.3s ease;
+        box-shadow: -8px -4px 8px 0px #ffffff, 8px 4px 12px 0px #d1d9e6;
+    }
+
+    .toggle-state:checked ~ .indicator {
+        transform: translate3d(25%, 0, 0);
+        background-color: #006400;
+    }
+
+    /* ==========================
+               ESTILOS PARA OTRO MODAL (#modalEditarUsuario)
+               ========================== */
+    #modalEditarUsuario .modal-content {
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    #modalEditarUsuario .modal-dialog {
+        max-width: 75%;
+        width: 100%;
+        margin-right: 20%;
+    }
+
+    #modalEditarUsuario .modal-header {
+        border-bottom: none;
+        padding: 20px;
+    }
+
+    #modalEditarUsuario .modal-title {
+        font-weight: bold;
+        color: #343a40;
+    }
+
+    #modalEditarUsuario .modal-body {
+        padding: 20px;
+    }
+
+    #modalEditarUsuario .modal-footer {
+        border-top: none;
+        padding: 20px;
+    }
+
+    .swal2-actions .btn {
+        margin: 0 0.25rem; /* Ajusta el margen horizontal entre botones */
+    }
+</style>
+
+<a asp-controller="MiembrosCreate" asp-action="Index" class="btn btn-lg btn-primary box-shadow--4dp">Crear registro</a>
 
 <div class="container" style="margin-top: 30px;">
     <form id="filterForm" asp-controller="Miembros" asp-action="Index" method="get">
@@ -52,9 +132,7 @@
     <tbody>
         @foreach (var item in Model)
         {
-            // Determinar si la fila debe ser anulada
-            var rowClass = item.Estado == 0 ? "" : "";
-            <tr class="@rowClass">
+            <tr>
                 <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
                 <td>@Html.DisplayFor(modelItem => item.Apellido)</td>
                 <td>@Html.DisplayFor(modelItem => item.Direccion)</td>
@@ -62,44 +140,239 @@
                 <td>@item.FechaNacimiento.ToString("dd/MM/yyyy")</td>
                 <td>@item.FechaBautismo.ToString("dd/MM/yyyy")</td>
                 <td>
-                    @if (item.Estado == 0)
-                    {
-                        <span>Inactivo</span>
-                    }
-                    else
-                    {
-                        <span>Activo</span>
-                    }
+                    @(item.Estado == 0 ? "Inactivo" : "Activo")
                 </td>
-                <td>                 
-                    <a class="btn launch" asp-action="Edit" asp-route-id="@item.IdMiembro">
+                <td>
+                    <a class="btn launch btnEditarMiembro"
+                       data-toggle="modal"
+                       data-target="#modalEditarMiembro"
+                       data-id="@item.IdMiembro"
+                       data-nombre="@item.Nombre"
+                       data-apellido="@item.Apellido"
+                       data-direccion="@item.Direccion"
+                       data-telefono="@item.Telefono"
+                       data-fechanacimiento="@item.FechaNacimiento.ToString("yyyy-MM-dd")"
+                       data-fechabautismo="@item.FechaBautismo.ToString("yyyy-MM-dd")"
+                       data-estado="@item.Estado">
                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     </a>
+                    <button class="btn btn-danger"
+                            data-miembro-id="@item.IdMiembro"
+                            data-miembro-nombre="@item.Nombre @item.Apellido"
+                            title="Eliminar"
+                            onClick="confirmDeleteMiembro(this)">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </button>
+
                 </td>
             </tr>
         }
     </tbody>
 </table>
 
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-<!-- Data Table JS -->
-<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
-<!-- Script JS -->
-<script src="/theme-assets/js/Datatable.js"></script>
+<!-- MODAL DE EDICIÓN PARA MIEMBROS -->
+<div class="modal fade" id="modalEditarMiembro" tabindex="-1" aria-labelledby="modalMiembroLabel" aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 600px; width: 90vw;">
+        <div class="modal-content">
+            <form id="formEditarMiembro" class="form">
+                @Html.AntiForgeryToken()
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar - <span id="modalMiembroNombre"></span></h5>
+                    <button type="button" class="btn-close" data-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
 
-<script>
-    $(document).ready(function () {
-        // Cargar las fechas de la sesión
-        var startDate = '@ViewBag.StartDate';
-        var endDate = '@ViewBag.EndDate';
+                    <input type="hidden" id="EditIdMiembro" name="IdMiembro" />
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input id="EditNombre" name="Nombre" class="form-control" />
+                    </div>
+                    <div class="form-group mt-3">
+                        <label>Apellido</label>
+                        <input id="EditApellido" name="Apellido" class="form-control" />
+                    </div>
+                    <div class="form-group mt-3">
+                        <label>Dirección</label>
+                        <input id="EditDireccion" name="Direccion" class="form-control" />
+                    </div>
+                    <div class="form-group mt-3">
+                        <label>Teléfono</label>
+                        <input id="EditTelefono" name="Telefono" class="form-control" />
+                    </div>
+                    <div class="form-group mt-3">
+                        <label>Fecha de Nacimiento</label>
+                        <input id="EditFechaNacimiento" name="FechaNacimiento" type="date" class="form-control" />
+                    </div>
+                    <div class="form-group mt-3">
+                        <label>Fecha de Bautismo</label>
+                        <input id="EditFechaBautismo" name="FechaBautismo" type="date" class="form-control" />
+                    </div>
 
-        $('#startDate').val(startDate);
-        $('#endDate').val(endDate);
+                    <!-- TOGGLE DE ESTADO PARA MIEMBRO -->
+                    <label class="label mt-3">
+                        <div class="toggle">
+                            <input class="toggle-state" id="estadoCheckMiembro" name="Estado" type="checkbox" />
+                            <div class="indicator"></div>
+                        </div>
+                        <div class="label-text" id="estadoLabelMiembro">Inactivo</div>
+                    </label>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success" type="submit">Guardar</button>
+                    <button class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="/theme-assets/js/Datatable.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-        // Inicializar DataTable
-        $('#example').DataTable();
-    });
-</script>
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+
+        const estadoCheckMiembro = document.getElementById("estadoCheckMiembro");
+        const estadoLabelMiembro = document.getElementById("estadoLabelMiembro");
+        const toggleContainerMiembro = document.querySelector('#modalEditarMiembro .toggle');
+
+        $(document).on('click', '.btnEditarMiembro', function () {
+            var btn = $(this);
+            $("#EditIdMiembro").val(btn.data("id"));
+            $("#EditNombre").val(btn.data("nombre"));
+            $("#EditApellido").val(btn.data("apellido"));
+            $("#EditDireccion").val(btn.data("direccion"));
+            $("#EditTelefono").val(btn.data("telefono"));
+            $("#EditFechaNacimiento").val(btn.data("fechanacimiento"));
+            $("#EditFechaBautismo").val(btn.data("fechabautismo"));
+            $("#modalMiembroNombre").text(btn.data("nombre") + " " + btn.data("apellido"));
+
+            var estado = btn.data("estado");
+            const isActive = estado === true || estado === "True" || estado === "true" || estado == 1;
+
+            $("#estadoCheckMiembro").prop("checked", isActive);
+
+            if (isActive) {
+                estadoLabelMiembro.textContent = "Activo";
+                estadoLabelMiembro.style.color = "#006400"; // Verde
+            } else {
+                estadoLabelMiembro.textContent = "Inactivo";
+                estadoLabelMiembro.style.color = "#394a56"; // Gris estándar
+                toggleContainerMiembro.style.backgroundColor = "#ecf0f3"; // Fondo estándar
+            }
+        });
+
+        estadoCheckMiembro.addEventListener("change", function () {
+            if (estadoCheckMiembro.checked) {
+                estadoLabelMiembro.textContent = "Activo";
+                estadoLabelMiembro.style.color = "#006400"; // Verde
+            } else {
+                estadoLabelMiembro.textContent = "Inactivo";
+                estadoLabelMiembro.style.color = "#394a56"; // Gris estándar
+                toggleContainerMiembro.style.backgroundColor = "#ecf0f3"; // Fondo estándar
+            }
+        });
+
+        // Enviar formulario por AJAX
+        $(document).on('submit', '#formEditarMiembro', async function (e) {
+            e.preventDefault();
+
+            const miembroData = {
+                IdMiembro: $("#EditIdMiembro").val(),
+                Nombre: $("#EditNombre").val(),
+                Apellido: $("#EditApellido").val(),
+                Direccion: $("#EditDireccion").val(),
+                Telefono: $("#EditTelefono").val(),
+                FechaNacimiento: $("#EditFechaNacimiento").val(),
+                FechaBautismo: $("#EditFechaBautismo").val(),
+                Estado: $("#estadoCheckMiembro").is(":checked") ? 1 : 0
+            };
+
+            try {
+                const response = await fetch("/Miembros/Editar", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val()
+                    },
+                    body: JSON.stringify(miembroData)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.message || 'Error al actualizar');
+                }
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Miembro actualizado',
+                    text: 'El miembro ha sido actualizado correctamente.',
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    $("#modalEditarMiembro").modal('hide');
+                    location.reload();
+                });
+            } catch (error) {
+                console.error(error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: error.message || 'Hubo un error al conectar con el servidor',
+                    confirmButtonText: 'OK'
+                });
+            }
+        });
+
+
+        function confirmDeleteMiembro(button) {
+            const miembroId = button.getAttribute('data-miembro-id');
+            const miembroNombre = button.getAttribute('data-miembro-nombre');
+            const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: "btn btn-success",
+                    cancelButton: "btn btn-danger"
+                },
+                buttonsStyling: false
+            });
+
+            swalWithBootstrapButtons.fire({
+                title: "¿Estás seguro?",
+                text: `Estás a punto de eliminar al miembro "${miembroNombre}". ¡Esta acción no se puede deshacer!`,
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Sí, eliminar",
+                cancelButtonText: "No, cancelar",
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Crear y enviar formulario para eliminar
+                    const form = document.createElement("form");
+                    form.method = "POST";
+                    form.action = `/Miembros/Delete/${miembroId}`;
+
+                    const antiForgeryInput = document.createElement("input");
+                    antiForgeryInput.type = "hidden";
+                    antiForgeryInput.name = "__RequestVerificationToken";
+                    antiForgeryInput.value = token;
+
+                    form.appendChild(antiForgeryInput);
+                    document.body.appendChild(form);
+                    form.submit();
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    swalWithBootstrapButtons.fire({
+                        title: "Cancelado",
+                        text: "La eliminación no se realizó.",
+                        icon: "error"
+                    });
+                }
+            });
+        }
+    </script>
+}
