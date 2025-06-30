@@ -152,7 +152,6 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/theme-assets/js/Datatable.js"></script>
     <script>
         const estadoCheckCat = document.getElementById("estadoCheckCat");
@@ -194,54 +193,48 @@
             }
         });
 
+        $(document).ready(function () {
+            $('#formEditarCategoria').submit(function (e) {
+                e.preventDefault();
 
-        $(document).on('submit', '#formEditarCategoria', async function (e) {
-            e.preventDefault();
+                var token = $('input[name="__RequestVerificationToken"]').val();
 
-            const formData = new FormData(this);
+                var data = {
+                    __RequestVerificationToken: token,
+                    IdCatOfrenda: $('#EditIdCatOfrenda').val(),
+                    Nombre: $('#EditNombre').val(),
+                    Descripcion: $('#EditDescripcion').val(),
+                    Estado: $('#estadoCheckCat').is(':checked') ? 1 : 0
+                };
 
-            // El checkbox puede no enviar valor si no está marcado,
-            // por eso agregamos explícitamente Estado:
-            formData.set("Estado", $("#estadoCheckCat").is(":checked"));
+                $.ajax({
+                    type: 'POST',
+                    url: '/OfrendasCategorias/Editar',
+                    data: data,
+                    success: function (response) {
+                        $('#modalEditarCategoria').modal('hide');
 
-            console.log(formData);
-
-            try {
-                const response = await fetch("/OfrendasCategorias/Editar", {
-                    method: "POST",
-                    body: formData
+                        Swal.fire({
+                            icon: 'success',
+                            title: '¡Guardado!',
+                            text: 'La categoría fue actualizada correctamente.',
+                            timer: 2000,
+                            showConfirmButton: true
+                        }).then(() => {
+                            location.reload(); // Espera a que se cierre el alert
+                        });
+                    },
+                    error: function (xhr, status, error) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error al guardar',
+                            text: 'Ocurrió un problema al intentar guardar la categoría.',
+                        });
+                    }
                 });
-
-                const result = await response.json();
-
-                if (response.ok && result.success) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Categoría actualizada',
-                        text: result.message,
-                        confirmButtonText: 'OK'
-                    }).then(() => {
-                        $("#modalEditarCategoria").modal('hide');
-                        location.reload();
-                    });
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: result.message || 'Hubo un error al actualizar la categoría',
-                        confirmButtonText: 'OK'
-                    });
-                }
-            } catch (error) {
-                console.error(error);
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error de comunicación',
-                    text: 'Hubo un error al conectar con el servidor',
-                    confirmButtonText: 'OK'
-                });
-            }
+            });
         });
+
 
         function confirmDelete(button) {
             const categoriaId = button.getAttribute('data-categoria-id');
@@ -278,6 +271,11 @@
                     form.appendChild(antiForgeryInput);
                     document.body.appendChild(form);
                     form.submit();
+
+                    // Optional cleanup
+                    setTimeout(() => {
+                        document.body.removeChild(form);
+                    }, 1000);
                 } else if (result.dismiss === Swal.DismissReason.cancel) {
                     swalWithBootstrapButtons.fire({
                         title: "Cancelado",
@@ -288,6 +286,45 @@
             });
         }
 
-
+        @if (TempData["Error"] != null)
+        {
+            <text>
+                Swal.fire({
+                    icon: 'error',
+                    title: '¡Error!',
+                    text: '@TempData["Error"]'
+                });
+            </text>
+        }
+        else if (TempData["Success"] != null)
+        {
+            <text>
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Éxito!',
+                    text: '@TempData["Success"]'
+                });
+            </text>
+        }
+        else if (TempData["Warning"] != null)
+        {
+            <text>
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Advertencia',
+                    text: '@TempData["Warning"]'
+                });
+            </text>
+        }
+        else if (TempData["Info"] != null)
+        {
+            <text>
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Información',
+                    text: '@TempData["Info"]'
+                });
+            </text>
+        }
     </script>
 }

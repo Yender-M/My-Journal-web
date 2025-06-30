@@ -1,4 +1,5 @@
 ﻿using My_Journal.Models.EgresosCategoria;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace My_Journal.Models.OfrendaCategoria;
 
@@ -22,5 +23,6 @@ public class OfrendasCategoria
 
     public virtual Usuario.Usuario? UsuarioCreacionNavigation { get; set; }
 
+    [NotMapped]
     public OfrendasCategoria ofrendaCategoria { get; internal set; }
 }

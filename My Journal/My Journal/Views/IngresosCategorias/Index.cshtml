@@ -88,6 +88,13 @@
                            data-estado="@item.Estado">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                         </a>
+                    <td>
+                        <button class="btn btn-danger btn-sm"
+                                onclick="confirmDeleteIngreso(@item.IdCatIngreso, '@item.Nombre')">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </td>
+
                     </td>
                 </tr>
             }
@@ -99,7 +106,9 @@
 <div class="modal fade" id="modalEditarIngreso" tabindex="-1" aria-labelledby="modalIngresoLabel" aria-hidden="true">
     <div class="modal-dialog" style="max-width: 600px; width: 90vw;">
         <div class="modal-content">
-            <form asp-action="Edit" method="post" class="form" id="formEditarIngreso">
+            <form asp-action="Editar" method="post" class="form" id="formEditarIngreso">
+                @Html.AntiForgeryToken()
+
                 <div class="modal-header">
                     <h5 class="modal-title">Editar - <span id="modalIngresoNombre"></span></h5>
                     <button type="button" class="btn-close" data-dismiss="modal"></button>
@@ -179,5 +188,82 @@
                 toggleContainerIngreso.style.backgroundColor = "#ecf0f3"; // Fondo estándar
             }
         });
+        $(document).ready(function () {
+ 
+                // AJAX POST on form submit
+                $('#formEditarIngreso').submit(function (e) {
+                    e.preventDefault();
+
+                    const token = $('input[name="__RequestVerificationToken"]').val();
+
+                    const data = {
+                        __RequestVerificationToken: token,
+                        IdCatIngreso: $('#EditIdCatIngreso').val(),
+                        Nombre: $('#EditNombre').val(),
+                        Descripcion: $('#EditDescripcion').val(),
+                        Estado: $('#estadoCheckIngreso').is(':checked') ? 1 : 0
+                    };
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '/IngresosCategorias/Editar', // Asegúrate que el controlador y ruta coincidan
+                        data: data,
+                        success: function (response) {
+                            $('#modalEditarIngreso').modal('hide');
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Guardado',
+                                text: 'Categoría de ingreso actualizada correctamente.',
+                                timer: 2000,
+                                showConfirmButton: true
+                            }).then(() => location.reload());
+                        },
+                        error: function (xhr) {
+                            let msg = "Ocurrió un error al guardar.";
+                            if (xhr.responseJSON && xhr.responseJSON.message) {
+                                msg = xhr.responseJSON.message;
+                            }
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: msg
+                            });
+                        }
+                    });
+                });
+            });
+
+            function confirmDeleteIngreso(id, nombre) {
+                const token = $('input[name="__RequestVerificationToken"]').val();
+
+                Swal.fire({
+                    title: '¿Estás seguro?',
+                    text: `Eliminar la categoría "${nombre}" no se puede deshacer.`,
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Sí, eliminar',
+                    cancelButtonText: 'Cancelar',
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        const form = document.createElement('form');
+                        form.method = 'POST';
+                        form.action = `/IngresosCategorias/Delete/${id}`;
+
+                        const input = document.createElement('input');
+                        input.type = 'hidden';
+                        input.name = '__RequestVerificationToken';
+                        input.value = token;
+
+                        form.appendChild(input);
+                        document.body.appendChild(form);
+                        form.submit();
+                    } else if (result.dismiss === Swal.DismissReason.cancel) {
+                        Swal.fire('Cancelado', 'La categoría no fue eliminada.', 'info');
+                    }
+                });
+            }
+
+    
     </script>
 }

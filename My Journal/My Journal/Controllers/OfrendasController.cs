@@ -172,21 +172,45 @@ namespace My_Journal.Controllers
                 return View();
             }
         }
-
-        // GET: Ofrendas/Edit/5
         [HttpPost]
-        public IActionResult Edit([FromBody] OfrendaViewModel viewModel)
+        [ValidateAntiForgeryToken]
+        public IActionResult Editar(Ofrenda ofrenda)
         {
+            if (ofrenda == null || ofrenda.IdOfrenda <= 0)
+            {
+                return BadRequest(new
+                {
+                    success = false,
+                    message = "Los datos recibidos son inválidos."
+                });
+            }
+
             try
             {
-                MantOfrenda mant = new MantOfrenda();
-                var ofrendaEditada = mant.Editar(viewModel);
+                // 🔧 Ensamblamos el ViewModel requerido
+                var viewModel = new OfrendaViewModel
+                {
+                    Ofrenda = ofrenda,
+                    // Opcional: puedes poblar otras propiedades del ViewModel si se necesitan
+                };
 
-                return Json(new { success = true, message = "Ofrenda actualizada correctamente" });
+                var resultado = new MantOfrenda().Editar(viewModel);
+
+                if (!string.IsNullOrEmpty(resultado) && resultado != "OK")
+                {
+                    return BadRequest(new { success = false, message = resultado });
+                }
+
+                return Json(new { success = true, message = "Ofrenda actualizada correctamente." });
             }
             catch (Exception ex)
             {
-                return Json(new { success = false, message = ex.Message });
+                return StatusCode(500, new
+                {
+                    success = false,
+                    message = "Error inesperado al guardar.",
+                    detail = ex.Message
+                });
             }
         }
 

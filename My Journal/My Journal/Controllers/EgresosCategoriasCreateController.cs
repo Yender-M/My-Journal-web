@@ -25,7 +25,7 @@ namespace My_Journal.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(List<string> Nombre, List<string> Descripcion)
+        public ActionResult Index(List<string> Nombre, List<string> Descripcion)
         {
             try
             {

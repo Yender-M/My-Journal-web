@@ -122,55 +122,48 @@ namespace My_Journal.Controllers
         //    }
         //}
         [HttpPost]
-        [IgnoreAntiforgeryToken] // Si usas JSON puro sin token antiforgery
-        public async Task<IActionResult> Editar(OfrendasCategoria ofrendaCat)
+        [ValidateAntiForgeryToken]
+        public IActionResult Editar(OfrendasCategoria OfrenfaCat)
         {
-            Console.WriteLine($"IdCatOfrenda: {ofrendaCat.IdCatOfrenda}");
-            Console.WriteLine($"Nombre: {ofrendaCat.Nombre}");
-            Console.WriteLine($"Descripcion: {ofrendaCat.Descripcion}");
-            Console.WriteLine($"Estado: {ofrendaCat.Estado}");
-            if (ofrendaCat == null)
-            {
-                return BadRequest(new { success = false, message = "El modelo no puede ser null" });
-            }
-
             try
             {
                 MantOfrendaCategoria mant = new MantOfrendaCategoria();
+                var result = mant.Editar(OfrenfaCat);
 
-                // Asumiendo que el método Editar puede ser async, 
-                // si no, puedes hacer que lo sea o usar Task.Run para no bloquear
-                var resultado = await Task.Run(() => mant.Editar(ofrendaCat));
-
-                if (string.IsNullOrEmpty(resultado) || resultado == "OK")
-                {
-                    return Json(new { success = true, message = "Categoría actualizada correctamente" });
-                }
-                else
-                {
-                    return BadRequest(new { success = false, message = resultado });
-                }
+                // You could return JSON for more flexibility
+                return Json(new { success = true, message = "Categoría editada con éxito" });
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { success = false, message = "Error interno del servidor: " + ex.Message });
+                // Log the error as needed
+                return Json(new { success = false, message = "Error al editar la categoría", error = ex.Message });
             }
         }
-
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var categoria = await _context.OfrendasCategorias.FindAsync(id);
-            if (categoria != null)
+            if (categoria == null)
             {
-                _context.OfrendasCategorias.Remove(categoria);
+                TempData["Error"] = "La categoria no fue encontrada.";
+                return RedirectToAction(nameof(Index));
             }
 
+            // Check for related ofrendas
+            bool hasOfrendas = await _context.Ofrendas.AnyAsync(o => o.IdCatOfrenda == id);
+            if (hasOfrendas)
+            {
+                TempData["Error"] = "No se puede eliminar esta categoria porque tiene ofrendas asociadas.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            _context.OfrendasCategorias.Remove(categoria);
             await _context.SaveChangesAsync();
+
+            TempData["Success"] = "Categoria eliminada exitosamente.";
             return RedirectToAction(nameof(Index));
         }
-
 
 
     }

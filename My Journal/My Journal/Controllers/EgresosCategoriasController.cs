@@ -1,12 +1,18 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using My_Journal.Models.EgresosCategoria;
-using My_Journal.Models.IngresosCategoria;
 
 namespace My_Journal.Controllers
 {
     public class EgresosCategoriasController : Controller
     {
+        private readonly CbnIglesiaContext _context;
+
+        public EgresosCategoriasController(CbnIglesiaContext context)
+        {
+            _context = context;
+        }
         public IActionResult Index()
         {
             try
@@ -25,41 +31,69 @@ namespace My_Journal.Controllers
         }
 
 
-        // GET: Ofrenda Cat/Edit que lo abre
-        public IActionResult Edit(int? id)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(EgresoCategoria egresoCat)
         {
-            if (id == null)
+            if (egresoCat == null)
             {
-                return NotFound();
+                return BadRequest(new { success = false, message = "La categoría enviada es inválida." });
             }
 
-            var viewModel = new MantEgresoCategotia().GetEgresoCategoria(id.Value);
-
-
-            if (viewModel == null)
-            {
-                return NotFound();
-            }
-
-            return View(viewModel);
-        }
-
-        // POST: Ofrenda Cat/Edit que lo guarda
-        public ActionResult Editar(EgresoCategoria EgresoCat)
-        {
             try
             {
+                // Asegúrate de que esta clase y método sean válidos
                 MantEgresoCategotia mant = new MantEgresoCategotia();
-                var egresoCat = mant.Editar(EgresoCat);
+                var resultado = await Task.Run(() => mant.Editar(egresoCat));
 
-                return RedirectToAction("Index");
+                if (string.IsNullOrEmpty(resultado) || resultado.Equals("OK", StringComparison.OrdinalIgnoreCase))
+                {
+                    return Json(new { success = true, message = "Categoría de egreso actualizada correctamente." });
+                }
+                else
+                {
+                    return BadRequest(new { success = false, message = resultado });
+                }
             }
             catch (Exception ex)
             {
-                // Manejar la excepción según sea necesario
-                return View(EgresoCat);
+                return StatusCode(500, new
+                {
+                    success = false,
+                    message = "Error inesperado al procesar la solicitud.",
+                    details = ex.Message
+                });
             }
         }
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var categoria = await _context.EgresosCategorias.FindAsync(id);
+            if (categoria == null)
+            {
+                TempData["Error"] = "La categoria no fue encontrada.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            // Check for related ofrendas
+            bool hasOfrendas = await _context.Ofrendas.AnyAsync(o => o.IdCatOfrenda == id);
+            if (hasOfrendas)
+            {
+                TempData["Error"] = "No se puede eliminar esta categoria porque tiene ofrendas asociadas.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            _context.EgresosCategorias.Remove(categoria);
+            await _context.SaveChangesAsync();
+
+            TempData["Success"] = "Categoria eliminada exitosamente.";
+            return RedirectToAction(nameof(Index));
+        }
+
+
+
+
 
     }
 }

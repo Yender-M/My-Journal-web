@@ -88,6 +88,13 @@
                            data-estado="@item.Estado">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                         </a>
+                        <button class="btn btn-launch"
+                                data-egreso-id="@item.IdCatEgreso"
+                                data-egreso-nombre="@item.Nombre"
+                                onclick="confirmDeleteEgreso(this)">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </button>
+
                     </td>
                 </tr>
             }
@@ -99,7 +106,9 @@
 <div class="modal fade" id="modalEditarEgreso" tabindex="-1" aria-labelledby="modalEgresoLabel" aria-hidden="true">
     <div class="modal-dialog" style="max-width: 600px; width: 90vw;">
         <div class="modal-content">
-            <form asp-action="Edit" method="post" class="form" id="formEditarEgreso">
+            <form asp-action="Editar" method="post" class="form" id="formEditarEgreso">
+                @Html.AntiForgeryToken()
+
                 <div class="modal-header">
                     <h5 class="modal-title">Editar - <span id="modalEgresoNombre"></span></h5>
                     <button type="button" class="btn-close" data-dismiss="modal"></button>
@@ -179,5 +188,104 @@
                 toggleContainerEgreso.style.backgroundColor = "#ecf0f3"; // Fondo estándar
             }
         });
+
+        $(document).ready(function () {
+            $('#formEditarEgreso').submit(function (e) {
+                e.preventDefault();
+
+                const token = $('input[name="__RequestVerificationToken"]').val();
+
+                const data = {
+                    __RequestVerificationToken: token,
+                    IdCatEgreso: $('#EditIdCatEgreso').val(),
+                    Nombre: $('#EditNombre').val(),
+                    Descripcion: $('#EditDescripcion').val(),
+                    Estado: $('#estadoCheckEgreso').is(':checked') ? 1 : 0
+                };
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/EgresosCategorias/Edit',
+                    data: data,
+                    success: function (response) {
+                        if (response.success) {
+                            $('#modalEditarEgreso').modal('hide');
+                            Swal.fire({
+                                icon: 'success',
+                                title: '¡Guardado!',
+                                text: response.message,
+                                timer: 2000,
+                                showConfirmButton: true
+                            }).then(() => {
+                                location.reload();
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: response.message
+                            });
+                        }
+                    },
+                    error: function (xhr) {
+                        let msg = "Ocurrió un error inesperado.";
+                        if (xhr.responseJSON && xhr.responseJSON.message) {
+                            msg = xhr.responseJSON.message;
+                        }
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: msg
+                        });
+                    }
+                });
+            });
+        });
+
+        function confirmDeleteEgreso(button) {
+            const egresoId = button.getAttribute('data-egreso-id');
+            const egresoNombre = button.getAttribute('data-egreso-nombre');
+            const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: "btn btn-success",
+                    cancelButton: "btn btn-danger"
+                },
+                buttonsStyling: false
+            });
+
+            swalWithBootstrapButtons.fire({
+                title: "¿Estás seguro?",
+                text: `Estás a punto de eliminar la categoría de egreso "${egresoNombre}". ¡Esta acción no se puede deshacer!`,
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Sí, eliminar",
+                cancelButtonText: "No, cancelar",
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const form = document.createElement("form");
+                    form.method = "POST";
+                    form.action = `/EgresosCategorias/Delete/${egresoId}`;
+
+                    const antiForgeryInput = document.createElement("input");
+                    antiForgeryInput.type = "hidden";
+                    antiForgeryInput.name = "__RequestVerificationToken";
+                    antiForgeryInput.value = token;
+
+                    form.appendChild(antiForgeryInput);
+                    document.body.appendChild(form);
+                    form.submit();
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    swalWithBootstrapButtons.fire({
+                        title: "Cancelado",
+                        text: "La categoría no fue eliminada.",
+                        icon: "error"
+                    });
+                }
+            });
+        }
+
     </script>
 }
